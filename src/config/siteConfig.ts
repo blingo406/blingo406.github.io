@@ -226,7 +226,7 @@ export const siteConfig: SiteConfig = {
 	imageOptimization: {
 		formats: "webp", // 图片输出格式："avif"、"webp" 或 "both"（avif+webp，最优质量但构建更慢）
 		quality: 70, // 图片质量，推荐 70-85
-		noReferrerDomains: 
+		noReferrerDomains: [
 			// 需要添加 referrerpolicy="no-referrer" 的域名（支持通配符）
 			"*.hdslb.com", // Bilibili CDN
 		],
