@@ -12,14 +12,9 @@ export const siteConfig: SiteConfig = {
 	lang: SITE_LANG,
 
 	themeColor: {
-		hue: 240, // 主题色的默认色相，范围从 0 到 360。例如：红色：0，青色：200，蓝绿色：250，粉色：345
+		hue: 345, // 主题色的默认色相，范围从 0 到 360。例如：红色：0，青色：200，蓝绿色：250，粉色：345
 		fixed: false, // 对访问者隐藏主题色选择器
 	},
-	color: {
-  		primary: "#FFB6C1", // 樱花粉主色
-  		secondary: "#87CEEB", // 天蓝辅助色
-	},
-
 	// 特色页面开关配置（关闭未使用的页面有助于提升 SEO，关闭后请记得在 navbarConfig 中移除对应链接）
 	featurePages: {
 		anime: true, // 番剧页面开关
@@ -30,7 +25,7 @@ export const siteConfig: SiteConfig = {
 		timeline: true, // 时间线页面开关
 		albums: true, // 相册页面开关
 		devices: false, // 设备页面开关
-		aiTools: false, // AI 工具页面开关
+		aiTools: true, // AI 工具页面开关
 	},
 
 	// 顶栏标题配置
