@@ -21,7 +21,7 @@
         mask-repeat: no-repeat
         transform: translateY(-0.0625rem)
     &.bdm-tip
-      background: color-mix(in oklch, var(--admonitions-color-tip) 8%, transparent)
+      background: unquote("color-mix(in oklch, var(--admonitions-color-tip) 8%, transparent)")
       .bdm-title
         color: var(--admonitions-color-tip)
 
@@ -32,7 +32,7 @@
       &:before
         background: var(--admonitions-color-tip)
     &.bdm-note
-      background: color-mix(in oklch, var(--admonitions-color-note) 8%, transparent)
+      background: unquote("color-mix(in oklch, var(--admonitions-color-note) 8%, transparent)")
       .bdm-title
         color: var(--admonitions-color-note)
 
@@ -43,7 +43,7 @@
       &:before
         background: var(--admonitions-color-note)
     &.bdm-important
-      background: color-mix(in oklch, var(--admonitions-color-important) 8%, transparent)
+      background: unquote("color-mix(in oklch, var(--admonitions-color-important) 8%, transparent)")
       .bdm-title
         color: var(--admonitions-color-important)
 
@@ -54,7 +54,7 @@
       &:before
         background: var(--admonitions-color-important)
     &.bdm-warning
-      background: color-mix(in oklch, var(--admonitions-color-warning) 8%, transparent)
+      background: unquote("color-mix(in oklch, var(--admonitions-color-warning) 8%, transparent)")
       .bdm-title
         color: var(--admonitions-color-warning)
 
@@ -65,7 +65,7 @@
       &:before
         background: var(--admonitions-color-warning)
     &.bdm-caution
-      background: color-mix(in oklch, var(--admonitions-color-caution) 8%, transparent)
+      background: unquote("color-mix(in oklch, var(--admonitions-color-caution) 8%, transparent)")
       .bdm-title
         color: var(--admonitions-color-caution)
 
@@ -79,7 +79,7 @@
     // --- 新增 Obsidian 兼容类型 ---
 
     &.bdm-abstract
-      background: color-mix(in oklch, var(--admonitions-color-abstract) 8%, transparent)
+      background: unquote("color-mix(in oklch, var(--admonitions-color-abstract) 8%, transparent)")
       .bdm-title
         color: var(--admonitions-color-abstract)
 
@@ -92,7 +92,7 @@
         background: var(--admonitions-color-abstract)
 
     &.bdm-info
-      background: color-mix(in oklch, var(--admonitions-color-info) 8%, transparent)
+      background: unquote("color-mix(in oklch, var(--admonitions-color-info) 8%, transparent)")
       .bdm-title
         color: var(--admonitions-color-info)
 
@@ -105,7 +105,7 @@
         background: var(--admonitions-color-info)
 
     &.bdm-success
-      background: color-mix(in oklch, var(--admonitions-color-success) 8%, transparent)
+      background: unquote("color-mix(in oklch, var(--admonitions-color-success) 8%, transparent)")
       .bdm-title
         color: var(--admonitions-color-success)
 
@@ -118,7 +118,7 @@
         background: var(--admonitions-color-success)
 
     &.bdm-question
-      background: color-mix(in oklch, var(--admonitions-color-question) 8%, transparent)
+      background: unquote("color-mix(in oklch, var(--admonitions-color-question) 8%, transparent)")
       .bdm-title
         color: var(--admonitions-color-question)
 
@@ -131,7 +131,7 @@
         background: var(--admonitions-color-question)
 
     &.bdm-failure
-      background: color-mix(in oklch, var(--admonitions-color-failure) 8%, transparent)
+      background: unquote("color-mix(in oklch, var(--admonitions-color-failure) 8%, transparent)")
       .bdm-title
         color: var(--admonitions-color-failure)
 
@@ -144,7 +144,7 @@
         background: var(--admonitions-color-failure)
 
     &.bdm-danger
-      background: color-mix(in oklch, var(--admonitions-color-danger) 8%, transparent)
+      background: unquote("color-mix(in oklch, var(--admonitions-color-danger) 8%, transparent)")
       .bdm-title
         color: var(--admonitions-color-danger)
 
@@ -157,7 +157,7 @@
         background: var(--admonitions-color-danger)
 
     &.bdm-bug
-      background: color-mix(in oklch, var(--admonitions-color-bug) 8%, transparent)
+      background: unquote("color-mix(in oklch, var(--admonitions-color-bug) 8%, transparent)")
       .bdm-title
         color: var(--admonitions-color-bug)
 
@@ -170,7 +170,7 @@
         background: var(--admonitions-color-bug)
 
     &.bdm-example
-      background: color-mix(in oklch, var(--admonitions-color-example) 8%, transparent)
+      background: unquote("color-mix(in oklch, var(--admonitions-color-example) 8%, transparent)")
       .bdm-title
         color: var(--admonitions-color-example)
 
@@ -183,7 +183,7 @@
         background: var(--admonitions-color-example)
 
     &.bdm-quote
-      background: color-mix(in oklch, var(--admonitions-color-quote) 8%, transparent)
+      background: unquote("color-mix(in oklch, var(--admonitions-color-quote) 8%, transparent)")
       .bdm-title
         color: var(--admonitions-color-quote)
 
