@@ -26,6 +26,7 @@ import { AdmonitionComponent } from "./src/plugins/rehype-component-admonition.m
 import { GithubCardComponent } from "./src/plugins/rehype-component-github-card.mjs";
 import { rehypeImageWidth } from "./src/plugins/rehype-image-width.mjs";
 import { rehypeMermaid } from "./src/plugins/rehype-mermaid.mjs";
+import { rehypeWrapMath } from "./src/plugins/rehype-wrap-math.mjs";
 import { rehypeWrapTable } from "./src/plugins/rehype-wrap-table.mjs";
 import { remarkContent } from "./src/plugins/remark-content.mjs";
 import { parseDirectiveNode } from "./src/plugins/remark-directive-rehype.js";
@@ -184,6 +185,7 @@ export default defineConfig({
 			],
 			rehypePlugins: [
 				rehypeMathjax,
+				rehypeWrapMath,
 				[
 					rehypeExternalLinks,
 					{
