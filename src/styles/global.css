@@ -1,0 +1,29 @@
+/* 仅文章页面正文样式 */
+.prose {
+  font-family: var(--font-cjk), system-ui, sans-serif;
+  font-size: 18px;
+  line-height: 1.9;
+}
+
+/* 文章各级标题字号 */
+.prose h1 {
+  font-size: 2.2rem;
+}
+.prose h2 {
+  font-size: 1.75rem;
+  margin-top: 2rem;
+}
+.prose h3 {
+  font-size: 1.4rem;
+}
+.prose h4 {
+  font-size: 1.2rem;
+}
+
+/* 文章内代码字号 */
+.prose pre {
+  font-size: 18px;
+}
+.prose :not(pre) > code {
+  font-size: 0.9em;
+}
