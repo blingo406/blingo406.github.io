@@ -168,12 +168,20 @@
     transition: none;
   }
 
-  /* --- MathJax 行间公式滚动容器样式 --- */
+  /* --- MathJax 行间公式滚动容器样式（修复内部公式居中） --- */
   .mathjax-display-container {
     @apply w-full overflow-x-auto overflow-y-hidden box-border my-4;
     padding-bottom: 6px;
     padding-top: 0.5rem;
     -webkit-overflow-scrolling: touch;
+
+    /* 容器内的行间公式强制水平居中 */
+    & > mjx-container,
+    & > .mjx-container {
+      display: block !important;
+      width: fit-content !important;
+      margin: 0 auto !important;
+    }
 
     &::-webkit-scrollbar {
       height: 6px;
@@ -194,8 +202,7 @@
     }
   }
    
-  /* --- MathJax 行内公式：强制行内显示，不换行 --- */
-  /* 匹配所有在文本元素内的公式（$...$ 行内公式必然在段落/列表/行内标签中） */
+  /* --- MathJax 行内公式：强制行内显示，不单独换行 --- */
   :is(p, li, span, strong, em, a, blockquote p) > mjx-container,
   :is(p, li, span, strong, em, a, blockquote p) > .mjx-container {
     display: inline-block !important;
@@ -204,12 +211,11 @@
     vertical-align: middle !important;
   }
 
-  /* --- MathJax 行间公式：保持块级居中 --- */
-  /* 匹配直接在块级容器内的公式（$$...$$ 行间公式） */
+  /* --- MathJax 行间公式：全局居中兜底（无滚动容器的场景） --- */
   & > mjx-container,
   & > .mjx-container,
-  div > mjx-container,
-  div > .mjx-container {
+  div:not(.mathjax-display-container) > mjx-container,
+  div:not(.mathjax-display-container) > .mjx-container {
     display: block !important;
     width: fit-content !important;
     margin: 1rem auto !important;
