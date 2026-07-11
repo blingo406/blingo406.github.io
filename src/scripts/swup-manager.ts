@@ -25,7 +25,6 @@ import {
 } from "./handlers/fancybox-handler";
 import type { PanelHandler } from "./handlers/panel-handler";
 import { getPanelHandler, initPanelHandler } from "./handlers/panel-handler";
-import { checkKatex, initCustomScrollbar } from "./handlers/scroll-handler";
 
 /**
  * Swup 管理器类

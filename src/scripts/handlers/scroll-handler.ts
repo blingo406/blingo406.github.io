@@ -8,24 +8,24 @@
  * 负责自定义滚动条初始化和滚动事件管理
  */
 export class ScrollHandler {
-	private katexScrollbarStyleAdded = false;
+	private mathjaxScrollbarStyleAdded = false;
 
 	/**
 	 * 初始化自定义滚动条
-	 * 为 KaTeX 公式添加水平滚动支持
+	 * 为 MathJax 公式添加水平滚动支持
 	 */
 	initCustomScrollbar(): void {
-		const katexElements = document.querySelectorAll(
-			".katex-display:not([data-scrollbar-initialized])",
+		const mathjaxElements = document.querySelectorAll(
+			".mjx-container:not([data-scrollbar-initialized])",
 		) as NodeListOf<HTMLElement>;
 
-		katexElements.forEach((element) => {
+		mathjaxElements.forEach((element) => {
 			if (!element.parentNode) {
 				return;
 			}
 
 			const container = document.createElement("div");
-			container.className = "katex-display-container";
+			container.className = "mathjax-display-container";
 			element.parentNode.insertBefore(container, element);
 			container.appendChild(element);
 
@@ -37,50 +37,41 @@ export class ScrollHandler {
 			`;
 
 			// 添加 webkit 自定义滚动条样式（只添加一次）
-			this.addKatexScrollbarStyle();
+			this.addMathjaxScrollbarStyle();
 
 			element.setAttribute("data-scrollbar-initialized", "true");
 		});
 	}
 
 	/**
-	 * 添加 KaTeX 滚动条样式（只添加一次）
+	 * 添加 MathJax 滚动条样式（只添加一次）
 	 */
-	private addKatexScrollbarStyle(): void {
-		if (this.katexScrollbarStyleAdded) {
+	private addMathjaxScrollbarStyle(): void {
+		if (this.mathjaxScrollbarStyleAdded) {
 			return;
 		}
 
 		const style = document.createElement("style");
 		style.textContent = `
-			.katex-display-container::-webkit-scrollbar {
+			.mathjax-display-container::-webkit-scrollbar {
 				height: 6px;
 			}
-			.katex-display-container::-webkit-scrollbar-track {
+			.mathjax-display-container::-webkit-scrollbar-track {
 				background: transparent;
 			}
-			.katex-display-container::-webkit-scrollbar-thumb {
+			.mathjax-display-container::-webkit-scrollbar-thumb {
 				background: rgba(0,0,0,0.3);
 				border-radius: 3px;
 			}
-			.katex-display-container::-webkit-scrollbar-thumb:hover {
+			.mathjax-display-container::-webkit-scrollbar-thumb:hover {
 				background: rgba(0,0,0,0.5);
 			}
 		`;
 
-		if (!document.head.querySelector("style[data-katex-scrollbar]")) {
-			style.setAttribute("data-katex-scrollbar", "true");
+		if (!document.head.querySelector("style[data-mathjax-scrollbar]")) {
+			style.setAttribute("data-mathjax-scrollbar", "true");
 			document.head.appendChild(style);
-			this.katexScrollbarStyleAdded = true;
-		}
-	}
-
-	/**
-	 * 检查并加载 KaTeX 样式
-	 */
-	checkKatex(): void {
-		if (document.querySelector(".katex")) {
-			import("katex/dist/katex.css");
+			this.mathjaxScrollbarStyleAdded = true;
 		}
 	}
 
@@ -122,12 +113,4 @@ export function getScrollHandler(): ScrollHandler {
 export function initCustomScrollbar(): void {
 	const handler = getScrollHandler();
 	handler.initCustomScrollbar();
-}
-
-/**
- * 检查 KaTeX（便捷函数）
- */
-export function checkKatex(): void {
-	const handler = getScrollHandler();
-	handler.checkKatex();
 }

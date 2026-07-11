@@ -168,8 +168,8 @@
     transition: none;
   }
 
-  /* --- 数学公式样式 --- */
-  .katex-display {
+  /* --- MathJax 数学公式滚动容器样式（原 katex-display 全部替换） --- */
+  .mathjax-display-container {
     @apply w-full overflow-x-auto overflow-y-hidden box-border my-4;
     padding-bottom: 6px;
     padding-top: 0.5rem;
@@ -194,16 +194,12 @@
     }
   }
 
-  .katex-display > .katex {
+  /* MathJax 原生公式基础居中适配 */
+  .mjx-container[mjx-display="true"] {
     display: block;
     width: fit-content;
     min-width: calc(100% - 2px);
-  }
-
-  .katex-display > .katex:has(.tag) > .katex-html {
-    display: block;
-    padding-right: 3rem;
-    box-sizing: border-box;
+    margin-inline: auto;
   }
 }
 

@@ -21,7 +21,6 @@ export interface SwupHookHandlers {
 	initFancybox?: () => void;
 	cleanupFancybox?: () => void;
 	initCustomScrollbar?: () => void;
-	checkKatex?: () => void;
 }
 
 // 访问对象类型
