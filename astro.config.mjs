@@ -13,7 +13,7 @@ import { oddmisc } from "oddmisc";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeComponents from "rehype-components";
 import rehypeExternalLinks from "rehype-external-links";
-import rehypeKatex from "rehype-katex";
+import rehypeMathjax from "rehype-mathjax";
 import rehypeSlug from "rehype-slug";
 import remarkDirective from "remark-directive";
 import remarkMath from "remark-math";
@@ -150,7 +150,7 @@ export default defineConfig({
 					terminalTitlebarBackground: "var(--codeblock-bg)",
 					editorTabBarBackground: "var(--codeblock-bg)",
 					editorActiveTabBackground: "none",
-					editorActiveTabIndicatorBottomColor: "var(--primary)",
+					erehypeMathjaxditorActiveTabIndicatorBottomColor: "var(--primary)",
 					editorActiveTabIndicatorTopColor: "none",
 					editorTabBarBorderBottomColor: "var(--codeblock-bg)",
 					terminalTitlebarBorderBottomColor: "none",
@@ -183,7 +183,7 @@ export default defineConfig({
 				remarkMermaid,
 			],
 			rehypePlugins: [
-				rehypeKatex,
+				rehypeMathjax,
 				[
 					rehypeExternalLinks,
 					{
