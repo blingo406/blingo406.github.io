@@ -213,47 +213,29 @@ const bannerOffset =
 			href={`${Astro.site}rss.xml`}
 		/>
 
-		<!-- ✅ 修复1：配置必须写在加载JS之前，否则不生效 -->
+		<!-- MathJax 配置（必须内联、写在加载脚本之前，否则配置不生效） -->
 		<script is:inline>
 			window.MathJax = {
 				tex: {
-					// 开启 AMS 包，完整支持 align/align*
 					packages: {'[+]': ['ams','text']},
-					// 行内/行间公式识别规则
 					inlineMath: [['$', '$']],
 					displayMath: [['$$', '$$']],
-					// 支持 \mathring 命令
 					macros: {
 						mathring: ['\\overset{\\circ}{#1}', 1]
 					}
 				},
-				// ✅ 修复2：匹配chtml渲染模式，添加官方居中参数
 				chtml: {
 					scale: 1.05,
-					displayAlign: 'center', // 强制行间公式水平居中
+					displayAlign: 'center', // 官方原生行间公式水平居中参数
 					displayIndent: '0'
 				},
 				options: {
-					skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-					// ✅ 修复3：渲染后兜底修正行内公式，避免换行
-					renderActions: {
-						postRender: [
-							function(doc) {
-								// 行内公式强制行内显示
-								doc.querySelectorAll('mjx-container:not([display])').forEach(el => {
-									el.style.display = 'inline-block';
-									el.style.verticalAlign = 'middle';
-									el.style.width = 'auto';
-								})
-							},
-							100
-						]
-					}
+					skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
 				}
 			};
 		</script>
-		<!-- ✅ 修复4：配置写完再加载MathJax脚本 -->
-		<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+		<!-- 配置写完再加载MathJax脚本，内联避免Astro打包调整顺序 -->
+		<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async is:inline></script>
 	</head>
 	<body
 		class="min-h-screen"
