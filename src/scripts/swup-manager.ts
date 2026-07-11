@@ -25,6 +25,8 @@ import {
 } from "./handlers/fancybox-handler";
 import type { PanelHandler } from "./handlers/panel-handler";
 import { getPanelHandler, initPanelHandler } from "./handlers/panel-handler";
+// 👇 补全缺失的导入
+import { initCustomScrollbar } from "./handlers/scroll-handler";
 
 /**
  * Swup 管理器类
@@ -116,15 +118,11 @@ export class SwupManager {
 			initCustomScrollbar: () => {
 				initCustomScrollbar();
 			},
-			checkKatex: () => {
-				checkKatex();
-			},
 		});
 
 		// 如果 Swup 已经就绪，直接设置钩子
 		if (window?.swup?.hooks) {
 			initFancybox();
-			checkKatex();
 			this.hooksManager.registerHooks();
 		} else {
 			// 监听 Swup 就绪事件
@@ -138,11 +136,9 @@ export class SwupManager {
 			if (document.readyState === "loading") {
 				document.addEventListener("DOMContentLoaded", async () => {
 					await initFancybox();
-					checkKatex();
 				});
 			} else {
 				initFancybox();
-				checkKatex();
 			}
 		}
 	}

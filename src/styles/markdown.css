@@ -213,13 +213,18 @@
 }
 
 /* 强制 MathJax 行内公式保持 inline，不换行 */
+mjx-container[mjx-inline="true"],
 .mjx-container[mjx-inline="true"] {
   display: inline-block !important;
-  margin: 0 0.25ch; /* 保留一点间距，和文字对齐 */
+  width: auto !important;
+  margin: 0 0.2em !important;
+  vertical-align: middle !important;
 }
 
 /* 行间公式保持 block（正常居中） */
+mjx-container[mjx-display="true"],
 .mjx-container[mjx-display="true"] {
   display: block !important;
-  margin: 1rem auto;
+  margin: 1rem auto !important;
+  width: fit-content !important;
 }
