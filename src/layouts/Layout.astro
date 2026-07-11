@@ -149,6 +149,7 @@ const bannerOffset =
 	data-post-list-layout-enabled={siteConfig.postListLayout?.enable ? "true" : "false"}
 >
 	<head>
+		<link rel="stylesheet" href="/src/styles/global.css" />
 		<meta charset="UTF-8" />
 		<Font cssVariable="--font-body" preload />
 		<Font cssVariable="--font-cjk" />
@@ -211,6 +212,23 @@ const bannerOffset =
 			title={profileConfig.name}
 			href={`${Astro.site}rss.xml`}
 		/>
+
+		<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  		<script>
+    	  window.MathJax = {
+      		tex: {
+              // 开启 AMS 包，完整支持 align/align*
+              packages: {'[+]': ['ams','text']},
+              // 支持 \mathring 命令
+              macros: {
+                mathring: ['\\overset{\\circ}{#1}', 1]
+              }
+            },
+            svg: {
+              fontCache: 'global'
+            }
+          };
+        </script>
 	</head>
 	<body
 		class="min-h-screen"
