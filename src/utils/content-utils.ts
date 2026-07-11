@@ -106,43 +106,72 @@ export async function getTagList(): Promise<Tag[]> {
 
 export interface Category {
 	name: string;
-	count: number;
+	count: number;      // 直属文章数
+	totalCount: number; // 含子类的总文章数
 	url: string;
+	children: Category[];
 }
 
 export async function getCategoryList(): Promise<Category[]> {
 	const allBlogPosts = await getCollection<"posts">("posts", ({ data }) => {
 		return import.meta.env.PROD ? data.draft !== true : true;
 	});
-	const count: Record<string, number> = {};
-	allBlogPosts.forEach((post: { data: { category: string | null } }) => {
-		if (!post.data.category) {
-			const ucKey = i18n(I18nKey.uncategorized);
-			count[ucKey] = count[ucKey] ? count[ucKey] + 1 : 1;
-			return;
-		}
 
-		const categoryName =
-			typeof post.data.category === "string"
-				? post.data.category.trim()
-				: String(post.data.category).trim();
+	// 记录每个分类的直属文章数，以及父子关系
+	const directCount: Record<string, number> = {};
+	const parentOf: Record<string, string> = {}; // child -> parent
 
-		count[categoryName] = count[categoryName] ? count[categoryName] + 1 : 1;
-	});
+	allBlogPosts.forEach(
+		(post: { data: { category: string | null; parentCategory?: string | null } }) => {
+			const raw = post.data.category;
+			if (!raw) {
+				const ucKey = i18n(I18nKey.uncategorized);
+				directCount[ucKey] = (directCount[ucKey] ?? 0) + 1;
+				return;
+			}
 
-	const lst = Object.keys(count).sort((a, b) => {
-		return a.toLowerCase().localeCompare(b.toLowerCase());
-	});
+			const categoryName = String(raw).trim();
+			directCount[categoryName] = (directCount[categoryName] ?? 0) + 1;
 
-	const ret: Category[] = [];
-	for (const c of lst) {
-		ret.push({
-			name: c,
-			count: count[c],
-			url: getCategoryUrl(c),
-		});
-	}
-	return ret;
+			const parent = post.data.parentCategory
+				? String(post.data.parentCategory).trim()
+				: null;
+			if (parent) {
+				parentOf[categoryName] = parent;
+				// 确保父类节点存在（即使没有直属文章）
+				if (!(parent in directCount)) {
+					directCount[parent] = 0;
+				}
+			}
+		},
+	);
+
+	// 构建树形结构：找出所有顶层节点（没有 parent 的）
+	const childNames = new Set(Object.keys(parentOf));
+	const topLevelNames = Object.keys(directCount)
+		.filter((name) => !childNames.has(name))
+		.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+
+	const buildNode = (name: string): Category => {
+		// 找出所有直接子类
+		const childList = Object.keys(parentOf)
+			.filter((child) => parentOf[child] === name)
+			.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()))
+			.map((child) => buildNode(child));
+
+		const childTotal = childList.reduce((sum, c) => sum + c.totalCount, 0);
+		const count = directCount[name] ?? 0;
+
+		return {
+			name,
+			count,
+			totalCount: count + childTotal,
+			url: getCategoryUrl(name),
+			children: childList,
+		};
+	};
+
+	return topLevelNames.map(buildNode);
 }
 
 /**

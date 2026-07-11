@@ -40,7 +40,9 @@ onMount(async () => {
 
 	if (categories.length > 0) {
 		filteredPosts = filteredPosts.filter(
-			(post) => post.data.category && categories.includes(post.data.category),
+			(post) =>
+				(post.data.category && categories.includes(post.data.category)) ||
+				(post.data.parentCategory && categories.includes(post.data.parentCategory)),
 		);
 	}
 

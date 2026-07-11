@@ -43,17 +43,34 @@ const archiveUrl = url("/archive/");
 			<div class="category-scroll flex gap-2 overflow-x-auto">
 				{
 					categories.map((cat) => (
-						<a
-							href={getCategoryUrl(cat.name)}
-							class="category-pill text-sm px-3 py-1 rounded-lg whitespace-nowrap
-								   transition-colors duration-200 flex items-center justify-center"
-							data-category-name={cat.name}
-						>
-							{cat.name}
-							<span class="text-xs opacity-60 ml-1">
-								{cat.count}
-							</span>
-						</a>
+						<>
+							<a
+								href={getCategoryUrl(cat.name)}
+								class="category-pill text-sm px-3 py-1 rounded-lg whitespace-nowrap
+									   transition-colors duration-200 flex items-center justify-center"
+								data-category-name={cat.name}
+							>
+								{cat.name}
+								<span class="text-xs opacity-60 ml-1">
+									{cat.totalCount}
+								</span>
+							</a>
+							{cat.children.map((child) => (
+								<a
+									href={getCategoryUrl(child.name)}
+									class="category-pill category-pill-child text-xs px-2.5 py-1 rounded-lg whitespace-nowrap
+										   transition-colors duration-200 flex items-center justify-center"
+									data-category-name={child.name}
+									data-parent-category={cat.name}
+								>
+									<span class="opacity-50 mr-1">·</span>
+									{child.name}
+									<span class="text-xs opacity-60 ml-1">
+										{child.count}
+									</span>
+								</a>
+							))}
+						</>
 					))
 				}
 			</div>
