@@ -1,6 +1,5 @@
 /* 仅文章页面正文样式 */
 .prose {
-  font-family: var(--font-cjk), system-ui, sans-serif;
   font-size: 18px;
   line-height: 1.9;
 }
