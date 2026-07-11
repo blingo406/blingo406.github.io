@@ -21,6 +21,7 @@
         mask-repeat: no-repeat
         transform: translateY(-0.0625rem)
     &.bdm-tip
+      background: color-mix(in oklch, var(--admonitions-color-tip) 8%, transparent)
       .bdm-title
         color: var(--admonitions-color-tip)
 
@@ -31,6 +32,7 @@
       &:before
         background: var(--admonitions-color-tip)
     &.bdm-note
+      background: color-mix(in oklch, var(--admonitions-color-note) 8%, transparent)
       .bdm-title
         color: var(--admonitions-color-note)
 
@@ -41,6 +43,7 @@
       &:before
         background: var(--admonitions-color-note)
     &.bdm-important
+      background: color-mix(in oklch, var(--admonitions-color-important) 8%, transparent)
       .bdm-title
         color: var(--admonitions-color-important)
 
@@ -51,6 +54,7 @@
       &:before
         background: var(--admonitions-color-important)
     &.bdm-warning
+      background: color-mix(in oklch, var(--admonitions-color-warning) 8%, transparent)
       .bdm-title
         color: var(--admonitions-color-warning)
 
@@ -61,6 +65,7 @@
       &:before
         background: var(--admonitions-color-warning)
     &.bdm-caution
+      background: color-mix(in oklch, var(--admonitions-color-caution) 8%, transparent)
       .bdm-title
         color: var(--admonitions-color-caution)
 
@@ -70,6 +75,125 @@
 
       &:before
         background: var(--admonitions-color-caution)
+
+    // --- 新增 Obsidian 兼容类型 ---
+
+    &.bdm-abstract
+      background: color-mix(in oklch, var(--admonitions-color-abstract) 8%, transparent)
+      .bdm-title
+        color: var(--admonitions-color-abstract)
+
+        &:before
+          background: var(--admonitions-color-abstract)
+          // 书本/摘要图标
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='16' height='16'%3E%3Cpath d='M0 1.75A.75.75 0 0 1 .75 1h4.253c1.227 0 2.317.59 3 1.501A3.743 3.743 0 0 1 11.006 1h4.245a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-.75.75h-4.507a2.25 2.25 0 0 0-1.591.659l-.622.621a.75.75 0 0 1-1.06 0l-.622-.621A2.25 2.25 0 0 0 5.258 13H.75a.75.75 0 0 1-.75-.75Zm7.251 10.324.004-5.073-.002-2.253A2.25 2.25 0 0 0 5.003 2.5H1.5v9h3.757a3.75 3.75 0 0 1 1.994.574ZM8.755 4.75l-.004 7.322a3.752 3.752 0 0 1 1.992-.572H14.5v-9h-3.495a2.25 2.25 0 0 0-2.25 2.25Z'/%3E%3C/svg%3E")
+
+      &:before
+        background: var(--admonitions-color-abstract)
+
+    &.bdm-info
+      background: color-mix(in oklch, var(--admonitions-color-info) 8%, transparent)
+      .bdm-title
+        color: var(--admonitions-color-info)
+
+        &:before
+          background: var(--admonitions-color-info)
+          // info 圆圈图标
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' width='16' height='16' aria-hidden='true'%3E%3Cpath d='M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z'%3E%3C/path%3E%3C/svg%3E")
+
+      &:before
+        background: var(--admonitions-color-info)
+
+    &.bdm-success
+      background: color-mix(in oklch, var(--admonitions-color-success) 8%, transparent)
+      .bdm-title
+        color: var(--admonitions-color-success)
+
+        &:before
+          background: var(--admonitions-color-success)
+          // 勾选图标
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='16' height='16'%3E%3Cpath d='M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16Zm3.78-9.72a.75.75 0 0 0-1.06-1.06L6.75 9.19 5.28 7.72a.75.75 0 0 0-1.06 1.06l2 2a.75.75 0 0 0 1.06 0l4.5-4.5Z'/%3E%3C/svg%3E")
+
+      &:before
+        background: var(--admonitions-color-success)
+
+    &.bdm-question
+      background: color-mix(in oklch, var(--admonitions-color-question) 8%, transparent)
+      .bdm-title
+        color: var(--admonitions-color-question)
+
+        &:before
+          background: var(--admonitions-color-question)
+          // 问号图标
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='16' height='16'%3E%3Cpath d='M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1ZM0 8a8 8 0 1 0 16 0A8 8 0 0 0 0 8Zm9 3a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM6.92 6.085c.081-.16.19-.299.34-.398.145-.097.371-.187.74-.187.28 0 .553.087.738.225A.613.613 0 0 1 9 6.25c0 .177-.04.264-.077.318a.956.956 0 0 1-.277.245c-.076.051-.158.1-.258.161l-.007.004a7.728 7.728 0 0 0-.313.208 2.44 2.44 0 0 0-.339.292 1.46 1.46 0 0 0-.408 1.12.75.75 0 0 0 1.5.035 1 1 0 0 1 .026-.19.32.32 0 0 1 .042-.088c.012-.017.02-.025.045-.05a2.4 2.4 0 0 1 .248-.198c.093-.065.177-.11.28-.167l.01-.005c.096-.055.207-.12.317-.198a2.43 2.43 0 0 0 .62-.627c.217-.35.328-.73.328-1.147 0-.66-.264-1.194-.71-1.547C10.33 4.23 9.74 4 9 4a3.69 3.69 0 0 0-1.52.326 2.84 2.84 0 0 0-.987.836 2.49 2.49 0 0 0-.44 1.19.75.75 0 0 0 1.49.148.99.99 0 0 1 .38-.409Z'/%3E%3C/svg%3E")
+
+      &:before
+        background: var(--admonitions-color-question)
+
+    &.bdm-failure
+      background: color-mix(in oklch, var(--admonitions-color-failure) 8%, transparent)
+      .bdm-title
+        color: var(--admonitions-color-failure)
+
+        &:before
+          background: var(--admonitions-color-failure)
+          // X 圆圈图标
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='16' height='16'%3E%3Cpath d='M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16ZM4.22 4.22a.75.75 0 0 0 0 1.06L6.94 8l-2.72 2.72a.75.75 0 1 0 1.06 1.06L8 9.06l2.72 2.72a.75.75 0 1 0 1.06-1.06L9.06 8l2.72-2.72a.75.75 0 0 0-1.06-1.06L8 6.94 5.28 4.22a.75.75 0 0 0-1.06 0Z'/%3E%3C/svg%3E")
+
+      &:before
+        background: var(--admonitions-color-failure)
+
+    &.bdm-danger
+      background: color-mix(in oklch, var(--admonitions-color-danger) 8%, transparent)
+      .bdm-title
+        color: var(--admonitions-color-danger)
+
+        &:before
+          background: var(--admonitions-color-danger)
+          // 闪电图标
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='16' height='16'%3E%3Cpath d='M9.504.43a1.516 1.516 0 0 1 2.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.249 1.249 0 0 1-.871.354h-.302a1.25 1.25 0 0 1-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004L9.503.43Z'/%3E%3C/svg%3E")
+
+      &:before
+        background: var(--admonitions-color-danger)
+
+    &.bdm-bug
+      background: color-mix(in oklch, var(--admonitions-color-bug) 8%, transparent)
+      .bdm-title
+        color: var(--admonitions-color-bug)
+
+        &:before
+          background: var(--admonitions-color-bug)
+          // Bug 图标
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='16' height='16'%3E%3Cpath d='M4.72.22a.75.75 0 0 1 1.06 0L7 1.44 8.22.22a.75.75 0 1 1 1.06 1.06L8.06 2.5h-.12L6.72 1.28a.75.75 0 0 1 0-1.06ZM3.5 5h9a1 1 0 0 1 1 1v1.5a4.5 4.5 0 0 1-4.5 4.5h-2A4.5 4.5 0 0 1 2.5 7.5V6a1 1 0 0 1 1-1Zm.5 8.25A.75.75 0 0 1 4.75 12.5h-.5c-.69 0-1.25-.56-1.25-1.25V10h1.5v3.25ZM12.5 10v1.25c0 .69-.56 1.25-1.25 1.25h-.5a.75.75 0 0 1 0-1.5V10h1.5ZM1 7H0V8.5A3.5 3.5 0 0 0 2 11.5V10A2.5 2.5 0 0 1 1 7.75V7Zm14 0h-1v.75A2.5 2.5 0 0 1 14 10v1.5a3.5 3.5 0 0 0 2-3V7h-1ZM3.5 3A1.5 1.5 0 0 0 2 4.5v.25c0 .138.112.25.25.25h11.5a.25.25 0 0 0 .25-.25V4.5A1.5 1.5 0 0 0 12.5 3h-9Z'/%3E%3C/svg%3E")
+
+      &:before
+        background: var(--admonitions-color-bug)
+
+    &.bdm-example
+      background: color-mix(in oklch, var(--admonitions-color-example) 8%, transparent)
+      .bdm-title
+        color: var(--admonitions-color-example)
+
+        &:before
+          background: var(--admonitions-color-example)
+          // 列表图标
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='16' height='16'%3E%3Cpath d='M2 2.75A.75.75 0 0 1 2.75 2h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 2.75Zm0 5A.75.75 0 0 1 2.75 7h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 7.75ZM2.75 12a.75.75 0 0 0 0 1.5h10.5a.75.75 0 0 0 0-1.5H2.75Z'/%3E%3C/svg%3E")
+
+      &:before
+        background: var(--admonitions-color-example)
+
+    &.bdm-quote
+      background: color-mix(in oklch, var(--admonitions-color-quote) 8%, transparent)
+      .bdm-title
+        color: var(--admonitions-color-quote)
+
+        &:before
+          background: var(--admonitions-color-quote)
+          // 引号图标
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='16' height='16'%3E%3Cpath d='M1.5 2.75C1.5 1.784 2.284 1 3.25 1h3.5c.966 0 1.75.784 1.75 1.75v3.5A1.75 1.75 0 0 1 6.75 8H4.06l-1.705 2.558A.25.25 0 0 1 2 10.25V8A1.75 1.75 0 0 1 1.5 7.5v-4.75Zm8 0C9.5 1.784 10.284 1 11.25 1h1.5c.966 0 1.75.784 1.75 1.75v3.5A1.75 1.75 0 0 1 12.75 8H10.06l-1.705 2.558A.25.25 0 0 1 8 10.25V8A1.75 1.75 0 0 1 7.5 7.5V2.75Z'/%3E%3C/svg%3E")
+
+      &:before
+        background: var(--admonitions-color-quote)
 
   img
     border-radius: 0.75rem

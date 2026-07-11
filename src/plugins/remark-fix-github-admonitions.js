@@ -1,12 +1,54 @@
 import { visit } from "unist-util-visit";
 
-const GITHUB_ALERT_DECLARATION_REGEX = /^\s*\[!(?<type>\w+)\]\s*$/;
-const GITHUB_ALERT_TYPES = ["NOTE", "TIP", "IMPORTANT", "WARNING", "CAUTION"];
+// 匹配 Obsidian 风格的 callout 声明，支持可选标题和折叠标记
+// 例如：[!note]、[!warning]+ 、[!tip]- 自定义标题
+const OBSIDIAN_CALLOUT_REGEX = /^\s*\[!(?<type>\w+)\](?<foldable>[+-]?)(?:\s+(?<title>.+))?\s*$/;
 
-function parseGithubAlertDeclaration(text) {
-	const match = text.match(GITHUB_ALERT_DECLARATION_REGEX);
-	const type = match?.groups?.type?.toUpperCase();
-	return GITHUB_ALERT_TYPES.includes(type) ? type : null;
+// Obsidian callout 类型别名映射到规范名称
+const TYPE_ALIAS_MAP = {
+	// 已有类型
+	note: "note",
+	tip: "tip",
+	important: "important",
+	warning: "warning",
+	caution: "caution",
+	// 新增规范类型
+	abstract: "abstract",
+	info: "info",
+	success: "success",
+	question: "question",
+	failure: "failure",
+	danger: "danger",
+	bug: "bug",
+	example: "example",
+	quote: "quote",
+	// 别名映射
+	seealso: "note",
+	hint: "tip",
+	attention: "warning",
+	summary: "abstract",
+	tldr: "abstract",
+	todo: "info",
+	check: "success",
+	done: "success",
+	help: "question",
+	faq: "question",
+	fail: "failure",
+	missing: "failure",
+	error: "danger",
+	cite: "quote",
+};
+
+function parseCalloutDeclaration(text) {
+	const match = text.match(OBSIDIAN_CALLOUT_REGEX);
+	if (!match) return null;
+	const rawType = match.groups.type.toLowerCase();
+	const canonicalType = TYPE_ALIAS_MAP[rawType];
+	if (!canonicalType) return null;
+	return {
+		type: canonicalType,
+		title: match.groups.title?.trim() || null,
+	};
 }
 
 export function remarkFixGithubAdmonitions() {
@@ -31,23 +73,12 @@ export function remarkFixGithubAdmonitions() {
 				return;
 			}
 
-			const type = parseGithubAlertDeclaration(possibleTypeDeclaration);
-			if (!type) {
+			const parsed = parseCalloutDeclaration(possibleTypeDeclaration);
+			if (!parsed) {
 				return;
 			}
 
-			const typeToDirectiveName = {
-				NOTE: "note",
-				TIP: "tip",
-				IMPORTANT: "important",
-				WARNING: "warning",
-				CAUTION: "caution",
-			};
-
-			const directiveName = typeToDirectiveName[type];
-			if (!directiveName) {
-				return;
-			}
+			const { type: directiveName, title } = parsed;
 
 			const textNodeChildren =
 				firstParagraphChild.value.split("\n").length > 1
@@ -75,6 +106,7 @@ export function remarkFixGithubAdmonitions() {
 			const directive = {
 				type: "containerDirective",
 				name: directiveName,
+				attributes: title ? { title } : {},
 				children: [...alertParagraphChildren, ...node.children.slice(1)],
 			};
 
