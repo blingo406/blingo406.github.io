@@ -1,13 +1,13 @@
 <script lang="ts">
 import Icon from "@iconify/svelte";
-    import { Snippet } from "svelte";
+import { Snippet } from "svelte";
 
 let {
 	title = "",
 	isOpen = true,
 	showReset = false,
 	onreset,
-	children
+	children,
 }: {
 	title?: string;
 	isOpen?: boolean;

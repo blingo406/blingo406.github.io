@@ -182,7 +182,8 @@ onMount(() => {
 
 		cleanupCallbacks.push(
 			() => document.removeEventListener("pagefindready", handlePagefindReady),
-			() => document.removeEventListener("pagefindloaderror", handlePagefindError),
+			() =>
+				document.removeEventListener("pagefindloaderror", handlePagefindError),
 		);
 	}
 

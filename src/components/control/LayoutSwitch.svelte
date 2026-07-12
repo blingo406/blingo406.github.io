@@ -17,8 +17,7 @@ let isSwitching = $state(false);
 let userPreference = $state<LayoutMode>("list");
 let mediaQueryList: MediaQueryList | null = null;
 
-const BREAKPOINT =
-	sidebarLayoutConfig.responsive?.breakpoints?.desktop ?? 1280;
+const BREAKPOINT = sidebarLayoutConfig.responsive?.breakpoints?.desktop ?? 1280;
 
 const computedLayout = $derived(isSmallScreen ? "list" : userPreference);
 
@@ -130,10 +129,7 @@ onMount(() => {
 	}
 
 	return () => {
-		mediaQueryList?.removeEventListener(
-			"change",
-			handleMediaQueryChange,
-		);
+		mediaQueryList?.removeEventListener("change", handleMediaQueryChange);
 		window.removeEventListener(
 			"layoutChange",
 			handleCustomEvent as EventListener,

@@ -403,7 +403,7 @@ class MusicPlayerStore {
 		this.audio.play().catch(() => {});
 	}
 
-		pause(): void {
+	pause(): void {
 		if (!this.audio || !this.state.currentSong.url) {
 			return;
 		}

@@ -14,7 +14,9 @@ export type AIToolFrequency =
 	| "occasional"
 	| "experimental";
 
-export type LocaleString = Partial<Record<"en" | "zh_CN" | "zh_TW" | "ja", string>>;
+export type LocaleString = Partial<
+	Record<"en" | "zh_CN" | "zh_TW" | "ja", string>
+>;
 
 export function getLocaleString(value: LocaleString, lang: string): string {
 	return value[lang as keyof LocaleString] ?? value["en"] ?? "";

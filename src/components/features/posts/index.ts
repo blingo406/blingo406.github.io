@@ -1,6 +1,6 @@
 export { default as Backlinks } from "./Backlinks.astro";
-export { default as LinksPanel } from "./LinksPanel.astro";
 export { default as LastModified } from "./LastModified.astro";
+export { default as LinksPanel } from "./LinksPanel.astro";
 export { default as PostCard } from "./PostCard.astro";
 export { default as PostListItem } from "./PostListItem.astro";
 export { default as PostMeta } from "./PostMeta.astro";

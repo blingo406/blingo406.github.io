@@ -275,7 +275,8 @@ export const ja: Translation = {
 
 	// AI ツール（Aboutページ）
 	[Key.aiTools]: "使っている AI ツール",
-	[Key.aiToolsSubtitle]: "日常のワークフローで使用している AI アシスタントとサービス",
+	[Key.aiToolsSubtitle]:
+		"日常のワークフローで使用している AI アシスタントとサービス",
 	[Key.aiToolsCategoryChat]: "チャットアシスタント",
 	[Key.aiToolsCategoryCoding]: "コーディング",
 	[Key.aiToolsCategoryImage]: "画像生成",

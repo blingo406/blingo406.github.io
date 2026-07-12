@@ -49,7 +49,7 @@ export function AdmonitionComponent(properties, children, type) {
 		label = h("span", {}, properties.title);
 	}
 
-	const titleText = label ?? (DEFAULT_TITLES[type] ?? type.toUpperCase());
+	const titleText = label ?? DEFAULT_TITLES[type] ?? type.toUpperCase();
 
 	return h("blockquote", { class: `admonition bdm-${type}` }, [
 		h("span", { class: "bdm-title" }, titleText),

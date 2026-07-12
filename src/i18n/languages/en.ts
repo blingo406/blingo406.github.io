@@ -273,7 +273,8 @@ export const en: Translation = {
 
 	// AI Tools (About page)
 	[Key.aiTools]: "AI Tools I Use",
-	[Key.aiToolsSubtitle]: "AI assistants and services that are part of my daily workflow",
+	[Key.aiToolsSubtitle]:
+		"AI assistants and services that are part of my daily workflow",
 	[Key.aiToolsCategoryChat]: "Chat Assistants",
 	[Key.aiToolsCategoryCoding]: "Coding",
 	[Key.aiToolsCategoryImage]: "Image",

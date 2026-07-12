@@ -106,7 +106,7 @@ export async function getTagList(): Promise<Tag[]> {
 
 export interface Category {
 	name: string;
-	count: number;      // 直属文章数
+	count: number; // 直属文章数
 	totalCount: number; // 含子类的总文章数
 	url: string;
 	children: Category[];
@@ -122,7 +122,9 @@ export async function getCategoryList(): Promise<Category[]> {
 	const parentOf: Record<string, string> = {}; // child -> parent
 
 	allBlogPosts.forEach(
-		(post: { data: { category: string | null; parentCategory?: string | null } }) => {
+		(post: {
+			data: { category: string | null; parentCategory?: string | null };
+		}) => {
 			const raw = post.data.category;
 			if (!raw) {
 				const ucKey = i18n(I18nKey.uncategorized);

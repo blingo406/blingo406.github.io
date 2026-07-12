@@ -2,7 +2,8 @@ import { visit } from "unist-util-visit";
 
 // 匹配 Obsidian 风格的 callout 声明，支持可选标题和折叠标记
 // 例如：[!note]、[!warning]+ 、[!tip]- 自定义标题
-const OBSIDIAN_CALLOUT_REGEX = /^\s*\[!(?<type>\w+)\](?<foldable>[+-]?)(?:\s+(?<title>.+))?\s*$/;
+const OBSIDIAN_CALLOUT_REGEX =
+	/^\s*\[!(?<type>\w+)\](?<foldable>[+-]?)(?:\s+(?<title>.+))?\s*$/;
 
 // Obsidian callout 类型别名映射到规范名称
 const TYPE_ALIAS_MAP = {

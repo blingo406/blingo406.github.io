@@ -5,15 +5,15 @@ import { onMount } from "svelte";
 import I18nKey from "../../i18n/i18nKey";
 import { i18n } from "../../i18n/translation";
 import {
-    calculateDimensions,
-    drawDateBadge,
-    drawDecorativeCircles,
-    drawRoundedRect,
-    getLines,
-    loadImage,
-    parseDate,
-    type SizeConfig
-} from "./utils/poster-renderer"
+	calculateDimensions,
+	drawDateBadge,
+	drawDecorativeCircles,
+	drawRoundedRect,
+	getLines,
+	loadImage,
+	parseDate,
+	type SizeConfig,
+} from "./utils/poster-renderer";
 
 interface SharePosterProps {
 	title: string;
