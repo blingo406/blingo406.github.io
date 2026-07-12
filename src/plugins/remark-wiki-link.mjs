@@ -14,7 +14,7 @@
 import { visit } from "unist-util-visit";
 import { resolveWikiLink } from "../utils/link-graph.mjs";
 
-const WIKI_LINK_RE = /\[\[([^\[\]\n]+?)\]\]/g;
+const WIKI_LINK_RE = /\[\[([^[\]\n]+?)\]\]/g;
 
 export function remarkWikiLink() {
 	return (tree) => {
@@ -28,7 +28,8 @@ export function remarkWikiLink() {
 			let match;
 
 			WIKI_LINK_RE.lastIndex = 0;
-			while ((match = WIKI_LINK_RE.exec(value)) !== null) {
+			match = WIKI_LINK_RE.exec(value);
+			while (match !== null) {
 				if (match.index > lastIndex) {
 					children.push({
 						type: "text",
@@ -77,6 +78,7 @@ export function remarkWikiLink() {
 				}
 
 				lastIndex = match.index + match[0].length;
+				match = WIKI_LINK_RE.exec(value);
 			}
 
 			if (lastIndex === 0) return;

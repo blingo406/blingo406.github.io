@@ -22,7 +22,10 @@ export function slugify(text) {
 	return String(text)
 		.trim()
 		.toLowerCase()
-		.replace(/[\u2000-\u206f\u2e00-\u2e7f\\'!"#$%&()*+,./:;<=>?@\[\]^`{|}~]/g, "")
+		.replace(
+			/[\u2000-\u206f\u2e00-\u2e7f\\'!"#$%&()*+,./:;<=>?@[\]^`{|}~]/g,
+			"",
+		)
 		.replace(/\s+/g, "-")
 		.replace(/-+/g, "-")
 		.replace(/^-|-$/g, "");
@@ -106,13 +109,14 @@ function extractOutboundLinks(content) {
 		.replace(/```[\s\S]*?```/g, "")
 		.replace(/~~~[\s\S]*?~~~/g, "")
 		.replace(/`[^`]+`/g, "");
-	const re = /\[\[([^\[\]]+?)\]\]/g;
-	let m;
-	while ((m = re.exec(cleaned)) !== null) {
+	const re = /\[\[([^[\]]+?)\]\]/g;
+	let m = re.exec(cleaned);
+	while (m !== null) {
 		const raw = m[1];
 		let target = raw.includes("|") ? raw.split("|")[0] : raw;
 		target = target.split("#")[0].split("^")[0].trim();
 		if (target) links.add(target.toLowerCase());
+		m = re.exec(cleaned);
 	}
 	return [...links];
 }
@@ -167,10 +171,12 @@ export function getLinkGraph() {
 	}
 
 	const backlinks = {};
+	const outlinks = {};
 	for (const post of posts) {
 		for (const target of post.outboundLinks) {
 			const targetSlug = slugIndex[target];
 			if (!targetSlug || targetSlug === post.slug) continue;
+
 			if (!backlinks[targetSlug]) backlinks[targetSlug] = [];
 			if (!backlinks[targetSlug].some((b) => b.slug === post.slug)) {
 				backlinks[targetSlug].push({
@@ -178,10 +184,18 @@ export function getLinkGraph() {
 					title: post.title,
 				});
 			}
+
+			if (!outlinks[post.slug]) outlinks[post.slug] = [];
+			if (!outlinks[post.slug].some((o) => o.slug === targetSlug)) {
+				outlinks[post.slug].push({
+					slug: targetSlug,
+					title: titleIndex[targetSlug],
+				});
+			}
 		}
 	}
 
-	cache = { slugIndex, headingIndex, titleIndex, backlinks };
+	cache = { slugIndex, headingIndex, titleIndex, backlinks, outlinks };
 	return cache;
 }
 
@@ -221,4 +235,9 @@ export function resolveWikiLink(target) {
 export function getBacklinks(slug) {
 	const { backlinks } = getLinkGraph();
 	return backlinks[slug] || [];
+}
+
+export function getOutlinks(slug) {
+	const { outlinks } = getLinkGraph();
+	return outlinks[slug] || [];
 }
