@@ -1,0 +1,50 @@
+---
+/**
+ * Backlinks 组件：列出所有通过 [[wiki-link]] 指向当前文章的其他文章。
+ * 数据来源为构建时扫描生成的链接图（src/utils/link-graph.mjs）。
+ */
+import ListContainer from "@/components/misc/ListContainer.astro";
+import ListDivider from "@/components/misc/ListDivider.astro";
+import { getBacklinks } from "@/utils/link-graph.mjs";
+
+interface Props {
+	slug: string;
+	class?: string;
+}
+
+const { slug, class: className } = Astro.props;
+
+// entry.id 可能带 .md/.mdx 后缀，需要去掉
+const normalized = slug.replace(/\.mdx?$/, "");
+const backlinks = getBacklinks(normalized);
+---
+
+{
+	backlinks.length > 0 && (
+		<ListContainer
+			title="反向链接"
+			badge={`${backlinks.length}`}
+			icon="material-symbols:link"
+			class={className}
+		>
+			<div class="flex flex-col -mx-1">
+				{backlinks.map((bl, idx) => (
+					<>
+						<a
+							href={`/posts/${bl.slug}/`}
+							class="group flex items-center gap-2 px-3 py-2.5 rounded-lg transition hover:bg-(--btn-plain-bg-hover) no-styling"
+						>
+							<span class="text-(--primary) opacity-60 group-hover:opacity-100 transition">
+								↗
+							</span>
+							<span class="text-sm text-black/75 dark:text-white/75 group-hover:text-(--primary) transition truncate">
+								{bl.title}
+							</span>
+						</a>
+						{idx < backlinks.length - 1 && <ListDivider />}
+					</>
+				))}
+			</div>
+		</ListContainer>
+	)
+}

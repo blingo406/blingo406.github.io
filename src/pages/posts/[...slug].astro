@@ -5,6 +5,7 @@ import { render } from "astro:content";
 import path from "node:path";
 import Comment from "@components/comment/index.astro";
 import {
+	Backlinks,
 	LastModified,
 	PostMeta,
 	PostNavigation,
@@ -388,6 +389,8 @@ const jsonLd = {
 		nextSlug={entry.data.prevSlug}
 		nextTitle={entry.data.prevTitle}
 	/>
+
+	<Backlinks slug={entry.id} class="mb-4" />
 
 	<!-- 相关文章与随机文章 -->
 	{
