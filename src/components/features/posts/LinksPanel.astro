@@ -1,0 +1,104 @@
+---
+/**
+ * LinksPanel 组件：Obsidian 风格的链接面板，底部展示出链与反向链接。
+ */
+import { Icon } from "astro-icon/components";
+import { getBacklinks, getOutlinks } from "@/utils/link-graph.mjs";
+
+interface Props {
+	slug: string;
+	class?: string;
+}
+
+const { slug, class: className } = Astro.props;
+
+const normalized = slug.replace(/\.mdx?$/, "");
+const outlinks = getOutlinks(normalized);
+const backlinks = getBacklinks(normalized);
+
+const hasAny = outlinks.length > 0 || backlinks.length > 0;
+---
+
+{
+	hasAny && (
+		<div class:list={["grid grid-cols-1 md:grid-cols-2 gap-4", className]}>
+			{/* 出链 */}
+			{outlinks.length > 0 && (
+				<div class="card-base p-5 md:p-6 flex flex-col">
+					<div class="flex items-center gap-2 pb-3 mb-1 border-b border-dashed border-(--line-divider)">
+						<Icon name="material-symbols:arrow-outward" class="text-xl text-(--primary)" />
+						<span class="text-base font-bold text-black/75 dark:text-white/75 transition">
+							链接
+						</span>
+						<span class="ml-auto text-xs px-2 py-0.5 rounded-full bg-(--btn-regular-bg) text-(--btn-content) transition">
+							{outlinks.length}
+						</span>
+					</div>
+					<div class="flex flex-col -mx-1">
+						{outlinks.map((ol, idx) => (
+							<>
+								<a
+									href={`/posts/${ol.slug}/`}
+									class="group flex items-center gap-2 px-3 py-2.5 rounded-lg transition hover:bg-(--btn-plain-bg-hover) no-styling"
+								>
+									<span class="text-(--primary) opacity-60 group-hover:opacity-100 transition">
+										→
+									</span>
+									<span class="text-sm text-black/75 dark:text-white/75 group-hover:text-(--primary) transition truncate">
+										{ol.title}
+									</span>
+								</a>
+								{idx < outlinks.length - 1 && (
+									<div class="border-b border-dashed border-(--line-divider) mx-3" />
+								)}
+							</>
+						))}
+					</div>
+				</div>
+			)}
+
+			{/* 反向链接 */}
+			{backlinks.length > 0 && (
+				<div class="card-base p-5 md:p-6 flex flex-col">
+					<div class="flex items-center gap-2 pb-3 mb-1 border-b border-dashed border-(--line-divider)">
+						<Icon name="material-symbols:link" class="text-xl text-(--primary)" />
+						<span class="text-base font-bold text-black/75 dark:text-white/75 transition">
+							反向链接
+						</span>
+						<span class="ml-auto text-xs px-2 py-0.5 rounded-full bg-(--btn-regular-bg) text-(--btn-content) transition">
+							{backlinks.length}
+						</span>
+					</div>
+					<div class="flex flex-col -mx-1">
+						{backlinks.map((bl, idx) => (
+							<>
+								<a
+									href={`/posts/${bl.slug}/`}
+									class="group flex items-center gap-2 px-3 py-2.5 rounded-lg transition hover:bg-(--btn-plain-bg-hover) no-styling"
+								>
+									<span class="text-(--primary) opacity-60 group-hover:opacity-100 transition">
+										↗
+									</span>
+									<span class="text-sm text-black/75 dark:text-white/75 group-hover:text-(--primary) transition truncate">
+										{bl.title}
+									</span>
+								</a>
+								{idx < backlinks.length - 1 && (
+									<div class="border-b border-dashed border-(--line-divider) mx-3" />
+								)}
+							</>
+						))}
+					</div>
+				</div>
+			)}
+
+			{/* 只有一列时让其占满整行 */}
+			{outlinks.length === 0 && backlinks.length > 0 && (
+				<div class="hidden md:block" />
+			)}
+			{outlinks.length > 0 && backlinks.length === 0 && (
+				<div class="hidden md:block" />
+			)}
+		</div>
+	)
+}
