@@ -50,7 +50,7 @@ export default defineConfig({
 			options: {
 				variants: [
 					{
-						src: ["./src/assets/fonts/ZenMaruGothic-Medium.ttf"],
+						src: ["./fonts-src/ZenMaruGothic-Medium.subset.woff2"],
 						weight: "500",
 						style: "normal",
 					},
@@ -65,7 +65,7 @@ export default defineConfig({
 			options: {
 				variants: [
 					{
-						src: ["./src/assets/fonts/loli.ttf"],
+						src: ["./fonts-src/loli.subset.woff2"],
 						weight: "400",
 						style: "normal",
 					},
@@ -152,7 +152,7 @@ export default defineConfig({
 					terminalTitlebarBackground: "var(--codeblock-bg)",
 					editorTabBarBackground: "var(--codeblock-bg)",
 					editorActiveTabBackground: "none",
-					erehypeMathjaxditorActiveTabIndicatorBottomColor: "var(--primary)",
+					editorActiveTabIndicatorBottomColor: "var(--primary)",
 					editorActiveTabIndicatorTopColor: "none",
 					editorTabBarBorderBottomColor: "var(--codeblock-bg)",
 					terminalTitlebarBorderBottomColor: "none",

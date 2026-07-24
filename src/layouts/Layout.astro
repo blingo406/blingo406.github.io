@@ -1,10 +1,9 @@
 ---
 import { Font } from "astro:assets";
 import { PageProgressBar } from "@components/control/PageProgressBar";
-import Pio from "@components/features/pio/Pio.astro";
 import ConfigCarrier from "@components/misc/ConfigCarrier.astro";
 import MusicPlayer from "@components/widgets/music-player/MusicPlayer.svelte";
-import { pioConfig, profileConfig, siteConfig } from "@/config";
+import { profileConfig, siteConfig } from "@/config";
 
 const BANNER_HEIGHT = 35;
 const BANNER_HEIGHT_EXTEND = 30;
@@ -213,29 +212,7 @@ const bannerOffset =
 			href={`${Astro.site}rss.xml`}
 		/>
 
-		<!-- MathJax 配置（必须内联、写在加载脚本之前，否则配置不生效） -->
-		<script is:inline>
-			window.MathJax = {
-				tex: {
-					packages: {'[+]': ['ams','text']},
-					inlineMath: [['$', '$']],
-					displayMath: [['$$', '$$']],
-					macros: {
-						mathring: ['\\overset{\\circ}{#1}', 1]
-					}
-				},
-				chtml: {
-					scale: 1.05,
-					displayAlign: 'center', // 官方原生行间公式水平居中参数
-					displayIndent: '0'
-				},
-				options: {
-					skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-				}
-			};
-		</script>
-		<!-- 配置写完再加载MathJax脚本，内联避免Astro打包调整顺序 -->
-		<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async is:inline></script>
+		<!-- 数学公式已在构建期由 rehype-mathjax 预渲染为 SVG，无需再加载客户端 MathJax。 -->
 	</head>
 	<body
 		class="min-h-screen"
@@ -265,9 +242,6 @@ const bannerOffset =
 
 		<!-- Music Player - 核心始终加载（当enable=true），UI通过showFloatingPlayer控制 -->
 		<MusicPlayer client:idle />
-
-		<!-- Pio 看板娘组件 - 仅在进入视口时加载 -->
-		{pioConfig.enable && <Pio config={pioConfig} />}
 
 		<!-- increase the page height during page transition to prevent the scrolling animation from jumping -->
 		<div id="page-height-extend" class="hidden h-[300vh]"></div>
