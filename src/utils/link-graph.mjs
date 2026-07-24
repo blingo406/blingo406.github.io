@@ -13,7 +13,26 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const CONTENT_DIR = path.resolve(__dirname, "../content/posts");
+
+/**
+ * 解析 posts 目录。优先用 process.cwd()（Astro 构建/开发都在项目根运行），
+ * 这样当本模块被打包进组件/SSR chunk、import.meta.url 指向 dist/.astro 时仍然有效；
+ * 回退到相对 __dirname（裸 node 脚本场景）。
+ */
+function resolveContentDir() {
+	const cwdPath = path.resolve(process.cwd(), "src/content/posts");
+	if (fs.existsSync(cwdPath)) return cwdPath;
+	return path.resolve(__dirname, "../content/posts");
+}
+const CONTENT_DIR = resolveContentDir();
+
+/**
+ * 规范化 slug 以匹配 Astro glob loader 生成的 entry.id（会小写化），
+ * 同时做 NFC 归一，避免大小写 / Unicode 归一化导致的查找错配。
+ */
+function canonicalSlug(s) {
+	return String(s).normalize("NFC").toLowerCase();
+}
 
 let cache = null;
 
@@ -135,7 +154,8 @@ export function getLinkGraph() {
 		const { data, content } = parseFrontmatter(raw);
 		if (data.draft === "true" || data.draft === true) continue;
 
-		const slug = rel.replace(/\.mdx?$/, "");
+		// 规范化以对齐 Astro 的 entry.id（小写化）；用于 URL 与图索引键。
+		const slug = canonicalSlug(rel.replace(/\.mdx?$/, ""));
 		posts.push({
 			slug,
 			title: data.title || slug,
@@ -152,7 +172,7 @@ export function getLinkGraph() {
 	const slugIndex = {};
 	const addKey = (key, slug) => {
 		if (!key) return;
-		const k = String(key).toLowerCase().trim();
+		const k = canonicalSlug(key).trim();
 		if (!k) return;
 		if (!(k in slugIndex)) slugIndex[k] = slug;
 	};
@@ -217,7 +237,7 @@ export function resolveWikiLink(target) {
 		cleanTarget = cleanTarget.slice(0, idx).trim();
 	}
 
-	const slug = cleanTarget ? slugIndex[cleanTarget.toLowerCase()] : null;
+	const slug = cleanTarget ? slugIndex[canonicalSlug(cleanTarget)] : null;
 	if (!slug) return null;
 
 	let href = `/posts/${slug}/`;
@@ -234,10 +254,10 @@ export function resolveWikiLink(target) {
 
 export function getBacklinks(slug) {
 	const { backlinks } = getLinkGraph();
-	return backlinks[slug] || [];
+	return backlinks[canonicalSlug(slug)] || [];
 }
 
 export function getOutlinks(slug) {
 	const { outlinks } = getLinkGraph();
-	return outlinks[slug] || [];
+	return outlinks[canonicalSlug(slug)] || [];
 }
