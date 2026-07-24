@@ -47,15 +47,23 @@ export function remarkContent() {
 			}
 		}
 
-		// --- 计算阅读时间 (Reading Time) ---
+		// --- 收集正文文本（用于字数 & 阅读时间）---
 		visit(tree, (node) => {
 			// 跳过代码块，不计入字数
 			if (node.type === "code" || node.type === "inlineCode") {
 				return "skip";
 			}
 
-			// 累加文本
-			if (node.type === "text" && node.value) {
+			// 文本节点与数学公式节点都要计入。
+			// remark-math 会把 $...$ / $$...$$ 解析成 inlineMath / math 节点，
+			// LaTeX 源码存放在 node.value；此前只统计 text 节点，导致数理文章的
+			// 字数严重偏低（与 Obsidian 的字符计数相去甚远）。
+			if (
+				(node.type === "text" ||
+					node.type === "inlineMath" ||
+					node.type === "math") &&
+				node.value
+			) {
 				fullText += `${node.value} `;
 			}
 		});
@@ -67,14 +75,13 @@ export function remarkContent() {
 		const cjkMatches = fullText.match(cjkPattern);
 		const cjkCount = cjkMatches ? cjkMatches.length : 0;
 
-		// 将 CJK 字符替换为空格，避免粘连，然后计算非 CJK (英文/数字) 单词数
+		// 字数：按“字符”统计（去除所有空白），对齐 Obsidian 状态栏的字符计数。
+		const totalWords = fullText.replace(/\s+/g, "").length;
+
+		// 阅读时间：西文按词（200/分）、中文按字（400/分）估算。
 		const nonCjkText = fullText.replace(cjkPattern, " ");
-		const nonCjkStats = getReadingTime(nonCjkText);
-
-		const totalWords = nonCjkStats.words + cjkCount;
-
-		// 估算时间：英文 200词/分，中文 400字/分
-		const minutes = nonCjkStats.words / 200 + cjkCount / 400;
+		const nonCjkWords = getReadingTime(nonCjkText).words;
+		const minutes = nonCjkWords / 200 + cjkCount / 400;
 
 		// --- 注入数据到 Frontmatter ---
 		data.astro.frontmatter.excerpt = excerpt;
