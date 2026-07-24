@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import { render } from "astro:content";
 
 import { siteConfig } from "../../../config";
 import I18nKey from "../../../i18n/i18nKey";
@@ -26,34 +27,14 @@ const posts = await getSortedPosts();
 const categories = await getCategoryList();
 const tags = await getTagList();
 
-// 计算总字数
+// 计算总字数：直接累加每篇文章的字数（与文章卡片/文章页同源，均由
+// remark-content.mjs 统计的“字符数”）。此前站点统计自成一套口径（CJK
+// 字符数 + 非 CJK 单词数，且在原始 markdown 上统计），导致总字数与单篇
+// 字数对不上——math 文章甚至比单篇字数还少。
 let totalWords = 0;
 for (const post of posts) {
-	if (post.body) {
-		let text = post.body;
-
-		// 移除代码块
-		text = text.replace(/```[\s\S]*?```/g, "");
-		// 移除 ` 包裹的行内代码
-		text = text.replace(/`[^`]+`/g, "");
-
-		// 使用与 remark-content.mjs 完全一致的 CJK 正则
-		const cjkPattern =
-			/[\u4e00-\u9fa5\u3040-\u309f\u30a0-\u30ff\uac00-\ud7af\u3000-\u303f\uff00-\uffef]/g;
-
-		const cjkMatches = text.match(cjkPattern);
-		const cjkCount = cjkMatches ? cjkMatches.length : 0;
-
-		// 计算非 CJK 单词数
-		const nonCjkText = text.replace(cjkPattern, " ");
-
-		// 按空白字符分割，计算单词数量
-		const nonCjkWords = nonCjkText
-			.split(/\s+/)
-			.filter((word) => word.trim().length > 0);
-
-		totalWords += cjkCount + nonCjkWords.length;
-	}
+	const { remarkPluginFrontmatter } = await render(post);
+	totalWords += remarkPluginFrontmatter.words ?? 0;
 }
 
 // 格式化数字（添加千位分隔符）
