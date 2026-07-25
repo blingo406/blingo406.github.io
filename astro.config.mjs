@@ -53,6 +53,9 @@ export default defineConfig({
 						src: ["./fonts-src/ZenMaruGothic-Medium.subset.woff2"],
 						weight: "500",
 						style: "normal",
+						// 本地字体的 font-display 取自 variant（家族层级会被忽略）。
+						// swap：加载期间先显示回退字体（不藏字），加载完再换上，避免刷新时整页空白。
+						display: "swap",
 					},
 				],
 			},
@@ -68,6 +71,7 @@ export default defineConfig({
 						src: ["./fonts-src/loli.subset.woff2"],
 						weight: "400",
 						style: "normal",
+						display: "swap",
 					},
 				],
 			},
