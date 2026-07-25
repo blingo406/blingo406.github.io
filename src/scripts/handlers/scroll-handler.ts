@@ -12,15 +12,26 @@ export class ScrollHandler {
 
 	/**
 	 * 初始化自定义滚动条
-	 * 为 MathJax 公式添加水平滚动支持
+	 * 为 KaTeX 行间公式添加水平滚动支持
 	 */
 	initCustomScrollbar(): void {
 		const mathjaxElements = document.querySelectorAll(
-			".mjx-container:not([data-scrollbar-initialized])",
+			".katex-display:not([data-scrollbar-initialized])",
 		) as NodeListOf<HTMLElement>;
 
 		mathjaxElements.forEach((element) => {
 			if (!element.parentNode) {
+				return;
+			}
+
+			// 构建期 rehype-wrap-math 已把公式包进 .mathjax-display-container，
+			// 这里避免二次包裹，直接标记已处理即可。
+			if (
+				(element.parentElement as HTMLElement | null)?.classList.contains(
+					"mathjax-display-container",
+				)
+			) {
+				element.setAttribute("data-scrollbar-initialized", "true");
 				return;
 			}
 

@@ -168,7 +168,7 @@
     transition: none;
   }
 
-  /* --- MathJax 行间公式滚动容器 --- */
+  /* --- KaTeX 行间公式滚动容器 --- */
   .mathjax-display-container {
     @apply w-full overflow-x-auto overflow-y-hidden box-border my-4;
     padding-bottom: 6px;
@@ -176,11 +176,10 @@
     -webkit-overflow-scrolling: touch;
 
     /* 容器内的行间公式：宽度收缩+水平居中（核心修复） */
-    & > mjx-container.MathJax {
-      display: block !important;
-      width: fit-content !important;
-      max-width: none !important;
-      margin: 0 auto !important;
+    & > .katex-display {
+      width: fit-content;
+      max-width: none;
+      margin: 0 auto;
     }
 
     &::-webkit-scrollbar {
@@ -201,21 +200,10 @@
       background: var(--scrollbar-bg-active);
     }
   }
-   
-  /* --- MathJax 行内公式：强制行内显示，不换行 --- */
-  :is(p, li, span, strong, em, a, blockquote p) > mjx-container.MathJax {
-    display: inline-block !important;
-    width: auto !important;
-    margin: 0 0.25ch !important;
-    vertical-align: middle !important;
-  }
 
-  /* --- MathJax 行间公式：全局居中兜底（无滚动容器的场景） --- */
-  & > mjx-container.MathJax,
-  div:not(.mathjax-display-container) > mjx-container.MathJax {
-    display: block !important;
-    width: fit-content !important;
-    margin: 1rem auto !important;
+  /* --- KaTeX 行间公式：无滚动容器时的居中兜底（KaTeX 默认已居中） --- */
+  & > .katex-display {
+    margin: 1rem auto;
   }
 }
 

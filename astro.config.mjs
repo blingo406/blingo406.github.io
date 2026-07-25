@@ -13,7 +13,7 @@ import { oddmisc } from "oddmisc";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeComponents from "rehype-components";
 import rehypeExternalLinks from "rehype-external-links";
-import rehypeMathjax from "rehype-mathjax";
+import rehypeKatex from "rehype-katex";
 import rehypeSlug from "rehype-slug";
 import remarkDirective from "remark-directive";
 import remarkMath from "remark-math";
@@ -186,7 +186,20 @@ export default defineConfig({
 				remarkWikiLink,
 			],
 			rehypePlugins: [
-				rehypeMathjax,
+				[
+					rehypeKatex,
+					{
+						// CJK/unicode 直接出现在公式里不再告警（我们的中文都在 \text{} 内）
+						strict: false,
+						// 不支持的片段渲染成红字而非中断构建，便于逐个排查
+						throwOnError: false,
+						errorColor: "#cc0000",
+						// 迁移原 MathJax 自定义宏
+						macros: {
+							"\\mathring": "\\overset{\\circ}{#1}",
+						},
+					},
+				],
 				rehypeWrapMath,
 				[
 					rehypeExternalLinks,
