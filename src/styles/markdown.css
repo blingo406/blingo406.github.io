@@ -175,11 +175,11 @@
     padding-top: 0.5rem;
     -webkit-overflow-scrolling: touch;
 
-    /* 容器内的行间公式：宽度收缩+水平居中，并补上下留白（对齐旧 MathJax 的呼吸感） */
+    /* 容器内的行间公式：宽度收缩+水平居中（核心修复） */
     & > .katex-display {
       width: fit-content;
       max-width: none;
-      margin: 0.4em auto;
+      margin: 0 auto;
     }
 
     &::-webkit-scrollbar {
@@ -204,11 +204,6 @@
   /* --- KaTeX 行间公式：无滚动容器时的居中兜底（KaTeX 默认已居中） --- */
   & > .katex-display {
     margin: 1rem auto;
-  }
-
-  /* --- KaTeX 行内公式：与相邻中文之间留出呼吸间距（对齐旧 MathJax 的 0.25ch） --- */
-  :is(p, li, td, th, strong, em, a, blockquote p) > .katex {
-    margin: 0 0.25ch;
   }
 }
 
