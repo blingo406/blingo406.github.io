@@ -1,9 +1,9 @@
 ---
+import { getBacklinks, getOutlinks } from "@utils/link-graph.mjs";
 /**
  * LinksPanel 组件：Obsidian 风格的链接面板，底部展示出链与反向链接。
  */
 import { Icon } from "astro-icon/components";
-import { getBacklinks, getOutlinks } from "@utils/link-graph.mjs";
 
 interface Props {
 	slug: string;

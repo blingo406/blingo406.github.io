@@ -21,7 +21,10 @@
     "new-post": "node scripts/new-post.js",
     "format": "biome format --write ./src",
     "lint": "biome check --write ./src",
-    "preinstall": "npx only-allow pnpm"
+    "preinstall": "npx only-allow pnpm",
+    "markets:refresh": "python scripts/markets/refresh.py",
+    "markets:test": "python -m unittest discover -s scripts/markets -p \"test_*.py\"",
+    "optimize:images": "node scripts/optimize-site-images.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",
@@ -43,6 +46,7 @@
     "astro-icon": "^1.1.5",
     "axios": "^1.18.1",
     "dayjs": "^1.11.21",
+    "echarts": "6.0.0",
     "hastscript": "^9.0.1",
     "l2d-widget": "^0.1.0",
     "markdown-it": "^14.2.0",

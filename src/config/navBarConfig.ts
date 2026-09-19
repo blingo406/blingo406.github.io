@@ -132,6 +132,11 @@ export const navBarConfig: NavBarConfig = {
 		LinkPreset.Home,
 		// 预设链接：归档
 		LinkPreset.Archive,
+		{
+			name: "数据观察",
+			url: "/markets/pig/",
+			icon: "material-symbols:monitoring",
+		},
 
 		// 自定义一级下拉菜单示例：外部链接集合
 		{

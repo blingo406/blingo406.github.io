@@ -1,0 +1,3435 @@
+{
+	"schemaVersion": 1,
+	"generatedAt": "2026-09-19T09:15:09+00:00",
+	"observations": [
+		{
+			"series": "hog",
+			"date": "2025-07-31",
+			"value": 14.66,
+			"published": "2025-08-04",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202508/t20250804_6476262.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2025-07-31",
+			"value": 35.07,
+			"published": "2025-08-04",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202508/t20250804_6476262.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2025-07-31",
+			"value": 25.21,
+			"published": "2025-08-04",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202508/t20250804_6476262.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2025-07-31",
+			"value": 2.5,
+			"published": "2025-08-04",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202508/t20250804_6476262.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2025-07-31",
+			"value": 3.27,
+			"published": "2025-08-04",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202508/t20250804_6476262.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2025-07-31",
+			"value": 3.39,
+			"published": "2025-08-04",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202508/t20250804_6476262.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2025-08-07",
+			"value": 14.53,
+			"published": "2025-08-13",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202508/t20250813_6476451.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2025-08-07",
+			"value": 34.66,
+			"published": "2025-08-13",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202508/t20250813_6476451.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2025-08-07",
+			"value": 25.16,
+			"published": "2025-08-13",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202508/t20250813_6476451.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2025-08-07",
+			"value": 2.5,
+			"published": "2025-08-13",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202508/t20250813_6476451.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2025-08-07",
+			"value": 3.28,
+			"published": "2025-08-13",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202508/t20250813_6476451.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2025-08-07",
+			"value": 3.39,
+			"published": "2025-08-13",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202508/t20250813_6476451.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2025-08-14",
+			"value": 14.35,
+			"published": "2025-08-25",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202508/t20250825_6476711.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2025-08-14",
+			"value": 33.94,
+			"published": "2025-08-25",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202508/t20250825_6476711.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2025-08-14",
+			"value": 25.02,
+			"published": "2025-08-25",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202508/t20250825_6476711.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2025-08-14",
+			"value": 2.5,
+			"published": "2025-08-25",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202508/t20250825_6476711.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2025-08-14",
+			"value": 3.29,
+			"published": "2025-08-25",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202508/t20250825_6476711.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2025-08-14",
+			"value": 3.39,
+			"published": "2025-08-25",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202508/t20250825_6476711.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2025-08-21",
+			"value": 14.3,
+			"published": "2025-08-25",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202508/t20250825_6476712.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2025-08-21",
+			"value": 33.25,
+			"published": "2025-08-25",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202508/t20250825_6476712.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2025-08-21",
+			"value": 24.93,
+			"published": "2025-08-25",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202508/t20250825_6476712.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2025-08-21",
+			"value": 2.5,
+			"published": "2025-08-25",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202508/t20250825_6476712.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2025-08-21",
+			"value": 3.31,
+			"published": "2025-08-25",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202508/t20250825_6476712.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2025-08-21",
+			"value": 3.39,
+			"published": "2025-08-25",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202508/t20250825_6476712.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2025-08-28",
+			"value": 14.22,
+			"published": "2025-09-02",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202509/t20250902_6476934.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2025-08-28",
+			"value": 32.68,
+			"published": "2025-09-02",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202509/t20250902_6476934.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2025-08-28",
+			"value": 24.81,
+			"published": "2025-09-02",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202509/t20250902_6476934.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2025-08-28",
+			"value": 2.49,
+			"published": "2025-09-02",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202509/t20250902_6476934.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2025-08-28",
+			"value": 3.31,
+			"published": "2025-09-02",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202509/t20250902_6476934.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2025-08-28",
+			"value": 3.4,
+			"published": "2025-09-02",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202509/t20250902_6476934.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2025-09-04",
+			"value": 14.29,
+			"published": "2025-09-09",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202509/t20250909_6477121.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2025-09-04",
+			"value": 32.0,
+			"published": "2025-09-09",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202509/t20250909_6477121.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2025-09-04",
+			"value": 24.83,
+			"published": "2025-09-09",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202509/t20250909_6477121.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2025-09-04",
+			"value": 2.49,
+			"published": "2025-09-09",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202509/t20250909_6477121.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2025-09-04",
+			"value": 3.31,
+			"published": "2025-09-09",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202509/t20250909_6477121.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2025-09-04",
+			"value": 3.4,
+			"published": "2025-09-09",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202509/t20250909_6477121.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2025-09-11",
+			"value": 14.1,
+			"published": "2025-09-15",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202509/t20250915_6477264.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2025-09-11",
+			"value": 30.96,
+			"published": "2025-09-15",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202509/t20250915_6477264.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2025-09-11",
+			"value": 24.7,
+			"published": "2025-09-15",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202509/t20250915_6477264.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2025-09-11",
+			"value": 2.49,
+			"published": "2025-09-15",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202509/t20250915_6477264.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2025-09-11",
+			"value": 3.31,
+			"published": "2025-09-15",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202509/t20250915_6477264.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2025-09-11",
+			"value": 3.4,
+			"published": "2025-09-15",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202509/t20250915_6477264.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2025-09-18",
+			"value": 13.85,
+			"published": "2025-09-22",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202509/t20250922_6477553.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2025-09-18",
+			"value": 30.03,
+			"published": "2025-09-22",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202509/t20250922_6477553.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2025-09-18",
+			"value": 24.51,
+			"published": "2025-09-22",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202509/t20250922_6477553.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2025-09-18",
+			"value": 2.49,
+			"published": "2025-09-22",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202509/t20250922_6477553.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2025-09-18",
+			"value": 3.3,
+			"published": "2025-09-22",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202509/t20250922_6477553.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2025-09-18",
+			"value": 3.39,
+			"published": "2025-09-22",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202509/t20250922_6477553.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2025-09-25",
+			"value": 13.52,
+			"published": "2025-09-29",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202509/t20250929_6477881.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2025-09-25",
+			"value": 29.07,
+			"published": "2025-09-29",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202509/t20250929_6477881.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2025-09-25",
+			"value": 24.29,
+			"published": "2025-09-29",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202509/t20250929_6477881.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2025-09-25",
+			"value": 2.48,
+			"published": "2025-09-29",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202509/t20250929_6477881.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2025-09-25",
+			"value": 3.28,
+			"published": "2025-09-29",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202509/t20250929_6477881.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2025-09-25",
+			"value": 3.38,
+			"published": "2025-09-29",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202509/t20250929_6477881.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2025-09-30",
+			"value": 13.27,
+			"published": "2025-10-11",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202510/t20251011_6478037.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2025-09-30",
+			"value": 28.25,
+			"published": "2025-10-11",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202510/t20251011_6478037.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2025-09-30",
+			"value": 24.17,
+			"published": "2025-10-11",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202510/t20251011_6478037.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2025-09-30",
+			"value": 2.49,
+			"published": "2025-10-11",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202510/t20251011_6478037.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2025-09-30",
+			"value": 3.28,
+			"published": "2025-10-11",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202510/t20251011_6478037.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2025-09-30",
+			"value": 3.38,
+			"published": "2025-10-11",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202510/t20251011_6478037.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2025-10-09",
+			"value": 12.9,
+			"published": "2025-10-13",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202510/t20251013_6478077.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2025-10-09",
+			"value": 27.23,
+			"published": "2025-10-13",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202510/t20251013_6478077.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2025-10-09",
+			"value": 23.89,
+			"published": "2025-10-13",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202510/t20251013_6478077.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2025-10-09",
+			"value": 2.48,
+			"published": "2025-10-13",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202510/t20251013_6478077.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2025-10-09",
+			"value": 3.28,
+			"published": "2025-10-13",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202510/t20251013_6478077.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2025-10-09",
+			"value": 3.38,
+			"published": "2025-10-13",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202510/t20251013_6478077.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2025-10-16",
+			"value": 12.3,
+			"published": "2025-10-20",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202510/t20251020_6478296.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2025-10-16",
+			"value": 26.04,
+			"published": "2025-10-20",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202510/t20251020_6478296.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2025-10-16",
+			"value": 23.37,
+			"published": "2025-10-20",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202510/t20251020_6478296.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2025-10-16",
+			"value": 2.46,
+			"published": "2025-10-20",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202510/t20251020_6478296.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2025-10-16",
+			"value": 3.27,
+			"published": "2025-10-20",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202510/t20251020_6478296.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2025-10-16",
+			"value": 3.37,
+			"published": "2025-10-20",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202510/t20251020_6478296.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2025-10-23",
+			"value": 12.32,
+			"published": "2025-10-29",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202510/t20251029_6478517.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2025-10-23",
+			"value": 25.13,
+			"published": "2025-10-29",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202510/t20251029_6478517.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2025-10-23",
+			"value": 23.11,
+			"published": "2025-10-29",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202510/t20251029_6478517.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2025-10-23",
+			"value": 2.46,
+			"published": "2025-10-29",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202510/t20251029_6478517.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2025-10-23",
+			"value": 3.26,
+			"published": "2025-10-29",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202510/t20251029_6478517.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2025-10-23",
+			"value": 3.36,
+			"published": "2025-10-29",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202510/t20251029_6478517.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2025-10-30",
+			"value": 12.76,
+			"published": "2025-11-04",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202511/t20251104_6478645.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2025-10-30",
+			"value": 24.78,
+			"published": "2025-11-04",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202511/t20251104_6478645.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2025-10-30",
+			"value": 23.25,
+			"published": "2025-11-04",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202511/t20251104_6478645.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2025-10-30",
+			"value": 2.45,
+			"published": "2025-11-04",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202511/t20251104_6478645.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2025-10-30",
+			"value": 3.26,
+			"published": "2025-11-04",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202511/t20251104_6478645.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2025-10-30",
+			"value": 3.36,
+			"published": "2025-11-04",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202511/t20251104_6478645.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2025-11-06",
+			"value": 12.71,
+			"published": "2025-11-11",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202511/t20251111_6478817.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2025-11-06",
+			"value": 24.59,
+			"published": "2025-11-11",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202511/t20251111_6478817.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2025-11-06",
+			"value": 23.17,
+			"published": "2025-11-11",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202511/t20251111_6478817.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2025-11-06",
+			"value": 2.44,
+			"published": "2025-11-11",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202511/t20251111_6478817.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2025-11-06",
+			"value": 3.28,
+			"published": "2025-11-11",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202511/t20251111_6478817.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2025-11-06",
+			"value": 3.36,
+			"published": "2025-11-11",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202511/t20251111_6478817.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2025-11-13",
+			"value": 12.64,
+			"published": "2025-11-18",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202511/t20251118_6478985.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2025-11-13",
+			"value": 24.39,
+			"published": "2025-11-18",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202511/t20251118_6478985.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2025-11-13",
+			"value": 23.13,
+			"published": "2025-11-18",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202511/t20251118_6478985.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2025-11-13",
+			"value": 2.43,
+			"published": "2025-11-18",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202511/t20251118_6478985.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2025-11-13",
+			"value": 3.29,
+			"published": "2025-11-18",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202511/t20251118_6478985.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2025-11-13",
+			"value": 3.36,
+			"published": "2025-11-18",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202511/t20251118_6478985.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2025-11-20",
+			"value": 12.5,
+			"published": "2025-11-24",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202511/t20251124_6479154.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2025-11-20",
+			"value": 24.14,
+			"published": "2025-11-24",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202511/t20251124_6479154.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2025-11-20",
+			"value": 23.02,
+			"published": "2025-11-24",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202511/t20251124_6479154.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2025-11-20",
+			"value": 2.43,
+			"published": "2025-11-24",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202511/t20251124_6479154.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2025-11-20",
+			"value": 3.29,
+			"published": "2025-11-24",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202511/t20251124_6479154.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2025-11-20",
+			"value": 3.36,
+			"published": "2025-11-24",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202511/t20251124_6479154.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2025-11-27",
+			"value": 12.33,
+			"published": "2025-12-01",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202512/t20251201_6479343.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2025-11-27",
+			"value": 23.88,
+			"published": "2025-12-01",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202512/t20251201_6479343.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2025-11-27",
+			"value": 22.86,
+			"published": "2025-12-01",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202512/t20251201_6479343.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2025-11-27",
+			"value": 2.43,
+			"published": "2025-12-01",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202512/t20251201_6479343.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2025-11-27",
+			"value": 3.29,
+			"published": "2025-12-01",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202512/t20251201_6479343.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2025-11-27",
+			"value": 3.35,
+			"published": "2025-12-01",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202512/t20251201_6479343.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2025-12-04",
+			"value": 12.21,
+			"published": "2025-12-09",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202512/t20251209_6479582.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2025-12-04",
+			"value": 23.71,
+			"published": "2025-12-09",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202512/t20251209_6479582.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2025-12-04",
+			"value": 22.74,
+			"published": "2025-12-09",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202512/t20251209_6479582.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2025-12-04",
+			"value": 2.43,
+			"published": "2025-12-09",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202512/t20251209_6479582.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2025-12-04",
+			"value": 3.3,
+			"published": "2025-12-09",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202512/t20251209_6479582.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2025-12-04",
+			"value": 3.36,
+			"published": "2025-12-09",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202512/t20251209_6479582.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2025-12-11",
+			"value": 12.13,
+			"published": "2025-12-17",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202512/t20251217_6479762.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2025-12-11",
+			"value": 23.43,
+			"published": "2025-12-17",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202512/t20251217_6479762.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2025-12-11",
+			"value": 22.59,
+			"published": "2025-12-17",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202512/t20251217_6479762.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2025-12-11",
+			"value": 2.43,
+			"published": "2025-12-17",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202512/t20251217_6479762.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2025-12-11",
+			"value": 3.29,
+			"published": "2025-12-17",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202512/t20251217_6479762.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2025-12-11",
+			"value": 3.36,
+			"published": "2025-12-17",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202512/t20251217_6479762.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2025-12-18",
+			"value": 12.16,
+			"published": "2025-12-23",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202512/t20251223_6480075.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2025-12-18",
+			"value": 23.28,
+			"published": "2025-12-23",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202512/t20251223_6480075.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2025-12-18",
+			"value": 22.53,
+			"published": "2025-12-23",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202512/t20251223_6480075.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2025-12-18",
+			"value": 2.43,
+			"published": "2025-12-23",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202512/t20251223_6480075.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2025-12-18",
+			"value": 3.3,
+			"published": "2025-12-23",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202512/t20251223_6480075.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2025-12-18",
+			"value": 3.36,
+			"published": "2025-12-23",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202512/t20251223_6480075.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2025-12-25",
+			"value": 12.19,
+			"published": "2025-12-30",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202512/t20251230_6480210.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2025-12-25",
+			"value": 23.14,
+			"published": "2025-12-30",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202512/t20251230_6480210.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2025-12-25",
+			"value": 22.48,
+			"published": "2025-12-30",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202512/t20251230_6480210.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2025-12-25",
+			"value": 2.43,
+			"published": "2025-12-30",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202512/t20251230_6480210.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2025-12-25",
+			"value": 3.3,
+			"published": "2025-12-30",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202512/t20251230_6480210.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2025-12-25",
+			"value": 3.36,
+			"published": "2025-12-30",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202512/t20251230_6480210.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2025-12-31",
+			"value": 12.61,
+			"published": "2026-01-05",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202601/t20260105_6480432.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2025-12-31",
+			"value": 23.45,
+			"published": "2026-01-05",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202601/t20260105_6480432.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2025-12-31",
+			"value": 22.8,
+			"published": "2026-01-05",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202601/t20260105_6480432.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2025-12-31",
+			"value": 2.44,
+			"published": "2026-01-05",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202601/t20260105_6480432.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2025-12-31",
+			"value": 3.31,
+			"published": "2026-01-05",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202601/t20260105_6480432.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2025-12-31",
+			"value": 3.36,
+			"published": "2026-01-05",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202601/t20260105_6480432.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2026-01-15",
+			"value": 13.06,
+			"published": "2026-01-23",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202601/t20260123_6480973.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2026-01-15",
+			"value": 24.85,
+			"published": "2026-01-23",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202601/t20260123_6480973.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2026-01-15",
+			"value": 23.21,
+			"published": "2026-01-23",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202601/t20260123_6480973.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2026-01-15",
+			"value": 2.44,
+			"published": "2026-01-23",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202601/t20260123_6480973.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2026-01-15",
+			"value": 3.33,
+			"published": "2026-01-23",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202601/t20260123_6480973.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2026-01-15",
+			"value": 3.36,
+			"published": "2026-01-23",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202601/t20260123_6480973.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2026-01-22",
+			"value": 13.39,
+			"published": "2026-01-27",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202601/t20260127_6481039.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2026-01-22",
+			"value": 25.96,
+			"published": "2026-01-27",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202601/t20260127_6481039.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2026-01-22",
+			"value": 23.57,
+			"published": "2026-01-27",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202601/t20260127_6481039.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2026-01-22",
+			"value": 2.44,
+			"published": "2026-01-27",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202601/t20260127_6481039.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2026-01-22",
+			"value": 3.33,
+			"published": "2026-01-27",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202601/t20260127_6481039.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2026-01-22",
+			"value": 3.37,
+			"published": "2026-01-27",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202601/t20260127_6481039.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2026-01-29",
+			"value": 13.43,
+			"published": "2026-02-04",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202602/t20260204_6481268.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2026-01-29",
+			"value": 26.87,
+			"published": "2026-02-04",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202602/t20260204_6481268.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2026-01-29",
+			"value": 23.8,
+			"published": "2026-02-04",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202602/t20260204_6481268.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2026-01-29",
+			"value": 2.45,
+			"published": "2026-02-04",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202602/t20260204_6481268.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2026-01-29",
+			"value": 3.34,
+			"published": "2026-02-04",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202602/t20260204_6481268.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2026-01-29",
+			"value": 3.37,
+			"published": "2026-02-04",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202602/t20260204_6481268.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2026-02-05",
+			"value": 13.27,
+			"published": "2026-02-10",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202602/t20260210_6481498.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2026-02-05",
+			"value": 27.39,
+			"published": "2026-02-10",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202602/t20260210_6481498.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2026-02-05",
+			"value": 23.87,
+			"published": "2026-02-10",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202602/t20260210_6481498.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2026-02-05",
+			"value": 2.45,
+			"published": "2026-02-10",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202602/t20260210_6481498.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2026-02-05",
+			"value": 3.33,
+			"published": "2026-02-10",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202602/t20260210_6481498.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2026-02-05",
+			"value": 3.37,
+			"published": "2026-02-10",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202602/t20260210_6481498.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2026-02-12",
+			"value": 12.94,
+			"published": "2026-02-26",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202602/t20260226_6481716.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2026-02-12",
+			"value": 27.56,
+			"published": "2026-02-26",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202602/t20260226_6481716.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2026-02-12",
+			"value": 23.8,
+			"published": "2026-02-26",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202602/t20260226_6481716.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2026-02-12",
+			"value": 2.45,
+			"published": "2026-02-26",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202602/t20260226_6481716.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2026-02-12",
+			"value": 3.33,
+			"published": "2026-02-26",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202602/t20260226_6481716.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2026-02-12",
+			"value": 3.37,
+			"published": "2026-02-26",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202602/t20260226_6481716.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2026-02-24",
+			"value": 12.62,
+			"published": "2026-03-02",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202603/t20260302_6481814.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2026-02-24",
+			"value": 27.64,
+			"published": "2026-03-02",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202603/t20260302_6481814.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2026-02-24",
+			"value": 23.72,
+			"published": "2026-03-02",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202603/t20260302_6481814.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2026-02-24",
+			"value": 2.45,
+			"published": "2026-03-02",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202603/t20260302_6481814.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2026-02-24",
+			"value": 3.32,
+			"published": "2026-03-02",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202603/t20260302_6481814.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2026-02-24",
+			"value": 3.37,
+			"published": "2026-03-02",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202603/t20260302_6481814.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2026-02-26",
+			"value": 12.45,
+			"published": "2026-03-03",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202603/t20260303_6481900.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2026-02-26",
+			"value": 27.67,
+			"published": "2026-03-03",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202603/t20260303_6481900.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2026-02-26",
+			"value": 23.53,
+			"published": "2026-03-03",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202603/t20260303_6481900.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2026-02-26",
+			"value": 2.45,
+			"published": "2026-03-03",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202603/t20260303_6481900.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2026-02-26",
+			"value": 3.32,
+			"published": "2026-03-03",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202603/t20260303_6481900.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2026-02-26",
+			"value": 3.37,
+			"published": "2026-03-03",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202603/t20260303_6481900.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2026-03-05",
+			"value": 11.89,
+			"published": "2026-03-10",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202603/t20260310_6482107.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2026-03-05",
+			"value": 27.44,
+			"published": "2026-03-10",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202603/t20260310_6482107.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2026-03-05",
+			"value": 23.04,
+			"published": "2026-03-10",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202603/t20260310_6482107.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2026-03-05",
+			"value": 2.45,
+			"published": "2026-03-10",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202603/t20260310_6482107.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2026-03-05",
+			"value": 3.32,
+			"published": "2026-03-10",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202603/t20260310_6482107.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2026-03-05",
+			"value": 3.38,
+			"published": "2026-03-10",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202603/t20260310_6482107.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2026-03-12",
+			"value": 11.38,
+			"published": "2026-03-18",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202603/t20260318_6482383.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2026-03-12",
+			"value": 26.9,
+			"published": "2026-03-18",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202603/t20260318_6482383.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2026-03-12",
+			"value": 22.48,
+			"published": "2026-03-18",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202603/t20260318_6482383.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2026-03-12",
+			"value": 2.47,
+			"published": "2026-03-18",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202603/t20260318_6482383.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2026-03-12",
+			"value": 3.38,
+			"published": "2026-03-18",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202603/t20260318_6482383.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2026-03-12",
+			"value": 3.39,
+			"published": "2026-03-18",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202603/t20260318_6482383.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2026-03-19",
+			"value": 11.05,
+			"published": "2026-03-25",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202603/t20260325_6482639.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2026-03-19",
+			"value": 26.2,
+			"published": "2026-03-25",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202603/t20260325_6482639.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2026-03-19",
+			"value": 22.0,
+			"published": "2026-03-25",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202603/t20260325_6482639.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2026-03-19",
+			"value": 2.49,
+			"published": "2026-03-25",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202603/t20260325_6482639.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2026-03-19",
+			"value": 3.44,
+			"published": "2026-03-25",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202603/t20260325_6482639.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2026-03-19",
+			"value": 3.4,
+			"published": "2026-03-25",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202603/t20260325_6482639.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2026-03-26",
+			"value": 10.68,
+			"published": "2026-03-30",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202603/t20260330_6482815.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2026-03-26",
+			"value": 25.42,
+			"published": "2026-03-30",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202603/t20260330_6482815.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2026-03-26",
+			"value": 21.52,
+			"published": "2026-03-30",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202603/t20260330_6482815.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2026-03-26",
+			"value": 2.5,
+			"published": "2026-03-30",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202603/t20260330_6482815.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2026-03-26",
+			"value": 3.46,
+			"published": "2026-03-30",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202603/t20260330_6482815.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2026-03-26",
+			"value": 3.41,
+			"published": "2026-03-30",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202603/t20260330_6482815.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2026-04-02",
+			"value": 10.4,
+			"published": "2026-04-08",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202604/t20260408_6483049.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2026-04-02",
+			"value": 24.56,
+			"published": "2026-04-08",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202604/t20260408_6483049.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2026-04-02",
+			"value": 21.03,
+			"published": "2026-04-08",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202604/t20260408_6483049.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2026-04-02",
+			"value": 2.5,
+			"published": "2026-04-08",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202604/t20260408_6483049.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2026-04-02",
+			"value": 3.44,
+			"published": "2026-04-08",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202604/t20260408_6483049.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2026-04-02",
+			"value": 3.41,
+			"published": "2026-04-08",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202604/t20260408_6483049.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2026-04-09",
+			"value": 10.03,
+			"published": "2026-04-15",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202604/t20260415_6483265.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2026-04-09",
+			"value": 23.77,
+			"published": "2026-04-15",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202604/t20260415_6483265.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2026-04-09",
+			"value": 20.5,
+			"published": "2026-04-15",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202604/t20260415_6483265.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2026-04-09",
+			"value": 2.5,
+			"published": "2026-04-15",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202604/t20260415_6483265.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2026-04-09",
+			"value": 3.41,
+			"published": "2026-04-15",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202604/t20260415_6483265.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2026-04-09",
+			"value": 3.41,
+			"published": "2026-04-15",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202604/t20260415_6483265.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2026-04-16",
+			"value": 9.75,
+			"published": "2026-04-22",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202604/t20260422_6483464.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2026-04-16",
+			"value": 23.11,
+			"published": "2026-04-22",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202604/t20260422_6483464.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2026-04-16",
+			"value": 20.1,
+			"published": "2026-04-22",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202604/t20260422_6483464.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2026-04-16",
+			"value": 2.5,
+			"published": "2026-04-22",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202604/t20260422_6483464.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2026-04-16",
+			"value": 3.37,
+			"published": "2026-04-22",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202604/t20260422_6483464.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2026-04-16",
+			"value": 3.41,
+			"published": "2026-04-22",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202604/t20260422_6483464.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2026-04-23",
+			"value": 10.0,
+			"published": "2026-05-09",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202605/t20260509_6484024.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2026-04-23",
+			"value": 22.94,
+			"published": "2026-05-09",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202605/t20260509_6484024.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2026-04-23",
+			"value": 20.08,
+			"published": "2026-05-09",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202605/t20260509_6484024.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2026-04-23",
+			"value": 2.5,
+			"published": "2026-05-09",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202605/t20260509_6484024.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2026-04-23",
+			"value": 3.34,
+			"published": "2026-05-09",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202605/t20260509_6484024.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2026-04-23",
+			"value": 3.41,
+			"published": "2026-05-09",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202605/t20260509_6484024.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2026-04-30",
+			"value": 10.18,
+			"published": "2026-05-09",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202605/t20260509_6484026.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2026-04-30",
+			"value": 23.11,
+			"published": "2026-05-09",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202605/t20260509_6484026.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2026-04-30",
+			"value": 20.12,
+			"published": "2026-05-09",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202605/t20260509_6484026.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2026-04-30",
+			"value": 2.5,
+			"published": "2026-05-09",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202605/t20260509_6484026.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2026-04-30",
+			"value": 3.31,
+			"published": "2026-05-09",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202605/t20260509_6484026.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2026-04-30",
+			"value": 3.4,
+			"published": "2026-05-09",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202605/t20260509_6484026.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2026-05-07",
+			"value": 10.19,
+			"published": "2026-05-14",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202605/t20260514_6484162.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2026-05-07",
+			"value": 23.26,
+			"published": "2026-05-14",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202605/t20260514_6484162.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2026-05-07",
+			"value": 20.12,
+			"published": "2026-05-14",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202605/t20260514_6484162.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2026-05-07",
+			"value": 2.5,
+			"published": "2026-05-14",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202605/t20260514_6484162.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2026-05-07",
+			"value": 3.3,
+			"published": "2026-05-14",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202605/t20260514_6484162.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2026-05-07",
+			"value": 3.4,
+			"published": "2026-05-14",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202605/t20260514_6484162.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2026-05-14",
+			"value": 10.16,
+			"published": "2026-05-20",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202605/t20260520_6484315.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2026-05-14",
+			"value": 23.31,
+			"published": "2026-05-20",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202605/t20260520_6484315.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2026-05-14",
+			"value": 20.06,
+			"published": "2026-05-20",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202605/t20260520_6484315.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2026-05-14",
+			"value": 2.5,
+			"published": "2026-05-20",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202605/t20260520_6484315.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2026-05-14",
+			"value": 3.29,
+			"published": "2026-05-20",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202605/t20260520_6484315.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2026-05-14",
+			"value": 3.4,
+			"published": "2026-05-20",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202605/t20260520_6484315.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2026-05-21",
+			"value": 10.12,
+			"published": "2026-05-26",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202605/t20260526_6484455.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2026-05-21",
+			"value": 23.39,
+			"published": "2026-05-26",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202605/t20260526_6484455.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2026-05-21",
+			"value": 19.98,
+			"published": "2026-05-26",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202605/t20260526_6484455.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2026-05-21",
+			"value": 2.5,
+			"published": "2026-05-26",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202605/t20260526_6484455.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2026-05-21",
+			"value": 3.28,
+			"published": "2026-05-26",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202605/t20260526_6484455.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2026-05-21",
+			"value": 3.39,
+			"published": "2026-05-26",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202605/t20260526_6484455.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2026-05-28",
+			"value": 10.14,
+			"published": "2026-06-03",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202606/t20260603_6484706.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2026-05-28",
+			"value": 23.44,
+			"published": "2026-06-03",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202606/t20260603_6484706.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2026-05-28",
+			"value": 19.94,
+			"published": "2026-06-03",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202606/t20260603_6484706.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2026-05-28",
+			"value": 2.5,
+			"published": "2026-06-03",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202606/t20260603_6484706.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2026-05-28",
+			"value": 3.26,
+			"published": "2026-06-03",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202606/t20260603_6484706.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2026-05-28",
+			"value": 3.39,
+			"published": "2026-06-03",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202606/t20260603_6484706.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2026-06-04",
+			"value": 10.14,
+			"published": "2026-06-10",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202606/t20260610_6484859.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2026-06-04",
+			"value": 23.3,
+			"published": "2026-06-10",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202606/t20260610_6484859.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2026-06-04",
+			"value": 19.84,
+			"published": "2026-06-10",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202606/t20260610_6484859.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2026-06-04",
+			"value": 2.49,
+			"published": "2026-06-10",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202606/t20260610_6484859.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2026-06-04",
+			"value": 3.24,
+			"published": "2026-06-10",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202606/t20260610_6484859.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2026-06-04",
+			"value": 3.39,
+			"published": "2026-06-10",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202606/t20260610_6484859.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2026-06-11",
+			"value": 10.08,
+			"published": "2026-06-17",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202606/t20260617_6485081.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2026-06-11",
+			"value": 22.9,
+			"published": "2026-06-17",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202606/t20260617_6485081.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2026-06-11",
+			"value": 19.77,
+			"published": "2026-06-17",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202606/t20260617_6485081.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2026-06-11",
+			"value": 2.49,
+			"published": "2026-06-17",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202606/t20260617_6485081.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2026-06-11",
+			"value": 3.21,
+			"published": "2026-06-17",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202606/t20260617_6485081.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2026-06-11",
+			"value": 3.38,
+			"published": "2026-06-17",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202606/t20260617_6485081.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2026-06-18",
+			"value": 10.06,
+			"published": "2026-06-23",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202606/t20260623_6485241.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2026-06-18",
+			"value": 22.29,
+			"published": "2026-06-23",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202606/t20260623_6485241.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2026-06-18",
+			"value": 19.72,
+			"published": "2026-06-23",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202606/t20260623_6485241.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2026-06-18",
+			"value": 2.49,
+			"published": "2026-06-23",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202606/t20260623_6485241.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2026-06-18",
+			"value": 3.19,
+			"published": "2026-06-23",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202606/t20260623_6485241.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2026-06-18",
+			"value": 3.37,
+			"published": "2026-06-23",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202606/t20260623_6485241.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2026-06-25",
+			"value": 10.06,
+			"published": "2026-07-01",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202607/t20260701_6485442.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2026-06-25",
+			"value": 21.67,
+			"published": "2026-07-01",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202607/t20260701_6485442.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2026-06-25",
+			"value": 19.63,
+			"published": "2026-07-01",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202607/t20260701_6485442.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2026-06-25",
+			"value": 2.48,
+			"published": "2026-07-01",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202607/t20260701_6485442.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2026-06-25",
+			"value": 3.18,
+			"published": "2026-07-01",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202607/t20260701_6485442.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2026-06-25",
+			"value": 3.36,
+			"published": "2026-07-01",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202607/t20260701_6485442.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2026-07-02",
+			"value": 10.48,
+			"published": "2026-07-07",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202607/t20260707_6485602.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2026-07-02",
+			"value": 21.64,
+			"published": "2026-07-07",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202607/t20260707_6485602.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2026-07-02",
+			"value": 19.82,
+			"published": "2026-07-07",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202607/t20260707_6485602.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2026-07-02",
+			"value": 2.48,
+			"published": "2026-07-07",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202607/t20260707_6485602.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2026-07-02",
+			"value": 3.18,
+			"published": "2026-07-07",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202607/t20260707_6485602.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2026-07-02",
+			"value": 3.36,
+			"published": "2026-07-07",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202607/t20260707_6485602.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2026-07-09",
+			"value": 11.35,
+			"published": "2026-07-14",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202607/t20260714_6485797.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2026-07-09",
+			"value": 22.43,
+			"published": "2026-07-14",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202607/t20260714_6485797.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2026-07-09",
+			"value": 20.62,
+			"published": "2026-07-14",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202607/t20260714_6485797.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2026-07-09",
+			"value": 2.48,
+			"published": "2026-07-14",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202607/t20260714_6485797.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2026-07-09",
+			"value": 3.18,
+			"published": "2026-07-14",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202607/t20260714_6485797.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2026-07-09",
+			"value": 3.36,
+			"published": "2026-07-14",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202607/t20260714_6485797.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2026-07-16",
+			"value": 11.5,
+			"published": "2026-07-22",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202607/t20260722_6485964.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2026-07-16",
+			"value": 22.91,
+			"published": "2026-07-22",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202607/t20260722_6485964.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2026-07-16",
+			"value": 20.93,
+			"published": "2026-07-22",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202607/t20260722_6485964.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2026-07-16",
+			"value": 2.48,
+			"published": "2026-07-22",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202607/t20260722_6485964.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2026-07-16",
+			"value": 3.19,
+			"published": "2026-07-22",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202607/t20260722_6485964.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2026-07-16",
+			"value": 3.36,
+			"published": "2026-07-22",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202607/t20260722_6485964.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2026-07-23",
+			"value": 11.45,
+			"published": "2026-07-29",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202607/t20260729_6486285.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2026-07-23",
+			"value": 23.2,
+			"published": "2026-07-29",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202607/t20260729_6486285.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2026-07-23",
+			"value": 20.96,
+			"published": "2026-07-29",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202607/t20260729_6486285.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2026-07-23",
+			"value": 2.48,
+			"published": "2026-07-29",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202607/t20260729_6486285.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2026-07-23",
+			"value": 3.21,
+			"published": "2026-07-29",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202607/t20260729_6486285.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2026-07-23",
+			"value": 3.36,
+			"published": "2026-07-29",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202607/t20260729_6486285.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2026-07-30",
+			"value": 11.22,
+			"published": "2026-08-04",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202608/t20260804_6486426.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2026-07-30",
+			"value": 23.0,
+			"published": "2026-08-04",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202608/t20260804_6486426.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2026-07-30",
+			"value": 20.9,
+			"published": "2026-08-04",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202608/t20260804_6486426.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2026-07-30",
+			"value": 2.47,
+			"published": "2026-08-04",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202608/t20260804_6486426.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2026-07-30",
+			"value": 3.23,
+			"published": "2026-08-04",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202608/t20260804_6486426.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2026-07-30",
+			"value": 3.36,
+			"published": "2026-08-04",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202608/t20260804_6486426.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2026-08-06",
+			"value": 11.13,
+			"published": "2026-08-11",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202608/t20260811_6486584.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2026-08-06",
+			"value": 22.42,
+			"published": "2026-08-11",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202608/t20260811_6486584.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2026-08-06",
+			"value": 20.82,
+			"published": "2026-08-11",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202608/t20260811_6486584.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2026-08-06",
+			"value": 2.47,
+			"published": "2026-08-11",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202608/t20260811_6486584.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2026-08-06",
+			"value": 3.23,
+			"published": "2026-08-11",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202608/t20260811_6486584.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2026-08-06",
+			"value": 3.35,
+			"published": "2026-08-11",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202608/t20260811_6486584.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2026-08-13",
+			"value": 11.23,
+			"published": "2026-08-19",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202608/t20260819_6486784.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2026-08-13",
+			"value": 21.98,
+			"published": "2026-08-19",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202608/t20260819_6486784.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2026-08-13",
+			"value": 20.89,
+			"published": "2026-08-19",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202608/t20260819_6486784.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2026-08-13",
+			"value": 2.46,
+			"published": "2026-08-19",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202608/t20260819_6486784.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2026-08-13",
+			"value": 3.23,
+			"published": "2026-08-19",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202608/t20260819_6486784.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2026-08-13",
+			"value": 3.35,
+			"published": "2026-08-19",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202608/t20260819_6486784.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2026-08-20",
+			"value": 11.52,
+			"published": "2026-08-25",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202608/t20260825_6486995.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2026-08-20",
+			"value": 21.75,
+			"published": "2026-08-25",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202608/t20260825_6486995.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2026-08-20",
+			"value": 21.1,
+			"published": "2026-08-25",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202608/t20260825_6486995.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2026-08-20",
+			"value": 2.46,
+			"published": "2026-08-25",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202608/t20260825_6486995.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2026-08-20",
+			"value": 3.25,
+			"published": "2026-08-25",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202608/t20260825_6486995.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2026-08-20",
+			"value": 3.35,
+			"published": "2026-08-25",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202608/t20260825_6486995.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2026-08-27",
+			"value": 11.55,
+			"published": "2026-09-01",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202609/t20260901_6487189.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2026-08-27",
+			"value": 21.48,
+			"published": "2026-09-01",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202609/t20260901_6487189.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2026-08-27",
+			"value": 21.19,
+			"published": "2026-09-01",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202609/t20260901_6487189.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2026-08-27",
+			"value": 2.46,
+			"published": "2026-09-01",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202609/t20260901_6487189.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2026-08-27",
+			"value": 3.27,
+			"published": "2026-09-01",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202609/t20260901_6487189.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2026-08-27",
+			"value": 3.35,
+			"published": "2026-09-01",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202609/t20260901_6487189.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2026-09-03",
+			"value": 11.59,
+			"published": "2026-09-08",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202609/t20260908_6487409.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2026-09-03",
+			"value": 21.12,
+			"published": "2026-09-08",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202609/t20260908_6487409.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2026-09-03",
+			"value": 21.23,
+			"published": "2026-09-08",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202609/t20260908_6487409.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2026-09-03",
+			"value": 2.46,
+			"published": "2026-09-08",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202609/t20260908_6487409.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2026-09-03",
+			"value": 3.31,
+			"published": "2026-09-08",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202609/t20260908_6487409.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2026-09-03",
+			"value": 3.35,
+			"published": "2026-09-08",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202609/t20260908_6487409.htm"
+		},
+		{
+			"series": "hog",
+			"date": "2026-09-10",
+			"value": 11.54,
+			"published": "2026-09-16",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202609/t20260916_6487731.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2026-09-10",
+			"value": 20.83,
+			"published": "2026-09-16",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202609/t20260916_6487731.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2026-09-10",
+			"value": 21.22,
+			"published": "2026-09-16",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202609/t20260916_6487731.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2026-09-10",
+			"value": 2.46,
+			"published": "2026-09-16",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202609/t20260916_6487731.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2026-09-10",
+			"value": 3.36,
+			"published": "2026-09-16",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202609/t20260916_6487731.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2026-09-10",
+			"value": 3.35,
+			"published": "2026-09-16",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202609/t20260916_6487731.htm"
+		}
+	],
+	"reports": [
+		{
+			"id": "1a3f4342346303f2b1",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "东瑞食品集团股份有限公司2021年半年度报告全文",
+			"date": "2021-08-26",
+			"type": "定期报告",
+			"url": "https://www.dongruifoods.com/upload/file/20210827/1630052514486382.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "24a441d35191ab3624",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "东瑞食品集团股份有限公司2021年第三季度报告",
+			"date": "2021-10-28",
+			"type": "定期报告",
+			"url": "https://www.dongruifoods.com/upload/file/20211102/1635840547571032.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "17a75e960f17f4477d",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "东瑞食品集团股份有限公司2021年年度报告",
+			"date": "2022-04-28",
+			"type": "定期报告",
+			"url": "https://www.dongruifoods.com/upload/file/20220520/20220520155425.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "049df2c6ba67577d1f",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "东瑞食品集团股份有限公司2022年第一季度报告(更正后）",
+			"date": "2022-04-30",
+			"type": "定期报告",
+			"url": "https://www.dongruifoods.com/upload/file/20220519/1652931800562956.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "c040e086b33daf1a04",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "东瑞食品集团股份有限公司2022年半年度报告全文",
+			"date": "2022-08-03",
+			"type": "定期报告",
+			"url": "https://www.dongruifoods.com/upload/file/20220825/20220825152655.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "54f5836563416cb34d",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "东瑞食品集团股份有限公司2022年第三季度报告",
+			"date": "2022-10-29",
+			"type": "定期报告",
+			"url": "https://www.dongruifoods.com/upload/file/20221109/20221109172517.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "1d6b81bdfff3b59651",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "东瑞食品集团股份有限公司2023年第一季度报告",
+			"date": "2023-04-28",
+			"type": "定期报告",
+			"url": "https://www.dongruifoods.com/upload/file/20231010/20231010102111.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "c5c3697ac8f4d51cb6",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "东瑞食品集团股份有限公司2022年年度报告",
+			"date": "2023-04-28",
+			"type": "定期报告",
+			"url": "https://www.dongruifoods.com/upload/file/20231010/20231010101636.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "a3fc0df1038ec3ddf2",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "东瑞食品集团股份有限公司2023年半年度报告",
+			"date": "2023-08-31",
+			"type": "定期报告",
+			"url": "https://www.dongruifoods.com/upload/file/20231010/20231010102239.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "17d6d65989db57abef",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "东瑞食品集团股份有限公司2023年第三季度报告",
+			"date": "2023-10-31",
+			"type": "定期报告",
+			"url": "https://www.dongruifoods.com/upload/file/20231103/20231103113829.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "00f5e720493359ba18",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "2024年3月份生猪销售简报",
+			"date": "2024-04-08",
+			"type": "销售简报",
+			"url": "https://www.dongruifoods.com/upload/file/20240517/20240517152541.PDF",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "6460c8e7c092632406",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "东瑞食品集团股份有限公司2023年年度报告",
+			"date": "2024-04-30",
+			"type": "定期报告",
+			"url": "https://www.dongruifoods.com/upload/file/20240517/20240517084752.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "ba9e457afd7b58ec18",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "东瑞食品集团股份有限公司2024年第一季度报告",
+			"date": "2024-04-30",
+			"type": "定期报告",
+			"url": "https://www.dongruifoods.com/upload/file/20240517/20240517084858.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "f4e2dcc70cacb587ea",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "2024年4月份生猪销售简报",
+			"date": "2024-05-08",
+			"type": "销售简报",
+			"url": "https://www.dongruifoods.com/upload/file/20240517/20240517152553.PDF",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "e8fbcdf42fd0cef3a2",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "2024年5月份生猪销售简报",
+			"date": "2024-06-06",
+			"type": "销售简报",
+			"url": "https://www.dongruifoods.com/upload/file/20240606/20240606151930.PDF",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "1b598378d4d03d743e",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "2024年6月生猪销售简报",
+			"date": "2024-07-06",
+			"type": "销售简报",
+			"url": "https://www.dongruifoods.com/upload/file/20240914/20240914152909.PDF",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "dabb5b03f0f664bf7e",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "2024年7月生猪销售简报",
+			"date": "2024-08-08",
+			"type": "销售简报",
+			"url": "https://www.dongruifoods.com/upload/file/20240914/20240914152852.PDF",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "e8706857013a5bf39e",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "东瑞食品集团股份有限公司2024年半年度报告",
+			"date": "2024-08-29",
+			"type": "定期报告",
+			"url": "https://www.dongruifoods.com/upload/file/20240914/20240914151725.PDF",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "fd98d79341fcd655ad",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "2024年8月生猪销售简报",
+			"date": "2024-09-07",
+			"type": "销售简报",
+			"url": "https://www.dongruifoods.com/upload/file/20240914/20240914152841.PDF",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "2341e5122a11a5b4e0",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "2024年9月生猪销售简报",
+			"date": "2024-10-09",
+			"type": "销售简报",
+			"url": "https://www.dongruifoods.com/upload/file/20241114/20241114100232.PDF",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "e28f13ca918f760d63",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "东瑞食品集团股份有限公司2024年第三季度报告",
+			"date": "2024-10-31",
+			"type": "定期报告",
+			"url": "https://www.dongruifoods.com/upload/file/20241114/20241114095738.PDF",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "fca802f3014b1e1a76",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "2024年10月生猪销售简报",
+			"date": "2024-11-07",
+			"type": "销售简报",
+			"url": "https://www.dongruifoods.com/upload/file/20241114/20241114100314.PDF",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "3c5bd0af605158b16c",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "2024年11月份生猪销售简报",
+			"date": "2024-12-07",
+			"type": "销售简报",
+			"url": "https://www.dongruifoods.com/upload/file/20250210/20250210171939.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "728b3165f9311ea916",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "2024年12月份生猪销售简报",
+			"date": "2025-01-08",
+			"type": "销售简报",
+			"url": "https://www.dongruifoods.com/upload/file/20250210/20250210172047.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "75469bcb42cb7ae0ea",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "2025年1月份生猪销售简报",
+			"date": "2025-02-11",
+			"type": "销售简报",
+			"url": "https://www.dongruifoods.com/upload/file/20250210/20250210172138.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "d9b456eb2bc017ec92",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "2025年2月份生猪销售简报",
+			"date": "2025-03-08",
+			"type": "销售简报",
+			"url": "https://www.dongruifoods.com/upload/file/20250427/20250427170829.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "3f0826365c2900752e",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "2025年3月份生猪销售简报",
+			"date": "2025-04-08",
+			"type": "销售简报",
+			"url": "https://www.dongruifoods.com/upload/file/20250427/20250427171000.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "aa7fcf5125b853e1e1",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "东瑞食品集团股份有限公司2024年年度报告",
+			"date": "2025-04-26",
+			"type": "定期报告",
+			"url": "https://www.dongruifoods.com/upload/file/20250427/20250427171343.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "f293345166930bd5a0",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "东瑞食品集团股份有限公司2025年第一季度报告",
+			"date": "2025-04-26",
+			"type": "定期报告",
+			"url": "https://www.dongruifoods.com/upload/file/20250427/20250427171541.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "12bcce7d91d723ec94",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "2025年4月份生猪销售简报",
+			"date": "2025-05-08",
+			"type": "销售简报",
+			"url": "https://www.dongruifoods.com/upload/file/20250609/20250609170142.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "65fbd62b168ede3dbe",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "2025年5月份生猪销售简报",
+			"date": "2025-06-07",
+			"type": "销售简报",
+			"url": "https://www.dongruifoods.com/upload/file/20250609/20250609170231.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "a8b96a6e198620baf4",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "2025年6月份生猪销售简报",
+			"date": "2025-07-08",
+			"type": "销售简报",
+			"url": "https://www.dongruifoods.com/upload/file/20250721/20250721180329.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "ca05b5fa4e5eb8acce",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "2025年7月份生猪销售简报",
+			"date": "2025-08-07",
+			"type": "销售简报",
+			"url": "https://www.dongruifoods.com/upload/file/20250905/20250905114954.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "0a64866bc6f831c2a2",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "东瑞食品集团股份有限公司2025年半年度报告",
+			"date": "2025-08-30",
+			"type": "定期报告",
+			"url": "https://www.dongruifoods.com/upload/file/20250905/20250905114634.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "60f9b3182e19081a03",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "2025年8月份生猪销售简报",
+			"date": "2025-09-06",
+			"type": "销售简报",
+			"url": "https://www.dongruifoods.com/upload/file/20251208/20251208150452.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "781726502ac5b93823",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "2025年9月份生猪销售简报",
+			"date": "2025-10-10",
+			"type": "销售简报",
+			"url": "https://www.dongruifoods.com/upload/file/20251208/20251208150603.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "12dd75ed3ee991fe8f",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "东瑞食品集团股份有限公司2025年第三季度报告",
+			"date": "2025-10-31",
+			"type": "定期报告",
+			"url": "https://www.dongruifoods.com/upload/file/20251208/20251208150248.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "e9d14ac0e2ec8bc34e",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "2025年10月份生猪销售简报",
+			"date": "2025-11-08",
+			"type": "销售简报",
+			"url": "https://www.dongruifoods.com/upload/file/20251208/20251208150654.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "e36019b6cc2941a600",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "2025年11月份生猪销售简报",
+			"date": "2025-12-06",
+			"type": "销售简报",
+			"url": "https://www.dongruifoods.com/upload/file/20251208/20251208150740.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "eef6d53af7b54ed756",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "2025年12月份生猪销售简报",
+			"date": "2026-01-08",
+			"type": "销售简报",
+			"url": "https://www.dongruifoods.com/upload/file/20260108/20260108150822.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "57fa4db773dac3dc01",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "2026年1月份生猪销售简报",
+			"date": "2026-02-07",
+			"type": "销售简报",
+			"url": "https://www.dongruifoods.com/upload/file/20260408/20260408193452.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "c4ead803497b640675",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "2026年2月份生猪销售简报",
+			"date": "2026-03-07",
+			"type": "销售简报",
+			"url": "https://www.dongruifoods.com/upload/file/20260408/20260408193549.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "784d08c90035da6ea2",
+			"company": "002714",
+			"companyName": "牧原股份",
+			"title": "牧原股份：2025年年度报告",
+			"date": "2026-03-28",
+			"type": "定期报告",
+			"url": "https://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=002714&id=12029096",
+			"source": "新浪财经·公司公告转载",
+			"origin": "mirror"
+		},
+		{
+			"id": "07021ad9b575a8b839",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "2026年3月份生猪销售简报",
+			"date": "2026-04-08",
+			"type": "销售简报",
+			"url": "https://www.dongruifoods.com/upload/file/20260408/20260408193639.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "4d81748c32e8b018b9",
+			"company": "002714",
+			"companyName": "牧原股份",
+			"title": "牧原股份：2026年3月份销售简报",
+			"date": "2026-04-09",
+			"type": "销售简报",
+			"url": "https://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=002714&id=12069143",
+			"source": "新浪财经·公司公告转载",
+			"origin": "mirror"
+		},
+		{
+			"id": "76d45ad6eb36fcc77b",
+			"company": "002714",
+			"companyName": "牧原股份",
+			"title": "牧原股份：2026年一季度报告",
+			"date": "2026-04-22",
+			"type": "定期报告",
+			"url": "https://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=002714&id=12130329",
+			"source": "新浪财经·公司公告转载",
+			"origin": "mirror"
+		},
+		{
+			"id": "20f0e1069d38ea4168",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "东瑞食品集团股份有限公司2025年年度报告",
+			"date": "2026-04-28",
+			"type": "定期报告",
+			"url": "https://www.dongruifoods.com/upload/file/20260512/20260512174716.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "6facafdcf9fb4c25f4",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "东瑞食品集团股份有限公司2026年第一季度报告",
+			"date": "2026-04-28",
+			"type": "定期报告",
+			"url": "https://www.dongruifoods.com/upload/file/20260512/20260512174824.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "8aa0211c2e9bdae9e7",
+			"company": "002714",
+			"companyName": "牧原股份",
+			"title": "牧原股份：2026年4月份销售简报",
+			"date": "2026-05-07",
+			"type": "销售简报",
+			"url": "https://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=002714&id=12299970",
+			"source": "新浪财经·公司公告转载",
+			"origin": "mirror"
+		},
+		{
+			"id": "60d92153b96f512908",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "2026年4月份生猪销售简报",
+			"date": "2026-05-08",
+			"type": "销售简报",
+			"url": "https://www.dongruifoods.com/upload/file/20260512/20260512174426.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "dedc1863158883a4c0",
+			"company": "002714",
+			"companyName": "牧原股份",
+			"title": "牧原股份：2026年5月份销售简报",
+			"date": "2026-06-06",
+			"type": "销售简报",
+			"url": "https://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=002714&id=12377350",
+			"source": "新浪财经·公司公告转载",
+			"origin": "mirror"
+		},
+		{
+			"id": "d48bce4c55bd3e78c1",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "2026年5月份生猪销售简报",
+			"date": "2026-06-09",
+			"type": "销售简报",
+			"url": "https://www.dongruifoods.com/upload/file/20260904/20260904180636.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "79dac81656191bc72a",
+			"company": "002714",
+			"companyName": "牧原股份",
+			"title": "牧原股份：2026年6月份销售简报",
+			"date": "2026-07-07",
+			"type": "销售简报",
+			"url": "https://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=002714&id=12433165",
+			"source": "新浪财经·公司公告转载",
+			"origin": "mirror"
+		},
+		{
+			"id": "9ed63956beae20ce01",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "2026年6月份生猪销售简报",
+			"date": "2026-07-08",
+			"type": "销售简报",
+			"url": "https://www.dongruifoods.com/upload/file/20260904/20260904180726.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "55cdef8151d8744f7d",
+			"company": "002714",
+			"companyName": "牧原股份",
+			"title": "牧原股份：2026年7月份销售简报",
+			"date": "2026-08-06",
+			"type": "销售简报",
+			"url": "https://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=002714&id=12479558",
+			"source": "新浪财经·公司公告转载",
+			"origin": "mirror"
+		},
+		{
+			"id": "cbaba7ca0807c5c38d",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "2026年7月份生猪销售简报",
+			"date": "2026-08-08",
+			"type": "销售简报",
+			"url": "https://www.dongruifoods.com/upload/file/20260904/20260904180824.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "11c0e36eeaacf8b509",
+			"company": "002714",
+			"companyName": "牧原股份",
+			"title": "牧原股份：2026年半年度报告",
+			"date": "2026-08-21",
+			"type": "定期报告",
+			"url": "https://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=002714&id=12510732",
+			"source": "新浪财经·公司公告转载",
+			"origin": "mirror"
+		},
+		{
+			"id": "muyuan-2026-h1-cninfo",
+			"company": "002714",
+			"companyName": "牧原股份",
+			"title": "牧原食品集团股份有限公司2026年半年度报告全文",
+			"date": "2026-08-21",
+			"type": "定期报告",
+			"url": "https://static.cninfo.com.cn/finalpage/2026-08-21/1225485220.PDF",
+			"source": "巨潮资讯",
+			"origin": "disclosure"
+		},
+		{
+			"id": "f6fee53a44aac88dcf",
+			"company": "001201",
+			"companyName": "东瑞股份",
+			"title": "东瑞食品集团股份有限公司2026年半年度报告",
+			"date": "2026-08-29",
+			"type": "定期报告",
+			"url": "https://www.dongruifoods.com/upload/file/20260904/20260904180045.pdf",
+			"source": "东瑞股份官网",
+			"origin": "issuer"
+		},
+		{
+			"id": "05aad3e8159061a7dc",
+			"company": "002714",
+			"companyName": "牧原股份",
+			"title": "牧原股份：2026年8月份销售简报",
+			"date": "2026-09-08",
+			"type": "销售简报",
+			"url": "https://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=002714&id=12587218",
+			"source": "新浪财经·公司公告转载",
+			"origin": "mirror"
+		}
+	],
+	"events": [
+		{
+			"id": "af987b39b0d986ed4a",
+			"title": "Minutes of the Federal Open Market Committee, March 17–18, 2026",
+			"type": "会议纪要",
+			"institution": "美联储",
+			"publishedAt": "2026-04-08T18:00:00+00:00",
+			"date": "2026-04-08",
+			"url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260408a.htm",
+			"state": "released",
+			"source": "Federal Reserve"
+		},
+		{
+			"id": "d439f60f33e134ffbe",
+			"title": "Minutes of the Board’s discount rate meetings on February 9 and March 18, 2026",
+			"type": "会议纪要",
+			"institution": "美联储",
+			"publishedAt": "2026-04-14T18:00:00+00:00",
+			"date": "2026-04-14",
+			"url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260414a.htm",
+			"state": "released",
+			"source": "Federal Reserve"
+		},
+		{
+			"id": "cd22c1d43e70bea1bd",
+			"title": "Federal Reserve issues FOMC statement",
+			"type": "议息声明",
+			"institution": "美联储",
+			"publishedAt": "2026-04-29T18:00:00+00:00",
+			"date": "2026-04-29",
+			"url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260429a.htm",
+			"state": "released",
+			"source": "Federal Reserve"
+		},
+		{
+			"id": "94080a607bd11e08b8",
+			"title": "Minutes of the Federal Open Market Committee, April 28-29, 2026",
+			"type": "会议纪要",
+			"institution": "美联储",
+			"publishedAt": "2026-05-20T18:00:00+00:00",
+			"date": "2026-05-20",
+			"url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260520a.htm",
+			"state": "released",
+			"source": "Federal Reserve"
+		},
+		{
+			"id": "5f4f51040948b17bdc",
+			"title": "Minutes of the Board's discount rate meeting on April 20 and 29, 2026",
+			"type": "会议纪要",
+			"institution": "美联储",
+			"publishedAt": "2026-05-26T18:00:00+00:00",
+			"date": "2026-05-26",
+			"url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260526a.htm",
+			"state": "released",
+			"source": "Federal Reserve"
+		},
+		{
+			"id": "6a35ed96da249fba1c",
+			"title": "Federal Reserve Board and Federal Open Market Committee release economic projections from the June 16-17 FOMC meeting",
+			"type": "经济预测",
+			"institution": "美联储",
+			"publishedAt": "2026-06-17T18:00:00+00:00",
+			"date": "2026-06-17",
+			"url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260617b.htm",
+			"state": "released",
+			"source": "Federal Reserve"
+		},
+		{
+			"id": "94826fcab8a056185e",
+			"title": "Federal Reserve issues FOMC statement",
+			"type": "议息声明",
+			"institution": "美联储",
+			"publishedAt": "2026-06-17T18:00:00+00:00",
+			"date": "2026-06-17",
+			"url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260617a.htm",
+			"state": "released",
+			"source": "Federal Reserve"
+		},
+		{
+			"id": "10d78437804234563a",
+			"title": "Minutes of the Federal Open Market Committee, June 16-17, 2026",
+			"type": "会议纪要",
+			"institution": "美联储",
+			"publishedAt": "2026-07-08T18:00:00+00:00",
+			"date": "2026-07-08",
+			"url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260708a.htm",
+			"state": "released",
+			"source": "Federal Reserve"
+		},
+		{
+			"id": "61a7bae109af084abe",
+			"title": "Federal Reserve announces the leadership and objectives of its task forces to advance the conduct of monetary policy",
+			"type": "政策公告",
+			"institution": "美联储",
+			"publishedAt": "2026-07-09T19:00:00+00:00",
+			"date": "2026-07-09",
+			"url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260709a.htm",
+			"state": "released",
+			"source": "Federal Reserve"
+		},
+		{
+			"id": "5a26ae43a3fa1c29fa",
+			"title": "Minutes of the Board's discount rate meetings on June 8 and June 17, 2026",
+			"type": "会议纪要",
+			"institution": "美联储",
+			"publishedAt": "2026-07-14T18:00:00+00:00",
+			"date": "2026-07-14",
+			"url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260714a.htm",
+			"state": "released",
+			"source": "Federal Reserve"
+		},
+		{
+			"id": "e290aabba3caad8049",
+			"title": "Federal Reserve issues FOMC statement",
+			"type": "议息声明",
+			"institution": "美联储",
+			"publishedAt": "2026-07-29T18:00:00+00:00",
+			"date": "2026-07-29",
+			"url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm",
+			"state": "released",
+			"source": "Federal Reserve"
+		},
+		{
+			"id": "dfdf8d18c6f010c7a3",
+			"title": "Minutes of the Federal Open Market Committee, July 28–29, 2026",
+			"type": "会议纪要",
+			"institution": "美联储",
+			"publishedAt": "2026-08-19T18:00:00+00:00",
+			"date": "2026-08-19",
+			"url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260819a.htm",
+			"state": "released",
+			"source": "Federal Reserve"
+		},
+		{
+			"id": "f48681be97f292e1b3",
+			"title": "Minutes of the Board's discount rate meetings on July 20 and July 29, 2026",
+			"type": "会议纪要",
+			"institution": "美联储",
+			"publishedAt": "2026-08-25T18:00:00+00:00",
+			"date": "2026-08-25",
+			"url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260825a.htm",
+			"state": "released",
+			"source": "Federal Reserve"
+		},
+		{
+			"id": "7400cab4847e7a3384",
+			"title": "Federal Reserve Board and Federal Open Market Committee release economic projections from the September 15-16 FOMC meeting",
+			"type": "经济预测",
+			"institution": "美联储",
+			"publishedAt": "2026-09-16T18:00:00+00:00",
+			"date": "2026-09-16",
+			"url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916b.htm",
+			"state": "released",
+			"source": "Federal Reserve"
+		},
+		{
+			"id": "da3bcbb85f4595d6b8",
+			"title": "Federal Reserve issues FOMC statement",
+			"type": "议息声明",
+			"institution": "美联储",
+			"publishedAt": "2026-09-16T18:00:00+00:00",
+			"date": "2026-09-16",
+			"url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
+			"state": "released",
+			"source": "Federal Reserve"
+		}
+	],
+	"calendar": [
+		{
+			"id": "fomc-2026-10-28",
+			"title": "FOMC 议息会议",
+			"type": "议息日程",
+			"institution": "美联储",
+			"date": "2026-10-28",
+			"publishedAt": null,
+			"url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+			"state": "scheduled",
+			"source": "Federal Reserve",
+			"note": "美国东部日期，October 27-28；以官网最新安排为准"
+		},
+		{
+			"id": "fomc-2026-12-09",
+			"title": "FOMC 议息会议",
+			"type": "议息日程",
+			"institution": "美联储",
+			"date": "2026-12-09",
+			"publishedAt": null,
+			"url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+			"state": "scheduled",
+			"source": "Federal Reserve",
+			"note": "美国东部日期，December 8-9*；以官网最新安排为准"
+		},
+		{
+			"id": "fomc-2027-01-27",
+			"title": "FOMC 议息会议",
+			"type": "议息日程",
+			"institution": "美联储",
+			"date": "2027-01-27",
+			"publishedAt": null,
+			"url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+			"state": "scheduled",
+			"source": "Federal Reserve",
+			"note": "美国东部日期，January 26-27；以官网最新安排为准"
+		},
+		{
+			"id": "fomc-2027-03-17",
+			"title": "FOMC 议息会议",
+			"type": "议息日程",
+			"institution": "美联储",
+			"date": "2027-03-17",
+			"publishedAt": null,
+			"url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+			"state": "scheduled",
+			"source": "Federal Reserve",
+			"note": "美国东部日期，March 16-17*；以官网最新安排为准"
+		},
+		{
+			"id": "fomc-2027-04-28",
+			"title": "FOMC 议息会议",
+			"type": "议息日程",
+			"institution": "美联储",
+			"date": "2027-04-28",
+			"publishedAt": null,
+			"url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+			"state": "scheduled",
+			"source": "Federal Reserve",
+			"note": "美国东部日期，April 27-28；以官网最新安排为准"
+		},
+		{
+			"id": "fomc-2027-06-09",
+			"title": "FOMC 议息会议",
+			"type": "议息日程",
+			"institution": "美联储",
+			"date": "2027-06-09",
+			"publishedAt": null,
+			"url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+			"state": "scheduled",
+			"source": "Federal Reserve",
+			"note": "美国东部日期，June 8-9*；以官网最新安排为准"
+		},
+		{
+			"id": "fomc-2027-07-28",
+			"title": "FOMC 议息会议",
+			"type": "议息日程",
+			"institution": "美联储",
+			"date": "2027-07-28",
+			"publishedAt": null,
+			"url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+			"state": "scheduled",
+			"source": "Federal Reserve",
+			"note": "美国东部日期，July 27-28；以官网最新安排为准"
+		},
+		{
+			"id": "fomc-2027-09-15",
+			"title": "FOMC 议息会议",
+			"type": "议息日程",
+			"institution": "美联储",
+			"date": "2027-09-15",
+			"publishedAt": null,
+			"url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+			"state": "scheduled",
+			"source": "Federal Reserve",
+			"note": "美国东部日期，September 14-15*；以官网最新安排为准"
+		},
+		{
+			"id": "fomc-2027-10-27",
+			"title": "FOMC 议息会议",
+			"type": "议息日程",
+			"institution": "美联储",
+			"date": "2027-10-27",
+			"publishedAt": null,
+			"url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+			"state": "scheduled",
+			"source": "Federal Reserve",
+			"note": "美国东部日期，October 26-27；以官网最新安排为准"
+		},
+		{
+			"id": "fomc-2027-12-08",
+			"title": "FOMC 议息会议",
+			"type": "议息日程",
+			"institution": "美联储",
+			"date": "2027-12-08",
+			"publishedAt": null,
+			"url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+			"state": "scheduled",
+			"source": "Federal Reserve",
+			"note": "美国东部日期，December 7-8*；以官网最新安排为准"
+		}
+	],
+	"status": [
+		{
+			"id": "dongrui",
+			"state": "ok",
+			"checkedAt": "2026-09-19T09:15:10+00:00",
+			"lastSuccessAt": "2026-09-19T09:15:10+00:00",
+			"count": 51,
+			"message": "更新成功"
+		},
+		{
+			"id": "fed_rss",
+			"state": "ok",
+			"checkedAt": "2026-09-19T09:15:10+00:00",
+			"lastSuccessAt": "2026-09-19T09:15:10+00:00",
+			"count": 15,
+			"message": "更新成功"
+		},
+		{
+			"id": "fomc",
+			"state": "ok",
+			"checkedAt": "2026-09-19T09:15:10+00:00",
+			"lastSuccessAt": "2026-09-19T09:15:10+00:00",
+			"count": 10,
+			"message": "更新成功"
+		},
+		{
+			"id": "moa_weekly",
+			"state": "ok",
+			"checkedAt": "2026-09-19T09:15:11+00:00",
+			"lastSuccessAt": "2026-09-19T09:15:11+00:00",
+			"count": 60,
+			"message": "更新成功"
+		},
+		{
+			"id": "muyuan",
+			"state": "ok",
+			"checkedAt": "2026-09-19T09:15:10+00:00",
+			"lastSuccessAt": "2026-09-19T09:15:10+00:00",
+			"count": 9,
+			"message": "更新成功"
+		}
+	]
+}

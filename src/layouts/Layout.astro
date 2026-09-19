@@ -12,6 +12,7 @@ const BANNER_HEIGHT_HOME = BANNER_HEIGHT + BANNER_HEIGHT_EXTEND;
 import { PAGE_WIDTH } from "../constants/constants";
 import { pathsEqual, url } from "../utils/url-utils";
 import "../styles/main.css";
+import "../styles/global.css";
 import "../styles/mobile-navbar.css";
 import "../styles/wallpaper-navbar-transparent.css";
 import "../styles/fancybox-custom.css";
@@ -148,10 +149,9 @@ const bannerOffset =
 	data-post-list-layout-enabled={siteConfig.postListLayout?.enable ? "true" : "false"}
 >
 	<head>
-		<link rel="stylesheet" href="/src/styles/global.css" />
 		<meta charset="UTF-8" />
 		<Font cssVariable="--font-body" preload />
-		<Font cssVariable="--font-cjk" preload />
+		<Font cssVariable="--font-cjk" />
 		<Font cssVariable="--font-jetbrains-mono" />
 
 		<script is:inline>

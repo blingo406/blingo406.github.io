@@ -77,245 +77,90 @@ const positionClass = (() => {
 			return "object-center";
 	}
 })();
-
-const renderGroups = [
-	{
-		key: "desktop",
-		images: imageSources.desktop,
-		containerClass: "hidden md:block",
-		hasImages: hasDesktopImages,
-	},
-	{
-		key: "mobile",
-		images: imageSources.mobile,
-		containerClass: "block md:hidden",
-		hasImages: hasMobileImages,
-	},
-];
 ---
-
-<div 
-	class:list={[
-		"fixed inset-0 w-full h-full overflow-hidden pointer-events-none wallpaper-container",
-		className
-	]}
-	style={`z-index: ${zIndex}; transform: translateZ(0); perspective: 1000px; opacity: var(--wallpaper-opacity, ${opacity}); filter: blur(var(--wallpaper-blur, ${blurAmount}px));`}
-	data-fullscreen-wallpaper
+<div
+  class:list={["fixed inset-0 w-full h-full overflow-hidden pointer-events-none wallpaper-container", className]}
+  style={`display: none; z-index: ${zIndex}; opacity: var(--wallpaper-opacity, ${opacity}); filter: blur(var(--wallpaper-blur, ${blurAmount}px));`}
+  data-fullscreen-wallpaper
+  data-desktop={JSON.stringify(imageSources.desktop)}
+  data-mobile={JSON.stringify(imageSources.mobile)}
+  data-carousel={isCarouselEnabled ? "true" : "false"}
+  data-interval={carouselInterval}
+  data-default-mode={siteConfig.wallpaperMode.defaultMode}
+  data-switches={JSON.stringify(config.overlay?.switchable ?? true)}
 >
-	<script is:inline define:vars={{ wallpaperEnabled: config.enable ?? true, overlaySwitchable: config.overlay?.switchable ?? true }}>
-	(function() {
-		const root = document.documentElement;
-		const wallpaperEnabledVal = wallpaperEnabled;
-		const mode = wallpaperEnabledVal ? (localStorage.getItem('wallpaperMode') || 'banner') : 'banner';
-
-		if (mode === 'overlay') {
-			const isSw = typeof overlaySwitchable === 'object' ? overlaySwitchable : { opacity: !!overlaySwitchable, blur: !!overlaySwitchable, cardOpacity: !!overlaySwitchable };
-			const overlayOpacity = isSw.opacity ? localStorage.getItem('overlayOpacity') : null;
-			const overlayBlur = isSw.blur ? localStorage.getItem('overlayBlur') : null;
-			const overlayCardOpacity = isSw.cardOpacity ? localStorage.getItem('overlayCardOpacity') : null;
-
-			if (overlayOpacity) {
-				document.currentScript.parentElement.style.setProperty('--wallpaper-opacity', overlayOpacity);
-			}
-			if (overlayBlur) {
-				document.currentScript.parentElement.style.setProperty('--wallpaper-blur', overlayBlur + 'px');
-			}
-			if (overlayCardOpacity) {
-				root.style.setProperty('--card-transparent-opacity', overlayCardOpacity);
-			}
-		}
-
-		if (mode !== 'overlay') {
-			root.style.removeProperty('--card-transparent-opacity');
-			document.currentScript.parentElement.style.display = 'none';
-		}
-	})();
-	</script>
-
-	{isCarouselEnabled ? (
-			renderGroups.map(group => group.hasImages && (
-				<div class={`${group.containerClass} w-full h-full relative`} style="transform: translateZ(0);">
-					{group.images.map((src, index) => (
-						<img
-							src={src}
-							alt={`${group.key} wallpaper ${index + 1}`}
-							class={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${positionClass}`}
-							data-carousel-item={index}
-							style={`transform: translateZ(0); backface-visibility: hidden; will-change: opacity; opacity: ${index === 0 ? 1 : 0};`}
-							decoding="async"
-							loading={index === 0 ? "eager" : "lazy"}
-							fetchpriority={index === 0 ? "high" : undefined}
-					/>
-				))}
-			</div>
-		))
-	) : (
-		<div id="wallpaper-single-container" class="w-full h-full relative"></div>
-	)}
+  <img alt="" class={`absolute inset-0 w-full h-full object-cover ${positionClass}`} decoding="async" data-wallpaper-image />
 </div>
-
-<script is:inline define:vars={{ desktopImages: imageSources.desktop, mobileImages: imageSources.mobile, positionClass }}>
-	(function() {
-		const container = document.getElementById('wallpaper-single-container');
-		if (!container) return;
-
-		const getRandomImage = (images, storageKey) => {
-			if (images.length === 0) {return null;}
-			if (images.length === 1) {return images[0];}
-			
-			const lastIndex = sessionStorage.getItem(storageKey);
-			let newIndex;
-			
-			do {
-				newIndex = Math.floor(Math.random() * images.length);
-			} while (newIndex === parseInt(lastIndex || '-1'));
-			
-			sessionStorage.setItem(storageKey, newIndex.toString());
-			return images[newIndex];
-		};
-		
-		const desktopSrc = getRandomImage(desktopImages, 'wallpaper_desktop_index');
-		const mobileSrc = getRandomImage(mobileImages, 'wallpaper_mobile_index');
-		
-		if (desktopSrc) {
-			const desktopDiv = document.createElement('div');
-			desktopDiv.className = 'hidden lg:block w-full h-full relative';
-			desktopDiv.style.transform = 'translateZ(0)';
-			desktopDiv.innerHTML = `
-				<img
-					src="${desktopSrc}"
-					alt="desktop wallpaper"
-					class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${positionClass}"
-					style="transform: translateZ(0); backface-visibility: hidden; will-change: opacity; opacity: 1;"
-					decoding="async"
-					loading="eager"
-					fetchpriority="high"
-				/>
-			`;
-			container.appendChild(desktopDiv);
-		}
-		
-		if (mobileSrc) {
-			const mobileDiv = document.createElement('div');
-			mobileDiv.className = 'block lg:hidden w-full h-full relative';
-			mobileDiv.style.transform = 'translateZ(0)';
-			mobileDiv.innerHTML = `
-				<img
-					src="${mobileSrc}"
-					alt="mobile wallpaper"
-					class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${positionClass}"
-					style="transform: translateZ(0); backface-visibility: hidden; will-change: opacity; opacity: 1;"
-					decoding="async"
-					loading="eager"
-					fetchpriority="high"
-				/>
-			`;
-			container.appendChild(mobileDiv);
-		}
-	})();
-</script>
-
-<script is:inline define:vars={{ carouselInterval }}>
-	function initFullscreenWallpaperCarousel() {
-		const container = document.querySelector('[data-fullscreen-wallpaper]');
-		if (!container) {return;}
-
-		if (window.__wallpaper_cleanup) {
-			window.__wallpaper_cleanup();
-			window.__wallpaper_cleanup = null;
-		}
-
-		const STORAGE_KEY = 'mizuki_wallpaper_index';
-		const savedIndex = parseInt(sessionStorage.getItem(STORAGE_KEY) || '0');
-
-		const groups = [
-			container.querySelectorAll('.hidden.md\\:block [data-carousel-item]'),
-			container.querySelectorAll('.block.md\\:hidden [data-carousel-item]')
-		];
-
-		const state = groups.map(items => {
-			const safeIndex = (savedIndex >= 0 && savedIndex < items.length) ? savedIndex : 0;
-			return {
-				items,
-				currentIndex: safeIndex,
-				timer: null,
-				active: items.length > 1
-			};
-		});
-
-		// 初始化显示：根据 savedIndex 立即修正图片显示
-		function initImage(stateItem) {
-			const { items, currentIndex } = stateItem;
-			// 立即设置样式，防止视觉上跳回第一张
-			for (let i = 0; i < items.length; i++) {
-				items[i].style.opacity = i === currentIndex ? '1' : '0';
-			}
-		}
-
-		// 切换下一张
-		function switchNextImage(stateItem) {
-			const { items, currentIndex } = stateItem;
-			const nextIndex = (currentIndex + 1) % items.length;
-			
-			items[currentIndex].style.opacity = '0';
-			items[nextIndex].style.opacity = '1';
-			
-			stateItem.currentIndex = nextIndex;
-
-			sessionStorage.setItem(STORAGE_KEY, nextIndex.toString());
-		}
-
-		function start() {
-			state.forEach(s => {
-				if (s.active && !s.timer) {
-					s.timer = setInterval(() => {
-						if (!document.body.contains(s.items[0])) {
-							stop();
-							return;
-						}
-						switchNextImage(s);
-					}, carouselInterval * 1000);
-				}
-			});
-		}
-
-		function stop() {
-			state.forEach(s => {
-				if (s.timer) {
-					clearInterval(s.timer);
-					s.timer = null;
-				}
-			});
-		}
-
-		const handleVisibilityChange = () => {
-			if (document.hidden) {
-				stop();
-			} else {
-				const exists = state.some(s => s.items.length > 0 && document.body.contains(s.items[0]));
-				if (exists) {start();}
-			}
-		};
-
-		// 初始化状态
-		state.forEach(s => {
-			if (s.items.length > 0) {initImage(s);}
-		});
-
-		start();
-
-		document.addEventListener('visibilitychange', handleVisibilityChange);
-
-		window.__wallpaper_cleanup = () => {
-			stop();
-			document.removeEventListener('visibilitychange', handleVisibilityChange);
-		};
-	}
-
-	// 页面加载完成后初始化轮播
-	if (document.readyState === 'loading') {
-		document.addEventListener('DOMContentLoaded', initFullscreenWallpaperCarousel);
-	} else {
-		initFullscreenWallpaperCarousel();
-	}
+<script is:inline>
+(() => {
+  window.__wallpaper_cleanup?.();
+  const container = document.querySelector('[data-fullscreen-wallpaper]');
+  if (!container) return;
+  const image = container.querySelector('[data-wallpaper-image]');
+  const media = matchMedia('(min-width: 768px)');
+  const desktop = JSON.parse(container.dataset.desktop);
+  const mobile = JSON.parse(container.dataset.mobile);
+  let timer = null;
+  let index = 0;
+  let disposed = false;
+  let pending = null;
+  try { index = Math.max(0, Number(sessionStorage.getItem('mizuki_wallpaper_index')) || 0); } catch {}
+  function mode() {
+    try { return localStorage.getItem('wallpaperMode') || container.dataset.defaultMode; }
+    catch { return container.dataset.defaultMode; }
+  }
+  function images() { return media.matches ? desktop : mobile; }
+  function show() {
+    const list = images();
+    if (!list.length || mode() !== 'overlay' || document.hidden) return;
+    const source = list[index % list.length];
+    if (image.getAttribute('src') === source || pending === source) return;
+    pending = source;
+    const next = new Image();
+    next.onload = () => {
+      if (!disposed && mode() === 'overlay' && images()[index % images().length] === source) image.src = source;
+      if (pending === source) pending = null;
+    };
+    next.onerror = () => { if (pending === source) pending = null; };
+    next.src = source;
+  }
+  function stop() { if (timer) clearInterval(timer); timer = null; }
+  function update() {
+    stop();
+    const active = mode() === 'overlay';
+    container.style.display = active ? '' : 'none';
+    if (!active || document.hidden) return;
+    // Restore saved overlay controls before the settings component hydrates.
+    try {
+      const value = JSON.parse(container.dataset.switches);
+      const switches = typeof value === 'object' ? value : { opacity: value, blur: value, cardOpacity: value };
+      for (const [key, property, suffix] of [['opacity', '--wallpaper-opacity', ''], ['blur', '--wallpaper-blur', 'px']]) {
+        const saved = localStorage.getItem(key === 'opacity' ? 'overlayOpacity' : 'overlayBlur');
+        if (switches[key] && saved !== null) container.style.setProperty(property, saved + suffix);
+      }
+      const card = localStorage.getItem('overlayCardOpacity');
+      if (switches.cardOpacity && card !== null) document.documentElement.style.setProperty('--card-transparent-opacity', card);
+    } catch {}
+    show();
+    if (container.dataset.carousel === 'true' && images().length > 1 && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      timer = setInterval(() => {
+        if (!container.isConnected) { window.__wallpaper_cleanup?.(); return; }
+        index = (index + 1) % images().length;
+        try { sessionStorage.setItem('mizuki_wallpaper_index', String(index)); } catch {}
+        show();
+      }, Number(container.dataset.interval) * 1000);
+    }
+  }
+  media.addEventListener('change', update);
+  window.addEventListener('wallpaper-mode-change', update);
+  document.addEventListener('visibilitychange', update);
+  window.__wallpaper_cleanup = () => {
+    disposed = true;
+    stop();
+    media.removeEventListener('change', update);
+    window.removeEventListener('wallpaper-mode-change', update);
+    document.removeEventListener('visibilitychange', update);
+  };
+  update();
+})();
 </script>

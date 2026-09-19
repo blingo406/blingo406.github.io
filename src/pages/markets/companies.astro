@@ -1,0 +1,41 @@
+---
+import MarketLayout from "../../layouts/MarketLayout.astro";
+import { snapshot, statusFor } from "../../lib/markets";
+
+const reports = [...snapshot.reports].sort(
+	(a, b) =>
+		b.date.localeCompare(a.date) ||
+		Number(a.origin === "mirror") - Number(b.origin === "mirror"),
+);
+const companies = [
+	{
+		code: "002714",
+		name: "牧原股份",
+		url: "https://www.cninfo.com.cn/new/disclosure/stock?stockCode=002714",
+	},
+	{
+		code: "001201",
+		name: "东瑞股份",
+		url: "https://www.dongruifoods.com/investor/27",
+	},
+];
+---
+<MarketLayout title="公司财报" active="companies" description="牧原与东瑞的定期报告、月度销售简报和投资者交流。点击标题阅读原始公告。">
+  <div class="two-column">{companies.map((company) => {
+    const latest = reports.find((r) => r.company === company.code && r.type === "定期报告");
+    return <section class="panel"><div class="panel-top"><h2>{company.name} <span class="muted">{company.code}</span></h2><a class="text-link" href={company.url} target="_blank" rel="noopener noreferrer">官方披露入口 ↗</a></div><p class="muted">已收录的最新定期报告</p>{latest ? <p><a class="text-link" href={latest.url} target="_blank" rel="noopener noreferrer">{latest.title} ↗</a></p> : <p>暂无记录</p>}<p class="source-line">{latest?.date} · {latest?.source}</p></section>;
+  })}</div>
+  {["muyuan", "dongrui"].filter((id) => statusFor(id)?.state !== "ok").map((id) => <p class="notice">{id === "muyuan" ? "牧原" : "东瑞"}：{statusFor(id)?.message}</p>)}
+  <section class="panel" data-filter-group>
+    <div class="panel-top"><h2>公告档案</h2><p>收录范围以来源可见列表为准，未覆盖全部历史</p></div>
+    <div class="controls reports-toolbar" data-filter-controls hidden>
+      <input class="search-input" type="search" placeholder="搜索标题或年份…" aria-label="搜索公告" data-search />
+      <select aria-label="筛选公司" data-filter="company"><option value="">全部公司</option>{companies.map((c) => <option value={c.code}>{c.name}</option>)}</select>
+      <select aria-label="筛选公告类型" data-filter="kind"><option value="">全部类型</option>{["定期报告", "销售简报", "投资者关系"].map((kind) => <option>{kind}</option>)}</select><span class="result-count" data-result-count aria-live="polite"></span>
+    </div>
+    <div class="table-wrap"><table><thead><tr><th>发布日期</th><th>公司</th><th>公告</th><th>类别 / 来源</th></tr></thead><tbody>{reports.map((report) => <tr data-filter-item data-company={report.company} data-kind={report.type}><td class="date-cell">{report.date}</td><td>{report.companyName}</td><td class="report-title"><a href={report.url} target="_blank" rel="noopener noreferrer">{report.title} ↗</a></td><td><span class="badge">{report.type}</span><p class="source-line">{report.source}{report.origin === "mirror" ? "（转载）" : ""}</p></td></tr>)}</tbody></table></div>
+    <p class="empty-state" data-empty hidden>没有匹配的公告，请调整筛选条件。</p>
+  </section>
+  <p class="muted">财报中的报告期与公告发布日期可能不同。转载公告已标注来源，关键数字请以公司或巨潮资讯的正式文件为准。</p>
+</MarketLayout>
+<script>import "../../lib/market-filters";</script>

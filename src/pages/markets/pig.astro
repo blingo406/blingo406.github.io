@@ -1,0 +1,21 @@
+---
+import PriceChart from "../../components/markets/PriceChart.astro";
+import MarketLayout from "../../layouts/MarketLayout.astro";
+import { delta, metrics, series, sources, statusFor } from "../../lib/markets";
+
+const status = statusFor("moa_weekly");
+const extras = sources.filter(
+	(s) => s.section === "pig" && s.id !== "moa_weekly_prices",
+);
+---
+<MarketLayout title="猪产业链" active="pig" description="从猪价到饲料成本，持续观察周期变化。价格图采用农业农村部全国周度口径。">
+  {status?.state !== "ok" && <p class="notice">价格来源：{status?.message || "尚未接入"}</p>}
+  <div class="metric-grid">{["hog", "piglet", "corn", "soymeal"].map((key) => {
+    const rows = series(key), last = rows.at(-1);
+    return <article class="metric"><h2 class="metric-label">{metrics[key].name}</h2><p class="metric-value">{last?.value.toFixed(2) || "—"}<small>{metrics[key].unit}</small></p><p class="metric-change">{delta(rows)}</p><p class="metric-date">采集 {last?.date || "—"} · 周度</p></article>;
+  })}</div>
+  <div class="chart-grid"><PriceChart id="hog-chart" title="养殖端价格" metricIds={["hog", "piglet", "pork"]} /><PriceChart id="feed-chart" title="饲料与成本" metricIds={["corn", "soymeal", "feed"]} /></div>
+  <p class="notice">这里展示全国周度调查价格。各地区每日现货报价、外三元旬度价格和期货价格口径不同，请通过下方对应来源查看。</p>
+  <div class="section-intro"><h2>沿产业链继续查</h2><a class="text-link" href="/markets/sources/">全部来源 →</a></div>
+  <div class="source-grid">{extras.map((source) => <article class="source-card"><span class="badge pending">来源入口</span><h3><a href={source.url} target="_blank" rel="noopener noreferrer">{source.name} ↗</a></h3><p>{source.coverage.join(" · ")}</p><div class="source-meta"><span>{source.provider}</span><span>{source.frequency}</span></div></article>)}</div>
+</MarketLayout>

@@ -113,6 +113,8 @@ class MusicPlayerStore {
 		}
 
 		this.audio = new Audio();
+		// Keep the player available without downloading an audio track on page load.
+		this.audio.preload = "none";
 		this.setupAudioListeners();
 		this.loadVolumeFromStorage();
 		this.registerInteractionHandler();
@@ -157,7 +159,7 @@ class MusicPlayerStore {
 		});
 
 		this.audio.addEventListener("loadstart", () => {
-			this.state.isLoading = true;
+			this.state.isLoading = this.state.willAutoPlay || this.state.isPlaying;
 			this.broadcastState();
 		});
 	}
@@ -353,19 +355,15 @@ class MusicPlayerStore {
 		}
 		if (song.url !== this.state.currentSong.url) {
 			this.state.currentSong = { ...song };
-			if (song.url) {
-				this.state.isLoading = true;
-			} else {
-				this.state.isLoading = false;
-			}
+			this.state.isLoading = autoPlay;
 		}
 		this.state.willAutoPlay = autoPlay;
 		if (this.audio) {
-			if (this.audio.src && song.url) {
-				this.audio.src = "";
-			}
+			// Selecting a song for display needs no media bytes. Autoplaying a
+			// newly selected song must still fetch data to trigger loadeddata.
+			this.audio.preload = autoPlay ? "auto" : "none";
 			this.audio.src = getAssetPath(song.url);
-			this.audio.load();
+			if (autoPlay) this.audio.load();
 		}
 		this.broadcastState();
 	}

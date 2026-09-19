@@ -1,0 +1,290 @@
+[
+	{
+		"id": "moa_weekly_prices",
+		"name": "农业农村部畜产品与饲料周报",
+		"provider": "农业农村部畜牧兽医局",
+		"url": "https://xmsyj.moa.gov.cn/jcyj/index.htm",
+		"section": "pig",
+		"coverage": [
+			"生猪价格",
+			"仔猪价格",
+			"猪肉价格",
+			"玉米",
+			"豆粕",
+			"育肥猪配合饲料"
+		],
+		"frequency": "周度",
+		"collector": "moa_weekly",
+		"access": "原始来源入口"
+	},
+	{
+		"id": "moa_pig_statistics",
+		"name": "农业农村部生猪专题",
+		"provider": "农业农村部",
+		"url": "https://www.moa.gov.cn/ztzl/szcpxx/",
+		"section": "pig",
+		"coverage": ["产能", "生猪产品统计", "屠宰", "进出口相关汇总"],
+		"frequency": "依具体指标发布",
+		"collector": null,
+		"access": "原始来源入口"
+	},
+	{
+		"id": "nbs_production_prices",
+		"name": "国家统计局流通领域生产资料价格",
+		"provider": "国家统计局",
+		"url": "https://www.stats.gov.cn/sj/zxfb/",
+		"section": "pig",
+		"coverage": ["生猪外三元", "玉米", "豆粕"],
+		"frequency": "旬度",
+		"collector": null,
+		"access": "原始来源入口"
+	},
+	{
+		"id": "nbs_livestock_supply",
+		"name": "国家统计局畜牧业供给统计",
+		"provider": "国家统计局",
+		"url": "https://www.stats.gov.cn/sj/",
+		"section": "pig",
+		"coverage": ["生猪存栏", "出栏", "猪肉产量"],
+		"frequency": "依具体指标发布",
+		"collector": null,
+		"access": "原始来源入口"
+	},
+	{
+		"id": "ndrc_prices",
+		"name": "发改委价格监测农产品",
+		"provider": "国家发展改革委价格监测中心",
+		"url": "https://jgjc.ndrc.gov.cn/ncp/index.jhtml",
+		"section": "pig",
+		"coverage": ["生猪出场价格", "玉米批发价格", "猪粮比"],
+		"frequency": "依具体指标发布",
+		"collector": null,
+		"access": "原始来源入口"
+	},
+	{
+		"id": "zhuwang_daily",
+		"name": "中国养猪网／玄田数据",
+		"provider": "中国养猪网／玄田数据",
+		"url": "https://zhujia.zhuwang.com.cn",
+		"section": "pig",
+		"coverage": ["日度外三元现货猪价", "其他猪价与成本数据"],
+		"frequency": "日度",
+		"collector": null,
+		"access": "商业数据入口"
+	},
+	{
+		"id": "soozhu",
+		"name": "搜猪生猪大数据",
+		"provider": "搜猪网",
+		"url": "https://www.soozhu.com/price/data/center/",
+		"section": "pig",
+		"coverage": ["省级现货猪价", "历史猪价", "仔猪", "饲料"],
+		"frequency": "依具体指标发布",
+		"collector": null,
+		"access": "商业数据入口"
+	},
+	{
+		"id": "dce",
+		"name": "大连商品交易所",
+		"provider": "大连商品交易所",
+		"url": "https://www.dce.com.cn/",
+		"section": "pig",
+		"coverage": ["生猪期货", "玉米期货", "豆粕期货", "具体合约日行情"],
+		"frequency": "交易日",
+		"collector": null,
+		"access": "原始来源入口"
+	},
+	{
+		"id": "cninfo",
+		"name": "巨潮资讯公告与财报",
+		"provider": "巨潮资讯",
+		"url": "https://www.cninfo.com.cn/",
+		"section": "companies",
+		"coverage": [
+			"牧原股份002714",
+			"东瑞股份001201",
+			"定期报告",
+			"销售简报",
+			"投资者关系记录"
+		],
+		"frequency": "公告发布时",
+		"collector": null,
+		"access": "原始来源入口"
+	},
+	{
+		"id": "muyuan",
+		"name": "牧原食品集团官网",
+		"provider": "牧原食品集团",
+		"url": "https://www.muyuanfoods.com/",
+		"section": "companies",
+		"coverage": ["公司披露入口"],
+		"frequency": "公告发布时",
+		"collector": null,
+		"access": "原始来源入口"
+	},
+	{
+		"id": "dongrui_reports",
+		"name": "东瑞定期报告",
+		"provider": "东瑞食品集团",
+		"url": "https://www.dongruifoods.com/investor/27",
+		"section": "companies",
+		"coverage": ["年报", "半年报", "季报"],
+		"frequency": "季度／年度",
+		"collector": "dongrui",
+		"access": "原始来源入口"
+	},
+	{
+		"id": "dongrui_announcements",
+		"name": "东瑞其他公告",
+		"provider": "东瑞食品集团",
+		"url": "https://www.dongruifoods.com/investor/81",
+		"section": "companies",
+		"coverage": ["销售简报及其他公告"],
+		"frequency": "公告发布时",
+		"collector": "dongrui",
+		"access": "原始来源入口"
+	},
+	{
+		"id": "moa_disease",
+		"name": "农业农村部畜牧兽医局",
+		"provider": "农业农村部畜牧兽医局",
+		"url": "https://xmsyj.moa.gov.cn/",
+		"section": "pig",
+		"coverage": ["疫病发布", "畜牧政策", "行业生产动态"],
+		"frequency": "公告发布时",
+		"collector": null,
+		"access": "原始来源入口"
+	},
+	{
+		"id": "customs",
+		"name": "海关总署统计入口",
+		"provider": "海关总署",
+		"url": "http://www.customs.gov.cn/",
+		"section": "pig",
+		"coverage": ["猪肉进口", "饲料原料贸易"],
+		"frequency": "月度",
+		"collector": null,
+		"access": "原始来源入口"
+	},
+	{
+		"id": "sci99",
+		"name": "卓创资讯",
+		"provider": "卓创资讯",
+		"url": "https://www.sci99.com/",
+		"section": "pig",
+		"coverage": ["生猪行业调查与商业数据"],
+		"frequency": "依具体指标发布",
+		"collector": null,
+		"access": "商业数据入口"
+	},
+	{
+		"id": "mysteel",
+		"name": "Mysteel 农产品相关数据",
+		"provider": "Mysteel",
+		"url": "https://www.mysteel.com/",
+		"section": "pig",
+		"coverage": ["生猪", "饲料原料", "产业调查"],
+		"frequency": "依具体指标发布",
+		"collector": null,
+		"access": "商业数据入口"
+	},
+	{
+		"id": "fed_monetary_rss",
+		"name": "美联储货币政策官方 RSS",
+		"provider": "Federal Reserve Board",
+		"url": "https://www.federalreserve.gov/feeds/press_monetary.xml",
+		"section": "macro",
+		"coverage": ["FOMC声明", "货币政策公告", "经济预测相关公告"],
+		"frequency": "公告发布时",
+		"collector": "fed_rss",
+		"access": "原始来源入口"
+	},
+	{
+		"id": "fomc_calendar",
+		"name": "FOMC 会议日历与资料",
+		"provider": "Federal Reserve Board",
+		"url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+		"section": "macro",
+		"coverage": ["会议日程", "声明", "纪要", "经济预测"],
+		"frequency": "日程／公告",
+		"collector": "fomc",
+		"access": "原始来源入口"
+	},
+	{
+		"id": "bls_calendar",
+		"name": "BLS 经济数据发布日历",
+		"provider": "U.S. Bureau of Labor Statistics",
+		"url": "https://www.bls.gov/schedule/",
+		"section": "macro",
+		"coverage": ["CPI", "PPI", "非农就业"],
+		"frequency": "月度日历",
+		"collector": null,
+		"access": "原始来源入口"
+	},
+	{
+		"id": "bea_calendar",
+		"name": "BEA 经济数据发布日历",
+		"provider": "U.S. Bureau of Economic Analysis",
+		"url": "https://www.bea.gov/news/schedule",
+		"section": "macro",
+		"coverage": ["PCE", "GDP"],
+		"frequency": "月度／季度",
+		"collector": null,
+		"access": "原始来源入口"
+	},
+	{
+		"id": "ecb",
+		"name": "欧洲央行官方订阅",
+		"provider": "European Central Bank",
+		"url": "https://www.ecb.europa.eu/home/html/rss.en.html",
+		"section": "macro",
+		"coverage": ["货币政策", "新闻发布"],
+		"frequency": "公告发布时",
+		"collector": null,
+		"access": "原始来源入口"
+	},
+	{
+		"id": "boj",
+		"name": "日本央行货币政策会议",
+		"provider": "Bank of Japan",
+		"url": "https://www.boj.or.jp/en/mopo/mpmsche_minu/index.htm",
+		"section": "macro",
+		"coverage": ["议息日程", "政策决定", "纪要"],
+		"frequency": "日程／公告",
+		"collector": null,
+		"access": "原始来源入口"
+	},
+	{
+		"id": "fred",
+		"name": "FRED 宏观时间序列",
+		"provider": "Federal Reserve Bank of St. Louis",
+		"url": "https://fred.stlouisfed.org/docs/api/fred/",
+		"section": "macro",
+		"coverage": ["政策利率", "美债收益率", "汇率等"],
+		"frequency": "依具体指标发布",
+		"collector": null,
+		"access": "原始来源入口"
+	},
+	{
+		"id": "usda_wasde",
+		"name": "USDA WASDE",
+		"provider": "U.S. Department of Agriculture",
+		"url": "https://www.usda.gov/oce/commodity/wasde",
+		"section": "macro",
+		"coverage": ["玉米供需", "大豆供需", "国际农业供需事件"],
+		"frequency": "月度",
+		"collector": null,
+		"access": "原始来源入口"
+	},
+	{
+		"id": "muyuan_sina_mirror",
+		"name": "牧原股份公告（新浪转载）",
+		"provider": "新浪财经",
+		"url": "https://vip.stock.finance.sina.com.cn/corp/go.php/vCB_AllBulletin/stockid/002714.phtml",
+		"section": "companies",
+		"coverage": ["定期报告", "销售简报", "公告标题与原文链接"],
+		"frequency": "按公告发布",
+		"collector": "muyuan",
+		"access": "公告转载入口"
+	}
+]

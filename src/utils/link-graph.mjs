@@ -252,11 +252,13 @@ export function resolveWikiLink(target) {
 	return { href, slug, title: titleIndex[slug] };
 }
 
+/** @returns {Array<{ slug: string, title: string }>} */
 export function getBacklinks(slug) {
 	const { backlinks } = getLinkGraph();
 	return backlinks[canonicalSlug(slug)] || [];
 }
 
+/** @returns {Array<{ slug: string, title: string }>} */
 export function getOutlinks(slug) {
 	const { outlinks } = getLinkGraph();
 	return outlinks[canonicalSlug(slug)] || [];

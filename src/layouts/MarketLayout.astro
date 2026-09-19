@@ -1,0 +1,60 @@
+---
+import { siteConfig } from "../config/siteConfig";
+import { dateTime, snapshot } from "../lib/markets";
+import "../styles/markets.css";
+
+interface Props {
+	title: string;
+	active: string;
+	description: string;
+}
+const { title, active, description } = Astro.props;
+const tabs = [
+	["pig", "猪产业链"],
+	["companies", "公司财报"],
+	["macro", "国际金融"],
+	["sources", "数据源"],
+];
+---
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content={description} />
+		<meta name="theme-color" content="#f5f7f8" />
+		<title>{title} · 数据观察 · {siteConfig.title}</title>
+		<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+		<script is:inline>
+			try { if (localStorage.getItem("theme") === "dark") document.documentElement.classList.add("dark"); } catch {}
+		</script>
+	</head>
+	<body class="market-app" data-no-swup>
+		<a class="skip-link" href="#market-content">跳到内容</a>
+		<header class="market-header">
+			<div class="brand-row"><a href="/" class="brand" data-no-swup><img src="/assets/optimized/nav-icon.webp" width="32" height="32" alt="" />{siteConfig.title}</a><span class="brand-divider">/</span><span>数据观察</span></div>
+			<div class="header-actions"><a href="/" data-no-swup>返回博客 ↗</a><button type="button" id="market-theme" aria-label="切换明暗主题">明 / 暗</button></div>
+		</header>
+		<div class="market-shell">
+			<nav class="market-tabs" aria-label="数据栏目">
+				{tabs.map(([id, name]) => <a href={`/markets/${id}/`} aria-current={active === id ? "page" : undefined}>{name}</a>)}
+			</nav>
+			<main id="market-content">
+				<div class="page-heading"><div><h1>{title}</h1><p>{description}</p></div><div class="snapshot-stamp">最近检查 · 北京时间<time datetime={snapshot.generatedAt}>{dateTime(snapshot.generatedAt)}</time><span data-snapshot-time={snapshot.generatedAt}></span></div></div>
+				<slot />
+			</main>
+			<footer class="market-footer"><span>公开资料汇集 · 每项数据均可追溯原始发布</span><a href="/markets/sources/">查看来源与更新状态 →</a></footer>
+		</div>
+		<script>
+			document.getElementById("market-theme")?.addEventListener("click", () => {
+				const dark = document.documentElement.classList.toggle("dark");
+				try { localStorage.setItem("theme", dark ? "dark" : "light"); } catch {}
+				window.dispatchEvent(new Event("market-theme-change"));
+			});
+			for (const element of document.querySelectorAll<HTMLElement>("[data-snapshot-time]")) {
+				const age = Date.now() - Date.parse(element.dataset.snapshotTime || "");
+				if (age > 24 * 60 * 60 * 1000) { element.textContent = "快照已超过 24 小时，请核对原始来源"; element.className = "stale"; }
+			}
+		</script>
+	</body>
+</html>

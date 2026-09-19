@@ -89,7 +89,8 @@ const processedLinks: ProcessedNavBarLink[] = (
 									}
 									class="group flex justify-between items-center py-2 pl-6 pr-1 rounded-lg gap-4
                                    hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition"
-									target={child.external ? "_blank" : null}
+									data-no-swup={child.url.startsWith("/markets/") || undefined}
+ target={child.external ? "_blank" : null}
 								>
 									<div class="flex items-center transition text-black/60 dark:text-white/60 font-medium">
 										{child.icon && (
@@ -116,7 +117,8 @@ const processedLinks: ProcessedNavBarLink[] = (
 						class="group flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-4
                     hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition
                 "
-						target={link.external ? "_blank" : null}
+						data-no-swup={link.url.startsWith("/markets/") || undefined}
+ target={link.external ? "_blank" : null}
 					>
 						<div class="flex items-center transition text-black/75 dark:text-white/75 font-bold">
 							{link.icon && (
