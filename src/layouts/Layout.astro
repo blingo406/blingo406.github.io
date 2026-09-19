@@ -11,6 +11,8 @@ const BANNER_HEIGHT_HOME = BANNER_HEIGHT + BANNER_HEIGHT_EXTEND;
 
 import { PAGE_WIDTH } from "../constants/constants";
 import { pathsEqual, url } from "../utils/url-utils";
+// Load theme tokens explicitly; image discovery must not supply global styles.
+import "../styles/variables.styl";
 import "../styles/main.css";
 import "../styles/global.css";
 import "../styles/mobile-navbar.css";
