@@ -1,6 +1,6 @@
 {
 	"schemaVersion": 1,
-	"generatedAt": "2026-09-20T04:54:54+00:00",
+	"generatedAt": "2026-09-20T11:25:38+00:00",
 	"observations": [
 		{
 			"series": "hog",
@@ -3394,40 +3394,40 @@
 		{
 			"id": "dongrui",
 			"state": "ok",
-			"checkedAt": "2026-09-20T04:54:57+00:00",
-			"lastSuccessAt": "2026-09-20T04:54:57+00:00",
+			"checkedAt": "2026-09-20T11:25:41+00:00",
+			"lastSuccessAt": "2026-09-20T11:25:41+00:00",
 			"count": 51,
 			"message": "更新成功"
 		},
 		{
 			"id": "fed_rss",
 			"state": "ok",
-			"checkedAt": "2026-09-20T04:54:54+00:00",
-			"lastSuccessAt": "2026-09-20T04:54:54+00:00",
+			"checkedAt": "2026-09-20T11:25:38+00:00",
+			"lastSuccessAt": "2026-09-20T11:25:38+00:00",
 			"count": 15,
 			"message": "更新成功"
 		},
 		{
 			"id": "fomc",
 			"state": "ok",
-			"checkedAt": "2026-09-20T04:54:54+00:00",
-			"lastSuccessAt": "2026-09-20T04:54:54+00:00",
+			"checkedAt": "2026-09-20T11:25:38+00:00",
+			"lastSuccessAt": "2026-09-20T11:25:38+00:00",
 			"count": 10,
 			"message": "更新成功"
 		},
 		{
 			"id": "moa_weekly",
-			"state": "ok",
-			"checkedAt": "2026-09-20T04:54:58+00:00",
+			"state": "error",
+			"checkedAt": "2026-09-20T11:25:40+00:00",
 			"lastSuccessAt": "2026-09-20T04:54:58+00:00",
-			"count": 60,
-			"message": "更新成功"
+			"count": 0,
+			"message": "来源暂不可用，保留上次有效数据；可直接访问原始网站"
 		},
 		{
 			"id": "muyuan",
 			"state": "ok",
-			"checkedAt": "2026-09-20T04:55:00+00:00",
-			"lastSuccessAt": "2026-09-20T04:55:00+00:00",
+			"checkedAt": "2026-09-20T11:25:42+00:00",
+			"lastSuccessAt": "2026-09-20T11:25:42+00:00",
 			"count": 9,
 			"message": "更新成功"
 		}
