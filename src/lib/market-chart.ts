@@ -1,17 +1,45 @@
 import { LineChart } from "echarts/charts";
-import { GridComponent, TooltipComponent } from "echarts/components";
+import {
+	DataZoomComponent,
+	GridComponent,
+	TooltipComponent,
+} from "echarts/components";
 import { init, use } from "echarts/core";
 import { CanvasRenderer } from "echarts/renderers";
 import type { Observation } from "./markets";
 
-use([LineChart, GridComponent, TooltipComponent, CanvasRenderer]);
+use([
+	LineChart,
+	DataZoomComponent,
+	GridComponent,
+	TooltipComponent,
+	CanvasRenderer,
+]);
+let observations: Promise<Observation[]> | undefined;
 
-export function mountChart(root: HTMLElement) {
-	const data: Record<string, Observation[]> = JSON.parse(
-		root.dataset.datasets || "{}",
-	);
-	const labels: Record<string, { name: string; color: string }> = JSON.parse(
-		root.dataset.metrics || "{}",
+export async function mountChart(root: HTMLElement) {
+	const labels: Record<
+		string,
+		{
+			name: string;
+			color: string;
+			gapDays?: number;
+			source?: string;
+			sourceUrl?: string;
+		}
+	> = JSON.parse(root.dataset.metrics || "{}");
+	observations ??= fetch("/markets/prices.json").then((response) => {
+		if (!response.ok) throw new Error("Price data unavailable");
+		return response.json();
+	});
+	const all = await observations;
+	const data = Object.fromEntries(
+		Object.keys(labels).map((key) => [
+			key,
+			all
+				.filter((r) => r.series === key)
+				.sort((a, b) => a.date.localeCompare(b.date)),
+		]),
 	);
 	const canvas = root.querySelector<HTMLElement>(".chart-canvas");
 	const metric = root.querySelector<HTMLSelectElement>("[data-series]");
@@ -37,10 +65,11 @@ export function mountChart(root: HTMLElement) {
 			const previous = points.at(-1);
 			if (
 				previous &&
-				Date.parse(row.date) - Date.parse(previous[0]) > 11 * 86400000
+				Date.parse(row.date) - Date.parse(previous[0]) >
+					(label.gapDays || 11) * 86400000
 			) {
 				points.push([
-					new Date(Date.parse(previous[0]) + 7 * 86400000)
+					new Date(Date.parse(previous[0]) + 86400000)
 						.toISOString()
 						.slice(0, 10),
 					null,
@@ -51,7 +80,16 @@ export function mountChart(root: HTMLElement) {
 		chart.setOption(
 			{
 				animation: !matchMedia("(prefers-reduced-motion: reduce)").matches,
-				grid: { left: 52, right: 22, top: 35, bottom: 36 },
+				grid: { left: 52, right: 22, top: 35, bottom: 66 },
+				dataZoom: [
+					{
+						type: "slider",
+						height: 18,
+						bottom: 5,
+						borderColor: style.getPropertyValue("--m-line"),
+						textStyle: { color: style.getPropertyValue("--m-muted") },
+					},
+				],
 				tooltip: {
 					trigger: "axis",
 					renderMode: "richText",
@@ -64,7 +102,12 @@ export function mountChart(root: HTMLElement) {
 					axisLabel: {
 						color: style.getPropertyValue("--m-muted"),
 						hideOverlap: true,
-						formatter: "{MM}-{dd}",
+						formatter:
+							rows.length > 0 &&
+							Date.parse(rows.at(-1)?.date || "") - Date.parse(rows[0].date) >
+								366 * 86400000
+								? "{yyyy}"
+								: "{MM}-{dd}",
 					},
 					axisLine: {
 						lineStyle: { color: style.getPropertyValue("--m-line") },
@@ -89,8 +132,8 @@ export function mountChart(root: HTMLElement) {
 						type: "line",
 						data: points,
 						connectNulls: false,
-						showSymbol: rows.length < 20,
-						symbolSize: 5,
+						showSymbol: true,
+						symbolSize: rows.length < 20 ? 5 : 3,
 						smooth: false,
 						lineStyle: { width: 2.5, color: label.color },
 						itemStyle: { color: label.color },
@@ -101,6 +144,12 @@ export function mountChart(root: HTMLElement) {
 			true,
 		);
 		const summary = root.querySelector(".chart-summary");
+		const source = root.querySelector("[data-chart-source]");
+		if (source)
+			source.textContent = label.source || "农业农村部 · 全国集贸市场周度价格";
+		const link = root.querySelector<HTMLAnchorElement>("[data-chart-note] a");
+		if (link)
+			link.href = label.sourceUrl || "https://xmsyj.moa.gov.cn/jcyj/index.htm";
 		const last = rows.at(-1);
 		if (summary)
 			summary.textContent = last

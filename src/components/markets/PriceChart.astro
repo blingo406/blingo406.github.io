@@ -11,6 +11,7 @@ const datasets = Object.fromEntries(metricIds.map((key) => [key, series(key)]));
 const rows = datasets[metricIds[0]];
 const first = rows.at(0);
 const last = rows.at(-1);
+const meta = metrics[metricIds[0]];
 const min = Math.min(...rows.map((r) => r.value)) * 0.95;
 const max = Math.max(...rows.map((r) => r.value)) * 1.05;
 const start = Date.parse(first?.date || "2020-01-01");
@@ -19,29 +20,31 @@ let previous = 0;
 const path = rows
 	.map((row, i) => {
 		const time = Date.parse(row.date);
-		const command = !i || time - previous > 11 * 86400000 ? "M" : "L";
+		const command =
+			!i || time - previous > (meta.gapDays || 11) * 86400000 ? "M" : "L";
 		previous = time;
 		return `${command}${(48 + ((time - start) / Math.max(end - start, 1)) * 514).toFixed(1)},${(236 - ((row.value - min) / Math.max(max - min, 0.01)) * 206).toFixed(1)}`;
 	})
 	.join(" ");
 ---
-<section class="panel price-chart" data-datasets={JSON.stringify(datasets)} data-metrics={JSON.stringify(Object.fromEntries(metricIds.map((key) => [key, metrics[key]])))}>
-  <div class="panel-top"><div><h2>{title}</h2><p>农业农村部 · 全国集贸市场周度价格</p></div></div>
+<section class="panel price-chart" data-metrics={JSON.stringify(Object.fromEntries(metricIds.map((key) => [key, metrics[key]])))}>
+  <div class="panel-top"><div><h2>{title}</h2><p data-chart-source>{meta.source || "农业农村部 · 全国集贸市场周度价格"}</p></div></div>
   <div class="chart-controls" data-chart-controls hidden>
     <label><span class="sr-only">价格指标</span><select data-series aria-label={`${title}价格指标`}>{metricIds.map((key) => <option value={key}>{metrics[key].name}</option>)}</select></label>
-    <div class="controls"><select data-range aria-label={`${title}时间范围`}><option value="90">近 3 个月</option><option value="365">近 1 年</option><option value="all" selected>全部历史</option></select><button type="button" data-csv>下载 CSV</button></div>
+    <div class="controls"><select data-range aria-label={`${title}时间范围`}><option value="90">近 3 个月</option><option value="365">近 1 年</option><option value="1826">近 5 年</option><option value="4383">近 12 年</option><option value="all" selected>全部历史（持续累积）</option></select><button type="button" data-csv>下载 CSV</button></div>
   </div>
   <div class="chart-holder">
     <svg class="chart-fallback" viewBox="0 0 600 280" role="img" aria-label={`${metrics[metricIds[0]].name}，${first?.date} 至 ${last?.date}，单位元/公斤；详细数据见下表`}>
       <path d="M48 25V238H562" fill="none" stroke="var(--m-line)" />
       <path d={path} fill="none" stroke={metrics[metricIds[0]].color} stroke-width="2.5" />
+      {rows.filter((row, i) => (!i || Date.parse(row.date) - Date.parse(rows[i-1].date) > (meta.gapDays || 11)*86400000) && (i === rows.length-1 || Date.parse(rows[i+1].date) - Date.parse(row.date) > (meta.gapDays || 11)*86400000)).map((row) => <circle cx={48 + ((Date.parse(row.date) - start) / Math.max(end - start, 1)) * 514} cy={236 - ((row.value - min) / Math.max(max - min, 0.01)) * 206} r="3" fill={meta.color} />)}
       <g fill="var(--m-muted)" font-size="12"><text x="4" y="32">{max.toFixed(2)}</text><text x="4" y="238">{min.toFixed(2)}</text><text x="48" y="262">{first?.date}</text><text x="485" y="262">{last?.date}</text></g>
     </svg>
     <div class="chart-canvas" id={id} role="img" aria-label={`${title}交互图表`} hidden></div>
   </div>
-  <p class="chart-summary" aria-live="polite">{metrics[metricIds[0]].name} · {rows.length} 期 · 最新 {last?.value.toFixed(2)} 元/公斤（{last?.date}）</p>
-  <p class="source-line">横轴为采集日期，超过 11 天无记录时断线。<a href="https://xmsyj.moa.gov.cn/jcyj/index.htm" target="_blank" rel="noopener noreferrer">原始周报 ↗</a></p>
-  <details><summary>查看原始数值与发布链接（全部指标）</summary><div class="table-wrap"><table><thead><tr><th>采集日期</th><th>指标</th><th class="number">元/公斤</th><th>发布原文</th></tr></thead><tbody>{metricIds.flatMap((key) => [...datasets[key]].reverse().map((row) => <tr><td class="date-cell">{row.date}</td><td>{metrics[key].name}</td><td class="number">{row.value.toFixed(2)}</td><td><a href={row.url} target="_blank" rel="noopener noreferrer">{row.published} ↗</a></td></tr>))}</tbody></table></div></details>
+  <p class="chart-summary" aria-live="polite">{meta.name} · {rows.length} 期 · {first?.date} 至 {last?.date} · 最新 {last?.value.toFixed(2)} 元/公斤</p>
+  <p class="source-line" data-chart-note>横轴为采集日期；旬价按旬末标记。缺期断线，不插值；全部历史永久保留。<a href={meta.sourceUrl || "https://xmsyj.moa.gov.cn/jcyj/index.htm"} target="_blank" rel="noopener noreferrer">原始来源 ↗</a></p>
+  <details><summary>最近 12 期数值与发布链接（完整历史可下载 CSV）</summary><div class="table-wrap"><table><thead><tr><th>采集日期／旬末</th><th>指标</th><th class="number">元/公斤</th><th>发布原文</th></tr></thead><tbody>{metricIds.flatMap((key) => [...datasets[key]].reverse().slice(0, 12).map((row) => <tr><td class="date-cell">{row.date}</td><td>{metrics[key].name}</td><td class="number">{row.value.toFixed(2)}</td><td><a href={row.url} target="_blank" rel="noopener noreferrer">{row.published} ↗</a></td></tr>))}</tbody></table></div></details>
 </section>
 <script>
   const charts = document.querySelectorAll<HTMLElement>(".price-chart");

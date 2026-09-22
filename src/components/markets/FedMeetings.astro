@@ -1,0 +1,35 @@
+---
+import { snapshot } from "../../lib/markets";
+
+const meetings = [...snapshot.meetings].sort((a, b) =>
+	b.date.localeCompare(a.date),
+);
+const years = [...new Set(meetings.map((m) => m.date.slice(0, 4)))];
+---
+<section class="panel" data-fed-meetings>
+  <div class="panel-top"><div><h2>历次议息会议</h2><p>决策摘要与当次点阵图 · 日期为美国当地公布日</p></div><label data-fed-controls hidden>年份 <select aria-label="议息会议年份" data-fed-year>{years.map((year) => <option>{year}</option>)}<option value="all">全部历史</option></select></label></div>
+  <p class="source-line">已保存 {meetings.length} 次利率决议，自 {meetings.at(-1)?.date} 起。点阵图来自当次官方经济预测，仅在发布 SEP 的会议显示。</p>
+  <ol class="event-list">{meetings.map((meeting, i) => <li class="event fed-meeting" data-fed-date={meeting.date}>
+    <div><time datetime={meeting.date}>{meeting.date}</time><br/><span class="badge">{meeting.action}</span></div>
+    <div><h3>{meeting.summary}</h3><a class="text-link" href={meeting.url} target="_blank" rel="noopener noreferrer">官方决议原文 ↗</a>
+      {meeting.projection ? <details open={i === 0} class="dot-details"><summary>当次点阵图 · {meeting.projection.periods.length} 个期限</summary>
+        <div class="dot-scroll"><a href={`/markets/fed/${meeting.date}.svg`} target="_blank" rel="noopener noreferrer" aria-label={`放大 ${meeting.date} 点阵图`}><img src={`/markets/fed/${meeting.date}.svg`} width="780" height="420" loading="lazy" decoding="async" alt={`${meeting.date} FOMC 点阵图，点击放大；各期限数值见下表`} /></a></div>
+        <p class="source-line">图表可横向滑动、点击放大。每点代表一位参会者对年末或长期政策利率的判断，不是政策承诺。早期为目标利率，后期为目标区间中点或目标利率；定义以<a href={meeting.projection.url} target="_blank" rel="noopener noreferrer">当次官方预测 ↗</a>为准。</p>
+        <details><summary>查看点阵图数值</summary><div class="table-wrap"><table><thead><tr><th>期限</th><th>利率（%）</th><th>人数</th></tr></thead><tbody>{meeting.projection.dots.map((dot) => <tr><td>{dot.period.toLowerCase() === "longer run" ? "长期" : dot.period}</td><td>{dot.rate}</td><td>{dot.count}</td></tr>)}</tbody></table></div></details>
+      </details> : <p class="source-line">{meeting.projectionState === "error" ? "当次预测资料暂未读取成功，等待下次更新。" : "本次未发布点阵图（SEP）。"}</p>}
+    </div>
+  </li>)}</ol>
+</section>
+<script>
+  const root = document.querySelector<HTMLElement>("[data-fed-meetings]");
+  const select = root?.querySelector<HTMLSelectElement>("[data-fed-year]");
+  if (root && select) {
+    const filter = () => root.querySelectorAll<HTMLElement>("[data-fed-date]").forEach((row) => {
+      row.hidden = select.value !== "all" && !row.dataset.fedDate?.startsWith(select.value);
+    });
+    const controls = root.querySelector<HTMLElement>("[data-fed-controls]");
+    if (controls) controls.hidden = false;
+    select.addEventListener("change", filter);
+    filter();
+  }
+</script>

@@ -1,0 +1,63 @@
+---
+import { latestSummary } from "../../lib/market-latest";
+import { dateTime } from "../../lib/markets";
+
+const latest = latestSummary();
+---
+<section class="home-markets card-base" data-home-markets>
+  <div class="home-market-heading"><h2>数据观察</h2><a href="/markets/pig/" data-no-swup>猪产业链与图表 →</a></div>
+  <p class="home-market-stamp">每 3 小时自动检查 · <span data-home-stamp>最近检查 {dateTime(latest.generatedAt)}</span></p>
+  <div class="home-quotes">{latest.quotes.map((quote) => <a href="/markets/pig/" data-no-swup data-quote={quote.key}><span>{quote.name}</span><strong><span data-quote-value>{quote.value?.toFixed(2) || "—"}</span><small> 元/公斤</small></strong><time data-quote-date>{quote.date || "尚无数据"} · {quote.frequency}</time></a>)}</div>
+  <a class="home-fed" href="/markets/macro/" data-no-swup><span>Fed 最近决议 · <time data-home-fed-date>{latest.meeting?.date || "—"}</time></span><p data-home-fed>{latest.meeting?.summary || "等待公开资料更新"}</p><small>查看历次会议摘要与点阵图 →</small></a>
+  <ul>{latest.reports.map((report) => <li data-home-report={report.company}><a href={report.url} target="_blank" rel="noopener noreferrer"><time>{report.date}</time> · <span>{report.title}</span> ↗</a></li>)}</ul>
+  <p class="home-market-status" data-home-status>{latest.issues.length ? "部分来源更新不完整，已保留历史数据。" : "已接入来源最近检查成功。"}<a href="/markets/sources/" data-no-swup>更新状态</a></p>
+</section>
+<style>
+  .home-markets{padding:1.4rem;margin-bottom:1rem;color:var(--home-text);--home-text:#243444;border-radius:var(--radius-large)}
+  :global(.dark) .home-markets{--home-text:#e1ecf0}
+  .home-market-heading{display:flex;align-items:center;justify-content:space-between;gap:.8rem}.home-market-heading h2{font-size:1.2rem;font-weight:700}.home-market-heading a{font-size:.8rem;color:var(--primary)}
+  .home-market-stamp,.home-market-status{font-size:.75rem;opacity:.8;margin:.6rem 0;color:var(--content-meta)}
+  .home-quotes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.65rem;margin:1rem 0}.home-quotes a{padding:.75rem;background:var(--btn-regular-bg);border-radius:.7rem;display:grid;gap:.35rem}.home-quotes span{font-size:.8rem;color:var(--content-meta)}.home-quotes strong{font-size:1.35rem;font-variant-numeric:tabular-nums;white-space:nowrap}.home-quotes strong span{font:inherit;color:inherit}.home-quotes small{font-size:.7rem;font-weight:400}.home-quotes time{font-size:.7rem;color:var(--content-meta)}
+  .home-fed{display:block;border-top:1px solid var(--line-divider);padding-top:.8rem;font-size:.85rem}.home-fed span,.home-fed small{font-size:.75rem;color:var(--content-meta)}.home-fed p{margin:.35rem 0}.home-markets ul{font-size:.75rem;color:var(--content-meta);margin:.8rem 0;padding-left:0;list-style:none}.home-markets li{padding:.3rem 0}.home-market-status a{margin-left:.5rem;text-decoration:underline}
+  @media(min-width:1100px){.home-quotes{grid-template-columns:repeat(4,minmax(0,1fr))}}
+</style>
+<script>
+  import { dateTime } from "../../lib/market-time";
+  let lastCheck = 0;
+  async function updateHome() {
+    const root = document.querySelector<HTMLElement>("[data-home-markets]");
+    if (!root || document.hidden || Date.now() - lastCheck < 300000) return;
+    lastCheck = Date.now();
+    try {
+      const response = await fetch("/markets/latest.json", { cache: "no-cache" });
+      if (!response.ok) throw new Error("Snapshot unavailable");
+      const data = await response.json();
+      for (const quote of data.quotes) {
+        const card = root.querySelector(`[data-quote="${quote.key}"]`);
+        const value = card?.querySelector("[data-quote-value]");
+        const date = card?.querySelector("[data-quote-date]");
+        if (value) value.textContent = quote.value?.toFixed(2) || "—";
+        if (date) date.textContent = `${quote.date || "尚无数据"} · ${quote.frequency}`;
+      }
+      const stamp = root.querySelector("[data-home-stamp]");
+      if (stamp) stamp.textContent = `最近检查 ${dateTime(data.generatedAt)}`;
+      const decision = root.querySelector("[data-home-fed]");
+      const decisionDate = root.querySelector("[data-home-fed-date]");
+      if (decision && data.meeting) decision.textContent = data.meeting.summary;
+      if (decisionDate && data.meeting) decisionDate.textContent = data.meeting.date;
+      for (const report of data.reports) {
+        const link = root.querySelector<HTMLAnchorElement>(`[data-home-report="${report.company}"] a`);
+        if (link && new URL(report.url).protocol === "https:") { link.href = report.url; link.textContent = `${report.date} · ${report.title} ↗`; }
+      }
+      const status = root.querySelector("[data-home-status]");
+      if (status?.firstChild) status.firstChild.textContent = Date.now() - Date.parse(data.generatedAt) > 86400000 ? "快照已超过 24 小时，请核对更新状态。" : data.issues.length ? "部分来源更新不完整，已保留历史数据。" : "已接入来源最近检查成功。";
+    } catch {
+      const stamp = root.querySelector("[data-home-stamp]");
+      if (stamp) stamp.textContent = "当前无法检查新快照，保留页面已载入的数据";
+    }
+  }
+  updateHome();
+  setInterval(updateHome, 300000);
+  document.addEventListener("visibilitychange", updateHome);
+  document.addEventListener("swup:page:view", () => { lastCheck = 0; updateHome(); });
+</script>

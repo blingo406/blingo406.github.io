@@ -8,11 +8,14 @@ const names: Record<string, string> = {
 	muyuan: "牧原公告转载",
 	fed_rss: "美联储货币政策",
 	fomc: "FOMC 日历",
+	fed_meetings: "FOMC 决策与点阵图",
+	zhuwang_daily: "全国外三元日度现货",
+	nbs_prices: "统计局外三元旬价",
 };
 ---
 <MarketLayout title="数据源与更新状态" active="sources" description="查看每项数据从哪里来、按什么频率发布，以及哪些已自动接入。">
   <section class="panel"><div class="panel-top"><h2>采集状态</h2><p>计划每 3 小时检查一次；源站发布时间决定数据新鲜度</p></div><div class="status-list">{snapshot.status.map((status) => <article class="status-item"><h3>{names[status.id] || status.id}</h3><span class={`badge ${status.state !== "ok" ? "warning" : ""}`}>{status.state === "ok" ? "检查成功" : status.state === "partial" ? "部分更新" : "暂时失败"}</span><p>{status.message}</p><p>最近检查：{dateTime(status.checkedAt)}<br />最近成功：{dateTime(status.lastSuccessAt)}</p></article>)}</div><p class="source-line">时间均为北京时间。检查成功不代表源站发布了新数据；价格卡片显示实际采集日期。发生错误时保留上次有效记录。</p></section>
   <div data-filter-group><div class="controls reports-toolbar" data-filter-controls hidden><input type="search" class="search-input" aria-label="搜索数据源" placeholder="搜索机构、价格、产能、财报…" data-search /><select aria-label="筛选数据源栏目" data-filter="section"><option value="">全部栏目</option><option value="pig">猪产业链</option><option value="companies">公司财报</option><option value="macro">国际金融</option></select><span class="result-count" data-result-count aria-live="polite"></span></div><div class="source-grid">{sources.map((source) => <article class="source-card" data-filter-item data-section={source.section}><span class={`badge ${!source.collector ? "pending" : statusFor(source.collector)?.state !== "ok" ? "warning" : ""}`}>{source.collector ? "已接入 · 可查看状态" : source.access}</span><h3><a href={source.url} target="_blank" rel="noopener noreferrer">{source.name} ↗</a></h3><p>{source.coverage.join(" · ")}</p><div class="source-meta"><span>{source.provider}</span><span>{source.frequency}</span></div></article>)}</div><p class="empty-state" data-empty hidden>没有匹配的数据源。</p></div>
-  <div class="section-intro"><h2>使用口径</h2></div><section class="panel"><p>图表使用公开周报中的价格与日期，并逐条保留原文链接。公司公告和政策事件提供标题、发布时间及原始阅读入口。商业机构的行情、研报和付费数据仅提供来源链接。</p><p class="source-line">目前收录 {sources.length} 个来源入口，5 项自动采集。暂未接入的来源不会显示为实时行情，也不会用估计值填补缺失数据。</p></section>
+  <div class="section-intro"><h2>使用口径</h2></div><section class="panel"><p>图表使用公开周报中的价格与日期，并逐条保留原文链接。公司公告和政策事件提供标题、发布时间及原始阅读入口。中国养猪网仅采集无需登录的全国公开日度报价；会员历史数据、研报及其他付费内容仅提供来源链接。</p><p class="source-line">目前收录 {sources.length} 个来源入口，{snapshot.status.length} 项自动采集。暂未接入的来源不会显示为实时行情，也不会用估计值填补缺失数据。</p></section>
 </MarketLayout>
 <script>import "../../lib/market-filters";</script>

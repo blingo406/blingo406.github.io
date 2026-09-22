@@ -74,7 +74,7 @@ class ExportTests(unittest.TestCase):
             target = path / "snapshot.json"
             target.write_text(json.dumps(self.snapshot), encoding="utf-8")
             (path / "report-seeds.json").write_text("[]", encoding="utf-8")
-            patches = {name: lambda: (_ for _ in ()).throw(RuntimeError("offline fixture")) for name in ["collect_weekly", "collect_dongrui", "collect_muyuan", "collect_fed", "collect_fomc"]}
+            patches = {name: lambda *args, **kwargs: (_ for _ in ()).throw(RuntimeError("offline fixture")) for name in ["collect_weekly", "collect_dongrui", "collect_muyuan", "collect_fed", "collect_fomc", "collect_meetings", "collect_nbs", "parse_daily", "get_text"]}
             with patch.multiple(refresh, DATA=path, SNAPSHOT=target, **patches), redirect_stdout(io.StringIO()), redirect_stderr(io.StringIO()):
                 self.assertEqual(refresh.main(), 2)
             result = json.loads(target.read_text(encoding="utf-8"))

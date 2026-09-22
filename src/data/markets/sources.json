@@ -34,10 +34,10 @@
 		"provider": "国家统计局",
 		"url": "https://www.stats.gov.cn/sj/zxfb/",
 		"section": "pig",
-		"coverage": ["生猪外三元", "玉米", "豆粕"],
+		"coverage": ["全国外三元生猪旬均价"],
 		"frequency": "旬度",
-		"collector": null,
-		"access": "原始来源入口"
+		"collector": "nbs_prices",
+		"access": "公开数据采集"
 	},
 	{
 		"id": "nbs_livestock_supply",
@@ -69,8 +69,8 @@
 		"section": "pig",
 		"coverage": ["日度外三元现货猪价", "其他猪价与成本数据"],
 		"frequency": "日度",
-		"collector": null,
-		"access": "商业数据入口"
+		"collector": "zhuwang_daily",
+		"access": "公开全国日度报价；历史会员数据不采集"
 	},
 	{
 		"id": "soozhu",
@@ -286,5 +286,16 @@
 		"frequency": "按公告发布",
 		"collector": "muyuan",
 		"access": "公告转载入口"
+	},
+	{
+		"id": "fed_meeting_decisions",
+		"name": "FOMC 历次决策与点阵图",
+		"provider": "Federal Reserve",
+		"url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+		"section": "macro",
+		"coverage": ["2014 年以来利率决议", "同次会议 SEP 点阵图"],
+		"frequency": "每次会议",
+		"collector": "fed_meetings",
+		"access": "原始来源公开数据"
 	}
 ]

@@ -1,0 +1,86 @@
+[
+	{
+		"series": "hog",
+		"date": "2014-09-03",
+		"value": 14.98,
+		"published": "2014-09-11",
+		"url": "https://scs.moa.gov.cn/gzjl/201409/t20140911_6293059.htm"
+	},
+	{
+		"series": "piglet",
+		"date": "2014-09-03",
+		"value": 24.72,
+		"published": "2014-09-11",
+		"url": "https://scs.moa.gov.cn/gzjl/201409/t20140911_6293059.htm"
+	},
+	{
+		"series": "pork",
+		"date": "2014-09-03",
+		"value": 23.9,
+		"published": "2014-09-11",
+		"url": "https://scs.moa.gov.cn/gzjl/201409/t20140911_6293059.htm"
+	},
+	{
+		"series": "corn",
+		"date": "2014-09-03",
+		"value": 2.7,
+		"published": "2014-09-11",
+		"url": "https://scs.moa.gov.cn/gzjl/201409/t20140911_6293059.htm"
+	},
+	{
+		"series": "soymeal",
+		"date": "2014-09-03",
+		"value": 4.03,
+		"published": "2014-09-11",
+		"url": "https://scs.moa.gov.cn/gzjl/201409/t20140911_6293059.htm"
+	},
+	{
+		"series": "feed",
+		"date": "2014-09-03",
+		"value": 3.41,
+		"published": "2014-09-11",
+		"url": "https://scs.moa.gov.cn/gzjl/201409/t20140911_6293059.htm"
+	},
+	{
+		"series": "hog",
+		"date": "2014-12-03",
+		"value": 14.0,
+		"published": "2014-12-09",
+		"url": "https://scs.moa.gov.cn/gzjl/201412/t20141208_6293106.htm"
+	},
+	{
+		"series": "piglet",
+		"date": "2014-12-03",
+		"value": 20.66,
+		"published": "2014-12-09",
+		"url": "https://scs.moa.gov.cn/gzjl/201412/t20141208_6293106.htm"
+	},
+	{
+		"series": "pork",
+		"date": "2014-12-03",
+		"value": 23.06,
+		"published": "2014-12-09",
+		"url": "https://scs.moa.gov.cn/gzjl/201412/t20141208_6293106.htm"
+	},
+	{
+		"series": "corn",
+		"date": "2014-12-03",
+		"value": 2.49,
+		"published": "2014-12-09",
+		"url": "https://scs.moa.gov.cn/gzjl/201412/t20141208_6293106.htm"
+	},
+	{
+		"series": "soymeal",
+		"date": "2014-12-03",
+		"value": 3.9,
+		"published": "2014-12-09",
+		"url": "https://scs.moa.gov.cn/gzjl/201412/t20141208_6293106.htm"
+	},
+	{
+		"series": "feed",
+		"date": "2014-12-03",
+		"value": 3.35,
+		"published": "2014-12-09",
+		"url": "https://scs.moa.gov.cn/gzjl/201412/t20141208_6293106.htm"
+	}
+]

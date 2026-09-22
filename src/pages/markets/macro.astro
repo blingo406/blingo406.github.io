@@ -1,4 +1,5 @@
 ---
+import FedMeetings from "../../components/markets/FedMeetings.astro";
 import MarketLayout from "../../layouts/MarketLayout.astro";
 import { dateTime, snapshot, sources, statusFor } from "../../lib/markets";
 
@@ -10,7 +11,8 @@ const calendar = [...snapshot.calendar].sort((a, b) =>
 );
 ---
 <MarketLayout title="国际金融" active="macro" description="美联储政策原文与接下来的议息日程，配合通胀、就业和经济数据的官方发布入口。">
-  {["fed_rss", "fomc"].filter((id) => statusFor(id)?.state !== "ok").map((id) => <p class="notice">{id === "fomc" ? "会议日历" : "政策动态"}：{statusFor(id)?.message}</p>)}
+  {["fed_rss", "fomc", "fed_meetings"].filter((id) => statusFor(id)?.state !== "ok").map((id) => <p class="notice">{id === "fomc" ? "会议日历" : id === "fed_meetings" ? "会议摘要" : "政策动态"}：{statusFor(id)?.message}</p>)}
+  <FedMeetings />
   <div class="two-column">
     <section class="panel"><div class="panel-top"><h2>接下来的 FOMC</h2><span class="badge">计划日程</span></div>{calendar.slice(0, 6).map((event) => <div class="calendar-row" data-meeting-date={event.date}><time class="calendar-date" datetime={event.date}>{event.date}</time><div><h3><a href={event.url} target="_blank" rel="noopener noreferrer">{event.title} ↗</a></h3><p>{event.note}</p></div></div>)}<p class="source-line">日期为会议最后一天（美国东部）。具体声明时间与日程变动以<a href="https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm" target="_blank" rel="noopener noreferrer">美联储官网</a>为准。</p></section>
     <section class="panel"><div class="panel-top"><h2>观察清单</h2></div><div class="calendar-row"><div><h3>利率决议与经济预测</h3><p>阅读 FOMC 声明、预测与会议纪要，确认政策变化及生效安排。</p></div></div><div class="calendar-row"><div><h3>美国通胀与就业</h3><p>CPI、PCE 与非农就业发布，详见下方 BLS / BEA 官方日历。</p></div></div><div class="calendar-row"><div><h3>美元、利率与全球政策</h3><p>FRED 宏观时间序列、欧洲央行及日本央行政策入口。</p></div></div><p class="source-line">政策动态自动收录美联储货币政策 RSS。其他机构目前提供官方入口。</p></section>

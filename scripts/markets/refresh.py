@@ -6,7 +6,7 @@ Run from any directory: python scripts/markets/refresh.py
 """
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import argparse
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from hashlib import sha256
 import json
@@ -18,6 +18,8 @@ import xml.etree.ElementTree as ET
 
 from bs4 import BeautifulSoup
 import requests
+from fed_meetings import collect_meetings
+from spot_prices import collect_nbs, parse_daily, DAILY_URL
 
 ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "src" / "data" / "markets"
@@ -26,11 +28,13 @@ ALLOWED_HOSTS = {
     "xmsyj.moa.gov.cn", "www.moa.gov.cn", "www.stats.gov.cn",
     "www.dongruifoods.com", "static.cninfo.com.cn", "www.cninfo.com.cn",
     "vip.stock.finance.sina.com.cn", "www.federalreserve.gov",
-    "www.bls.gov", "www.bea.gov",
+    "www.bls.gov", "www.bea.gov", "scs.moa.gov.cn", "zhujia.zhuwang.com.cn",
 }
 WEEKLY_URL = "https://xmsyj.moa.gov.cn/jcyj/index.htm"
 FED_CALENDAR = "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
 BACKFILL_PAGES = 1
+BACKFILL_HISTORY = False
+HISTORY_START = "2014-01-01"
 METRICS = {
     "hog": ("全国生猪平均价格", "生猪", "元/公斤"),
     "piglet": ("全国仔猪平均价格", "仔猪", "元/公斤"),
@@ -38,6 +42,8 @@ METRICS = {
     "corn": ("全国玉米平均价格", "玉米", "元/公斤"),
     "soymeal": ("全国豆粕平均价格", "豆粕", "元/公斤"),
     "feed": ("育肥猪配合饲料平均价格", "育肥猪配合饲料", "元/公斤"),
+    "hog_spot": ("全国外三元生猪现货均价", "外三元日价", "元/公斤"),
+    "hog_nbs": ("生猪（外三元）", "外三元旬价", "元/公斤"),
 }
 
 
@@ -77,7 +83,12 @@ def parse_weekly(html, url):
     observed = date(year, int(sample[1]), int(sample[2])).isoformat()
     rows = []
     for metric, (phrase, _, _) in METRICS.items():
-        found = re.search(re.escape(phrase) + r"\s*([\d.]+)\s*元[/／]公斤", text)
+        phrases = [phrase]
+        if metric == "hog":
+            phrases.append("全国活猪平均价格")
+        found = re.search("(?:" + "|".join(map(re.escape, phrases)) + r")\s*([\d.]+)\s*元[/／]公斤", text)
+        if not found and metric == "feed":
+            found = re.search(r"育肥猪配合饲料(?:和肉鸡配合饲料|、肉鸡配合饲料和蛋鸡配合饲料)平均价格分别为([\d.]+)元[/／]公斤", text)
         if found:
             value = float(found[1])
             if not 0 < value < 500:
@@ -89,6 +100,15 @@ def parse_weekly(html, url):
     return rows
 
 
+def weekly_archive_links(html, base):
+    # Official statistical calendar embeds a plain message array. Read its
+    # documented links as text; never execute external JavaScript.
+    return [urljoin(base, href) for stamp, title, href in re.findall(
+        r'"(\d{8}) ([^"\n|]+)\|[^"\n|]*\|([^"\n]+)"', html)
+        if "畜产品和饲料集贸市场价格情况" in title
+        and stamp >= HISTORY_START.replace("-", "")]
+
+
 def collect_weekly():
     pages = [WEEKLY_URL] + [urljoin(WEEKLY_URL, f"index_{i}.htm") for i in range(1, BACKFILL_PAGES)]
     links = []
@@ -97,6 +117,10 @@ def collect_weekly():
         links.extend(urljoin(page_url, a.get("href", "")) for a in soup.find_all("a")
             if "畜产品和饲料集贸市场价格情况" in a.get_text())
     links = list(dict.fromkeys(links))
+    if BACKFILL_HISTORY:
+        calendar = "https://www.moa.gov.cn/sj/index.htm"
+        links.extend(weekly_archive_links(get_text(calendar), calendar))
+        links = list(dict.fromkeys(links))
     if not links:
         raise ValueError("No weekly release links")
     rows, failures = [], []
@@ -107,6 +131,8 @@ def collect_weekly():
                 rows.extend(future.result())
             except Exception:
                 failures.append(futures[future])
+    if failures:
+        print("Weekly releases not parsed:", failures, file=sys.stderr)
     if not rows:
         raise ValueError("All weekly releases failed")
     return {"observations": rows, "warning": f"{len(failures)} 篇周报未读取，已保留历史值" if failures else None}
@@ -260,11 +286,36 @@ def merge_records(previous, incoming, keys):
     return sorted(merged.values(), key=lambda row: (row.get("date", ""), row.get("id", "")))
 
 
+def preserve_observation_revisions(previous, incoming, revisions):
+    old = {(r["series"], r["date"]): r for r in previous}
+    result = list(revisions)
+    known = {r["id"] for r in result}
+    for row in incoming:
+        original = old.get((row["series"], row["date"]))
+        if original and original["value"] != row["value"]:
+            identity = document_id(json.dumps(original, sort_keys=True))
+            if identity not in known:
+                result.append({"id": identity, "archivedAt": now(), **original})
+                known.add(identity)
+        old[(row["series"], row["date"])] = row
+    return result
+
+
+def validate_retention(previous, current):
+    # A successful refresh must never shorten historical series or delete
+    # previously collected releases. Upcoming calendars are not historical data.
+    for table in ["observations", "reports", "events", "meetings", "revisions"]:
+        keys = ["series", "date"] if table == "observations" else ["id"]
+        identities = lambda rows: {tuple(row[k] for k in keys) for row in rows}
+        if not identities(previous.get(table, [])).issubset(identities(current[table])):
+            raise ValueError(f"Historical {table} deletion rejected")
+
+
 def validate_snapshot(snapshot):
-    allowed_top = {"schemaVersion", "generatedAt", "observations", "reports", "events", "calendar", "status"}
+    allowed_top = {"schemaVersion", "generatedAt", "observations", "reports", "events", "calendar", "status", "meetings", "revisions"}
     if set(snapshot) != allowed_top:
         raise ValueError("Unexpected public snapshot fields")
-    if snapshot["schemaVersion"] != 1:
+    if snapshot["schemaVersion"] != 2:
         raise ValueError("Unsupported snapshot schema")
     datetime.fromisoformat(snapshot["generatedAt"])
     allowed_fields = {
@@ -272,23 +323,44 @@ def validate_snapshot(snapshot):
         "reports": {"id", "company", "companyName", "title", "date", "type", "url", "source", "origin"},
         "events": {"id", "title", "type", "institution", "publishedAt", "date", "url", "state", "source"},
         "calendar": {"id", "title", "type", "institution", "publishedAt", "date", "url", "state", "source", "note"},
+        "meetings": {"id", "date", "url", "action", "targetLower", "targetUpper", "changeBasisPoints", "summary", "projectionState", "projection"},
+        "revisions": {"id", "archivedAt", "series", "date", "value", "published", "url"},
     }
     for table, fields in allowed_fields.items():
         for row in snapshot[table]:
             if set(row) != fields or urlparse(row["url"]).hostname not in ALLOWED_HOSTS or urlparse(row["url"]).scheme != "https":
                 raise ValueError(f"Non-public or unexpected {table} data")
             date.fromisoformat(row["date"])
-            if table != "calendar" and row["date"] > date.today().isoformat():
+            # Scheduled jobs run in UTC; Chinese daily quotes may already be
+            # dated tomorrow there. Validate against the source's civil day.
+            latest_day = datetime.now(timezone(timedelta(hours=8))).date() if table in {"observations", "revisions"} else date.today()
+            if table != "calendar" and row["date"] > latest_day.isoformat():
                 raise ValueError("Future publication or observation")
-    for row in snapshot["observations"]:
+    for row in snapshot["observations"] + snapshot["revisions"]:
         if row["series"] not in METRICS or not isinstance(row["value"], (int, float)) or not 0 < row["value"] < 500:
             raise ValueError("Invalid observation")
         if date.fromisoformat(row["published"]) < date.fromisoformat(row["date"]):
             raise ValueError("Observation follows its publication")
+    for row in snapshot["meetings"]:
+        if row["action"] not in {"维持", "加息", "降息"} or row["projectionState"] not in {"none", "available", "error"}:
+            raise ValueError("Invalid meeting summary")
+        if not 0 <= row["targetLower"] < row["targetUpper"] <= 25:
+            raise ValueError("Invalid target range")
+        projection = row["projection"]
+        if projection:
+            if set(projection) != {"url", "periods", "dots"} or projection["url"] != f'https://www.federalreserve.gov/monetarypolicy/fomcprojtabl{row["date"].replace("-", "")}.htm':
+                raise ValueError("Projection must belong to this exact meeting")
+            if not projection["dots"] or not projection["periods"]:
+                raise ValueError("Empty projection")
+            for dot in projection["dots"]:
+                if set(dot) != {"period", "rate", "count"} or dot["period"] not in projection["periods"] or not -5 <= dot["rate"] <= 25 or not isinstance(dot["count"], int) or not 0 < dot["count"] <= 25:
+                    raise ValueError("Invalid projection dot")
+        elif row["projectionState"] == "available":
+            raise ValueError("Available projection has no data")
     for row in snapshot["status"]:
         if set(row) != {"id", "state", "checkedAt", "lastSuccessAt", "count", "message"}:
             raise ValueError("Unexpected status fields")
-        if row["id"] not in {"moa_weekly", "dongrui", "muyuan", "fed_rss", "fomc"} or row["state"] not in {"ok", "partial", "error"}:
+        if row["id"] not in {"moa_weekly", "dongrui", "muyuan", "fed_rss", "fomc", "fed_meetings", "zhuwang_daily", "nbs_prices"} or row["state"] not in {"ok", "partial", "error"}:
             raise ValueError("Unknown source status")
     text = json.dumps(snapshot, ensure_ascii=False)
     if re.search(r"好人豆子|做多中国|全文转写|要点笔记|file://|[A-Za-z]:\\", text):
@@ -298,12 +370,20 @@ def validate_snapshot(snapshot):
 def main():
     DATA.mkdir(parents=True, exist_ok=True)
     previous = json.loads(SNAPSHOT.read_text(encoding="utf-8")) if SNAPSHOT.exists() else {}
-    snapshot = {"schemaVersion": 1, "generatedAt": now(), **{key: previous.get(key, []) for key in ["observations", "reports", "events", "calendar", "status"]}}
+    snapshot = {"schemaVersion": 2, "generatedAt": now(), **{key: previous.get(key, []) for key in ["observations", "reports", "events", "calendar", "status", "meetings", "revisions"]}}
     seeds = json.loads((DATA / "report-seeds.json").read_text(encoding="utf-8"))
     snapshot["reports"] = merge_records(snapshot["reports"], seeds, ["id"])
+    price_seeds = DATA / "price-seeds.json"
+    if price_seeds.exists():
+        # Official archival observations seed missing dates only; never undo
+        # newer source revisions during routine refreshes.
+        snapshot["observations"] = merge_records(json.loads(price_seeds.read_text(encoding="utf-8")), snapshot["observations"], ["series", "date"])
     old_status = {row["id"]: row for row in snapshot["status"]}
     statuses = []
-    collectors = {"moa_weekly": collect_weekly, "dongrui": collect_dongrui, "muyuan": collect_muyuan, "fed_rss": collect_fed, "fomc": collect_fomc}
+    collectors = {"moa_weekly": collect_weekly, "dongrui": collect_dongrui, "muyuan": collect_muyuan, "fed_rss": collect_fed, "fomc": collect_fomc,
+                  "fed_meetings": lambda: collect_meetings(get_text, previous.get("meetings", []), BACKFILL_HISTORY),
+                  "zhuwang_daily": lambda: {"observations": parse_daily(get_text(DAILY_URL))},
+                  "nbs_prices": lambda: collect_nbs(get_text, BACKFILL_HISTORY)}
     with ThreadPoolExecutor(max_workers=5) as pool:
         futures = {pool.submit(fn): source for source, fn in collectors.items()}
         for future in as_completed(futures):
@@ -312,9 +392,11 @@ def main():
             try:
                 result = future.result()
                 count = 0
-                for table in ["observations", "reports", "events", "calendar"]:
+                for table in ["observations", "reports", "events", "calendar", "meetings"]:
                     if table in result:
                         incoming = result[table]
+                        if table == "observations":
+                            snapshot["revisions"] = preserve_observation_revisions(snapshot[table], incoming, snapshot["revisions"])
                         count += len(incoming)
                         # Upcoming meetings are a current schedule: replace after a
                         # successful fetch so moved/cancelled meetings disappear.
@@ -329,6 +411,7 @@ def main():
     snapshot["status"] = sorted(statuses, key=lambda item: item["id"])
     snapshot["calendar"] = [row for row in snapshot["calendar"] if row["date"] >= date.today().isoformat()]
     validate_snapshot(snapshot)
+    validate_retention(previous, snapshot)
     serialized = json.dumps(snapshot, ensure_ascii=False, indent="\t") + "\n"
     temporary = SNAPSHOT.with_suffix(".tmp")
     temporary.write_text(serialized, encoding="utf-8")
@@ -341,7 +424,10 @@ def main():
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--backfill-pages", type=int, default=1, choices=range(1, 26))
-    BACKFILL_PAGES = parser.parse_args().backfill_pages
+    parser.add_argument("--backfill-history", action="store_true", help="Backfill official price calendar and FOMC archives from 2014; never trim existing records")
+    args = parser.parse_args()
+    BACKFILL_PAGES = args.backfill_pages
+    BACKFILL_HISTORY = args.backfill_history
     sys.stdout.reconfigure(encoding="utf-8")
     sys.stderr.reconfigure(encoding="utf-8")
     raise SystemExit(main())

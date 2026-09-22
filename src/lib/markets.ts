@@ -5,7 +5,15 @@ export { snapshot, sources };
 export type Observation = (typeof snapshot.observations)[number];
 export const metrics: Record<
 	string,
-	{ name: string; unit: string; color: string }
+	{
+		name: string;
+		unit: string;
+		color: string;
+		gapDays?: number;
+		frequency?: string;
+		source?: string;
+		sourceUrl?: string;
+	}
 > = {
 	hog: { name: "全国生猪价格", unit: "元/公斤", color: "#107d79" },
 	piglet: { name: "全国仔猪价格", unit: "元/公斤", color: "#ae6b32" },
@@ -13,6 +21,24 @@ export const metrics: Record<
 	corn: { name: "全国玉米价格", unit: "元/公斤", color: "#ae6b32" },
 	soymeal: { name: "全国豆粕价格", unit: "元/公斤", color: "#107d79" },
 	feed: { name: "育肥猪配合饲料", unit: "元/公斤", color: "#6265b5" },
+	hog_spot: {
+		name: "全国外三元生猪现货均价",
+		unit: "元/公斤",
+		color: "#107d79",
+		gapDays: 2,
+		frequency: "日度",
+		source: "中国养猪网／玄田数据 · 全国外三元现货均价",
+		sourceUrl: "https://zhujia.zhuwang.com.cn/",
+	},
+	hog_nbs: {
+		name: "全国外三元生猪旬均价",
+		unit: "元/公斤",
+		color: "#6265b5",
+		gapDays: 12,
+		frequency: "旬度",
+		source: "国家统计局 · 流通领域生猪（外三元）价格",
+		sourceUrl: "https://www.stats.gov.cn/sj/zxfb/",
+	},
 };
 
 export function series(id: string): Observation[] {
@@ -21,19 +47,7 @@ export function series(id: string): Observation[] {
 		.sort((a, b) => a.date.localeCompare(b.date));
 }
 
-export function dateTime(value: string | null): string {
-	return value
-		? new Intl.DateTimeFormat("zh-CN", {
-				timeZone: "Asia/Shanghai",
-				year: "numeric",
-				month: "2-digit",
-				day: "2-digit",
-				hour: "2-digit",
-				minute: "2-digit",
-				hour12: false,
-			}).format(new Date(value))
-		: "尚未成功更新";
-}
+export { dateTime } from "./market-time";
 
 export function statusFor(id: string) {
 	return snapshot.status.find((row) => row.id === id);
