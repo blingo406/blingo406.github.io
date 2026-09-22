@@ -17,6 +17,8 @@ class HistoryTests(unittest.TestCase):
                 return datetime(2026, 9, 22, 17, tzinfo=timezone.utc).astimezone(tz)
         data = json.loads(refresh.SNAPSHOT.read_text(encoding="utf-8"))
         row = next(r for r in data["observations"] if r["series"] == "hog_spot")
+        data["observations"] = [row]
+        data["revisions"] = []
         row["date"] = row["published"] = "2026-09-23"
         with patch.object(refresh, "datetime", Clock):
             refresh.validate_snapshot(data)
