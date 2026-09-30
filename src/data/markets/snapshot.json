@@ -1,6 +1,6 @@
 {
 	"schemaVersion": 2,
-	"generatedAt": "2026-09-30T05:33:39+00:00",
+	"generatedAt": "2026-09-30T12:35:49+00:00",
 	"observations": [
 		{
 			"series": "hog",
@@ -20177,6 +20177,48 @@
 			"url": "https://zhujia.zhuwang.com.cn/"
 		},
 		{
+			"series": "hog",
+			"date": "2026-09-24",
+			"value": 11.36,
+			"published": "2026-09-30",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202609/t20260930_6488298.htm"
+		},
+		{
+			"series": "piglet",
+			"date": "2026-09-24",
+			"value": 20.2,
+			"published": "2026-09-30",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202609/t20260930_6488298.htm"
+		},
+		{
+			"series": "pork",
+			"date": "2026-09-24",
+			"value": 21.17,
+			"published": "2026-09-30",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202609/t20260930_6488298.htm"
+		},
+		{
+			"series": "corn",
+			"date": "2026-09-24",
+			"value": 2.45,
+			"published": "2026-09-30",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202609/t20260930_6488298.htm"
+		},
+		{
+			"series": "soymeal",
+			"date": "2026-09-24",
+			"value": 3.41,
+			"published": "2026-09-30",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202609/t20260930_6488298.htm"
+		},
+		{
+			"series": "feed",
+			"date": "2026-09-24",
+			"value": 3.36,
+			"published": "2026-09-30",
+			"url": "https://xmsyj.moa.gov.cn/jcyj/202609/t20260930_6488298.htm"
+		},
+		{
 			"series": "hog_spot",
 			"date": "2026-09-25",
 			"value": 10.44,
@@ -21174,66 +21216,66 @@
 		{
 			"id": "dongrui",
 			"state": "ok",
-			"checkedAt": "2026-09-30T05:33:42+00:00",
-			"lastSuccessAt": "2026-09-30T05:33:42+00:00",
+			"checkedAt": "2026-09-30T12:35:55+00:00",
+			"lastSuccessAt": "2026-09-30T12:35:55+00:00",
 			"count": 51,
 			"message": "更新成功"
 		},
 		{
 			"id": "fed_meetings",
 			"state": "ok",
-			"checkedAt": "2026-09-30T05:33:40+00:00",
-			"lastSuccessAt": "2026-09-30T05:33:40+00:00",
+			"checkedAt": "2026-09-30T12:35:49+00:00",
+			"lastSuccessAt": "2026-09-30T12:35:49+00:00",
 			"count": 2,
 			"message": "更新成功"
 		},
 		{
 			"id": "fed_rss",
 			"state": "ok",
-			"checkedAt": "2026-09-30T05:33:39+00:00",
-			"lastSuccessAt": "2026-09-30T05:33:39+00:00",
+			"checkedAt": "2026-09-30T12:35:49+00:00",
+			"lastSuccessAt": "2026-09-30T12:35:49+00:00",
 			"count": 15,
 			"message": "更新成功"
 		},
 		{
 			"id": "fomc",
 			"state": "ok",
-			"checkedAt": "2026-09-30T05:33:39+00:00",
-			"lastSuccessAt": "2026-09-30T05:33:39+00:00",
+			"checkedAt": "2026-09-30T12:35:49+00:00",
+			"lastSuccessAt": "2026-09-30T12:35:49+00:00",
 			"count": 10,
 			"message": "更新成功"
 		},
 		{
 			"id": "moa_weekly",
 			"state": "ok",
-			"checkedAt": "2026-09-30T05:33:44+00:00",
-			"lastSuccessAt": "2026-09-30T05:33:44+00:00",
+			"checkedAt": "2026-09-30T12:35:53+00:00",
+			"lastSuccessAt": "2026-09-30T12:35:53+00:00",
 			"count": 60,
 			"message": "更新成功"
 		},
 		{
 			"id": "muyuan",
 			"state": "ok",
-			"checkedAt": "2026-09-30T05:33:43+00:00",
-			"lastSuccessAt": "2026-09-30T05:33:43+00:00",
+			"checkedAt": "2026-09-30T12:35:56+00:00",
+			"lastSuccessAt": "2026-09-30T12:35:56+00:00",
 			"count": 9,
 			"message": "更新成功"
 		},
 		{
 			"id": "nbs_prices",
 			"state": "ok",
-			"checkedAt": "2026-09-30T05:33:51+00:00",
-			"lastSuccessAt": "2026-09-30T05:33:51+00:00",
+			"checkedAt": "2026-09-30T12:36:02+00:00",
+			"lastSuccessAt": "2026-09-30T12:36:02+00:00",
 			"count": 3,
 			"message": "更新成功"
 		},
 		{
 			"id": "zhuwang_daily",
-			"state": "ok",
-			"checkedAt": "2026-09-30T05:33:40+00:00",
+			"state": "error",
+			"checkedAt": "2026-09-30T12:35:57+00:00",
 			"lastSuccessAt": "2026-09-30T05:33:40+00:00",
-			"count": 1,
-			"message": "更新成功"
+			"count": 0,
+			"message": "来源暂不可用，保留上次有效数据；可直接访问原始网站"
 		}
 	],
 	"meetings": [
