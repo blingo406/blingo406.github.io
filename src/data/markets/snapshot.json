@@ -1,6 +1,6 @@
 {
 	"schemaVersion": 2,
-	"generatedAt": "2026-10-01T18:25:36+00:00",
+	"generatedAt": "2026-10-02T00:48:04+00:00",
 	"observations": [
 		{
 			"series": "hog",
@@ -20266,6 +20266,13 @@
 			"value": 10.15,
 			"published": "2026-10-01",
 			"url": "https://zhujia.zhuwang.com.cn/"
+		},
+		{
+			"series": "hog_spot",
+			"date": "2026-10-02",
+			"value": 10.33,
+			"published": "2026-10-02",
+			"url": "https://zhujia.zhuwang.com.cn/"
 		}
 	],
 	"reports": [
@@ -21223,66 +21230,66 @@
 		{
 			"id": "dongrui",
 			"state": "ok",
-			"checkedAt": "2026-10-01T18:25:40+00:00",
-			"lastSuccessAt": "2026-10-01T18:25:40+00:00",
+			"checkedAt": "2026-10-02T00:48:07+00:00",
+			"lastSuccessAt": "2026-10-02T00:48:07+00:00",
 			"count": 51,
 			"message": "更新成功"
 		},
 		{
 			"id": "fed_meetings",
 			"state": "ok",
-			"checkedAt": "2026-10-01T18:25:37+00:00",
-			"lastSuccessAt": "2026-10-01T18:25:37+00:00",
+			"checkedAt": "2026-10-02T00:48:04+00:00",
+			"lastSuccessAt": "2026-10-02T00:48:04+00:00",
 			"count": 2,
 			"message": "更新成功"
 		},
 		{
 			"id": "fed_rss",
 			"state": "ok",
-			"checkedAt": "2026-10-01T18:25:36+00:00",
-			"lastSuccessAt": "2026-10-01T18:25:36+00:00",
+			"checkedAt": "2026-10-02T00:48:04+00:00",
+			"lastSuccessAt": "2026-10-02T00:48:04+00:00",
 			"count": 15,
 			"message": "更新成功"
 		},
 		{
 			"id": "fomc",
 			"state": "ok",
-			"checkedAt": "2026-10-01T18:25:36+00:00",
-			"lastSuccessAt": "2026-10-01T18:25:36+00:00",
+			"checkedAt": "2026-10-02T00:48:04+00:00",
+			"lastSuccessAt": "2026-10-02T00:48:04+00:00",
 			"count": 10,
 			"message": "更新成功"
 		},
 		{
 			"id": "moa_weekly",
 			"state": "ok",
-			"checkedAt": "2026-10-01T18:25:41+00:00",
-			"lastSuccessAt": "2026-10-01T18:25:41+00:00",
+			"checkedAt": "2026-10-02T00:48:08+00:00",
+			"lastSuccessAt": "2026-10-02T00:48:08+00:00",
 			"count": 60,
 			"message": "更新成功"
 		},
 		{
 			"id": "muyuan",
 			"state": "ok",
-			"checkedAt": "2026-10-01T18:25:41+00:00",
-			"lastSuccessAt": "2026-10-01T18:25:41+00:00",
+			"checkedAt": "2026-10-02T00:48:09+00:00",
+			"lastSuccessAt": "2026-10-02T00:48:09+00:00",
 			"count": 9,
 			"message": "更新成功"
 		},
 		{
 			"id": "nbs_prices",
 			"state": "ok",
-			"checkedAt": "2026-10-01T18:25:51+00:00",
-			"lastSuccessAt": "2026-10-01T18:25:51+00:00",
+			"checkedAt": "2026-10-02T00:48:17+00:00",
+			"lastSuccessAt": "2026-10-02T00:48:17+00:00",
 			"count": 3,
 			"message": "更新成功"
 		},
 		{
 			"id": "zhuwang_daily",
-			"state": "error",
-			"checkedAt": "2026-10-01T18:25:45+00:00",
-			"lastSuccessAt": "2026-10-01T10:09:08+00:00",
-			"count": 0,
-			"message": "来源暂不可用，保留上次有效数据；可直接访问原始网站"
+			"state": "ok",
+			"checkedAt": "2026-10-02T00:48:05+00:00",
+			"lastSuccessAt": "2026-10-02T00:48:05+00:00",
+			"count": 1,
+			"message": "更新成功"
 		}
 	],
 	"meetings": [
