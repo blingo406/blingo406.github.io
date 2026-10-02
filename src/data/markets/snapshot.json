@@ -1,6 +1,6 @@
 {
 	"schemaVersion": 2,
-	"generatedAt": "2026-10-02T09:47:02+00:00",
+	"generatedAt": "2026-10-02T17:53:22+00:00",
 	"observations": [
 		{
 			"series": "hog",
@@ -21230,64 +21230,64 @@
 		{
 			"id": "dongrui",
 			"state": "ok",
-			"checkedAt": "2026-10-02T09:47:06+00:00",
-			"lastSuccessAt": "2026-10-02T09:47:06+00:00",
+			"checkedAt": "2026-10-02T17:53:25+00:00",
+			"lastSuccessAt": "2026-10-02T17:53:25+00:00",
 			"count": 51,
 			"message": "更新成功"
 		},
 		{
 			"id": "fed_meetings",
 			"state": "ok",
-			"checkedAt": "2026-10-02T09:47:03+00:00",
-			"lastSuccessAt": "2026-10-02T09:47:03+00:00",
+			"checkedAt": "2026-10-02T17:53:22+00:00",
+			"lastSuccessAt": "2026-10-02T17:53:22+00:00",
 			"count": 2,
 			"message": "更新成功"
 		},
 		{
 			"id": "fed_rss",
 			"state": "ok",
-			"checkedAt": "2026-10-02T09:47:03+00:00",
-			"lastSuccessAt": "2026-10-02T09:47:03+00:00",
+			"checkedAt": "2026-10-02T17:53:22+00:00",
+			"lastSuccessAt": "2026-10-02T17:53:22+00:00",
 			"count": 15,
 			"message": "更新成功"
 		},
 		{
 			"id": "fomc",
 			"state": "ok",
-			"checkedAt": "2026-10-02T09:47:03+00:00",
-			"lastSuccessAt": "2026-10-02T09:47:03+00:00",
+			"checkedAt": "2026-10-02T17:53:22+00:00",
+			"lastSuccessAt": "2026-10-02T17:53:22+00:00",
 			"count": 10,
 			"message": "更新成功"
 		},
 		{
 			"id": "moa_weekly",
 			"state": "ok",
-			"checkedAt": "2026-10-02T09:47:06+00:00",
-			"lastSuccessAt": "2026-10-02T09:47:06+00:00",
+			"checkedAt": "2026-10-02T17:53:25+00:00",
+			"lastSuccessAt": "2026-10-02T17:53:25+00:00",
 			"count": 60,
 			"message": "更新成功"
 		},
 		{
 			"id": "muyuan",
 			"state": "ok",
-			"checkedAt": "2026-10-02T09:47:07+00:00",
-			"lastSuccessAt": "2026-10-02T09:47:07+00:00",
+			"checkedAt": "2026-10-02T17:53:25+00:00",
+			"lastSuccessAt": "2026-10-02T17:53:25+00:00",
 			"count": 9,
 			"message": "更新成功"
 		},
 		{
 			"id": "nbs_prices",
 			"state": "ok",
-			"checkedAt": "2026-10-02T09:47:19+00:00",
-			"lastSuccessAt": "2026-10-02T09:47:19+00:00",
+			"checkedAt": "2026-10-02T17:53:36+00:00",
+			"lastSuccessAt": "2026-10-02T17:53:36+00:00",
 			"count": 3,
 			"message": "更新成功"
 		},
 		{
 			"id": "zhuwang_daily",
 			"state": "ok",
-			"checkedAt": "2026-10-02T09:47:04+00:00",
-			"lastSuccessAt": "2026-10-02T09:47:04+00:00",
+			"checkedAt": "2026-10-02T17:53:23+00:00",
+			"lastSuccessAt": "2026-10-02T17:53:23+00:00",
 			"count": 1,
 			"message": "更新成功"
 		}
