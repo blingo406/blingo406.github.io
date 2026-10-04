@@ -1,0 +1,66 @@
+---
+import { getCollection, render } from "astro:content";
+import source from "../../public/data/gold-etf/state.json";
+import { siteConfig } from "../config/siteConfig";
+import calendar from "../data/gold-etf/calendar.json";
+import "../styles/markets.css";
+import "../styles/gold-etf.css";
+
+const entry = (await getCollection("posts")).find(
+	(post) => post.data.title === "黄金股ETF套利战法",
+);
+if (!entry) throw new Error("Gold ETF research article is missing");
+const { Content } = await render(entry);
+const seed = {
+	quote: source.quote,
+	navs: source.navs,
+	lastSuccessAt: source.lastSuccessAt,
+};
+---
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="黄金股 ETF 策略分析与工银 159315 盘前 5% 提示，09:16 初看、09:21 重点复核。" />
+    <title>策略 · {siteConfig.title}</title>
+    <link rel="canonical" href={new URL("/strategies/", Astro.site)} />
+    <script is:inline>try { if (localStorage.getItem("theme") === "dark") document.documentElement.classList.add("dark"); } catch {}</script>
+  </head>
+  <body class="market-app strategy-app" data-no-swup>
+    <a class="skip-link" href="#strategy-main">跳到内容</a>
+    <header class="market-header"><div class="brand-row"><a class="brand" href="/" data-no-swup>{siteConfig.title}</a><span class="brand-divider">/</span><span>策略</span></div><div class="header-actions"><a href="/archive/?category=策略分析" data-no-swup>策略分析归档 ↗</a><button type="button" id="strategy-theme" aria-label="切换明暗主题">明 / 暗</button></div></header>
+    <main class="market-shell strategy-shell" id="strategy-main">
+      <div class="page-heading"><div><h1>黄金股ETF套利战法</h1><p>工银黄金股 ETF · 159315 <span class="etf-times">09:16 初看 · <strong>09:21 重点复核</strong></span></p></div></div>
+      <section class="etf-hero" id="etf-hero" data-level="0" aria-labelledby="etf-signal">
+        <div class="etf-eyebrow"><span class="etf-pill">折价 ≥5% · 排除跌停价</span><time id="etf-clock">北京时间</time></div>
+        <h2 id="etf-signal" role="status" aria-live="polite">正在读取行情…</h2>
+        <div class="etf-actions"><button type="button" id="etf-enable">开启声音与桌面提示</button><button type="button" id="etf-refresh">刷新</button></div>
+        <p class="etf-help" id="etf-notify-state">重点时段目标每秒刷新一次。请保持本页打开、设备联网。</p>
+      </section>
+      <div class="metric-grid etf-metrics">
+        <article class="metric"><h2 class="metric-label">买一价 · 元</h2><p class="metric-value" id="etf-bid">—</p><p class="metric-date" id="etf-quote-time">等待报价</p></article>
+        <article class="metric"><h2 class="metric-label">参考折溢价</h2><p class="metric-value" id="etf-discount">—</p><p class="metric-date">相对前一交易日单位净值</p></article>
+        <article class="metric"><h2 class="metric-label">前日单位净值 · 元</h2><p class="metric-value" id="etf-nav">—</p><p class="metric-date" id="etf-nav-date">等待净值</p></article>
+        <article class="metric"><h2 class="metric-label">5% 对应最高报价 · 元</h2><p class="metric-value" id="etf-threshold">—</p><p class="metric-date" id="etf-limit">当日跌停价：—</p></article>
+      </div>
+      <p class="etf-basis">提示使用<strong>买一价 ÷ 前日单位净值 − 1</strong>。买一尚未核实为竞价虚拟成交价，触发后需在交易软件确认。</p>
+      <section class="panel strategy-research">
+        <div class="section-intro"><h2>研究结论</h2><span class="source-line">截至 2026-09-30 · 次日开盘 · 未扣费</span></div>
+        <div class="strategy-results"><p><strong>39 笔 / 10 天</strong><span>5% 条件，排除跌停开盘</span></p><p><strong>71.8%</strong><span>历史胜率</span></p><p><strong>+2.13%</strong><span>单笔平均收益</span></p></div>
+        <p class="strategy-takeaway">5% 组优于 6% 组；次日 11:30 盈利比例更高，09:30 平均收益更高。最差单笔仍为 −10.35%。</p>
+        <details class="strategy-report"><summary>展开完整研究报告</summary><div class="strategy-prose"><Content /></div></details>
+      </section>
+      <details class="strategy-settings"><summary>提示说明与数据来源</summary><p>09:16、09:21 这两分钟内，首次满足 5% 条件时各提醒一次。过期超过 15 秒、净值日期不匹配或买一在跌停价时暂停提醒。</p><p>两个时点附近目标每秒刷新，其余竞价时段每 3 秒；实际速度受行情源、网络及浏览器后台限速影响。页面关闭后不发送即时通知。</p><p>报价：<a href="https://gu.qq.com/sz159315" target="_blank" rel="noopener noreferrer">腾讯证券</a> / <a href="https://quote.eastmoney.com/sz159315.html" target="_blank" rel="noopener noreferrer">东方财富</a>；净值：<a href="https://fundf10.eastmoney.com/jjjz_159315.html" target="_blank" rel="noopener noreferrer">天天基金</a>。<span id="etf-connection"></span></p></details>
+      <noscript><p class="notice">开启 JavaScript 可显示即时指标和提示，研究报告仍可直接阅读。</p></noscript>
+    </main>
+    <script is:inline id="etf-seed" type="application/json" set:html={JSON.stringify({ seed, calendar }).replace(/</g, "\\u003c")} />
+    <script>
+      import "../lib/gold-etf-client";
+      document.getElementById("strategy-theme")?.addEventListener("click", () => {
+        const dark = document.documentElement.classList.toggle("dark");
+        try { localStorage.setItem("theme", dark ? "dark" : "light"); } catch {}
+      });
+    </script>
+  </body>
+</html>

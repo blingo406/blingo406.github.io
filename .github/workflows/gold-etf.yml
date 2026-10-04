@@ -1,0 +1,99 @@
+name: Gold ETF auction observations
+
+on:
+  schedule:
+    # Beijing 08:55 warmup, plus 09:10 retry. GitHub cron is best effort.
+    - cron: '55 0 * * 1-5'
+    - cron: '10 1 * * 1-5'
+    - cron: '10 14 * * 1-5'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gold-etf-observations
+  cancel-in-progress: false
+
+jobs:
+  observe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    permissions:
+      contents: write
+    outputs:
+      ref: ${{ steps.commit.outputs.ref }}
+      healthy: ${{ steps.collect.outputs.healthy }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Verify quote and alert rules
+        run: node --test scripts/gold-etf/test-*.mjs
+      - name: Refresh reference NAV before the auction window
+        run: node scripts/gold-etf/collect.mjs --once
+      - name: Make reference NAV available immediately
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- public/data/gold-etf/state.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'data: prepare gold ETF reference NAV'
+            for attempt in 1 2 3; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then break; fi
+              if [ "$attempt" -eq 3 ]; then exit 1; fi
+              sleep 3
+            done
+          fi
+      - name: Observe 09:16 and 09:21 Beijing time
+        id: collect
+        run: node scripts/gold-etf/collect.mjs --watch
+      - name: Preserve observations
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gold-etf-observations-${{ github.run_id }}
+          path: public/data/gold-etf/state.json
+          retention-days: 90
+      - name: Publish observed values
+        id: commit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- public/data/gold-etf/state.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'data: record gold ETF auction observations'
+            for attempt in 1 2 3; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then break; fi
+              if [ "$attempt" -eq 3 ]; then exit 1; fi
+              sleep 3
+            done
+          fi
+          echo "ref=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+  publish:
+    needs: observe
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/deploy.yml
+    with:
+      ref: ${{ needs.observe.outputs.ref }}
+
+  health:
+    needs: [observe, publish]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check actual data connection
+        env:
+          HEALTHY: ${{ needs.observe.outputs.healthy }}
+        run: test "$HEALTHY" = true

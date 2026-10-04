@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "code": "159315",
+  "quote": {
+    "code": "159315",
+    "name": "工银黄金股ETF",
+    "bid": 1.537,
+    "ask": 1.538,
+    "last": 1.537,
+    "open": 1.524,
+    "previousClose": 1.517,
+    "iopv": null,
+    "quoteAt": "2026-09-30T08:14:45.000Z",
+    "receivedAt": "2026-10-04T03:17:44.960Z",
+    "tradingDate": "2026-09-30",
+    "source": "tencent",
+    "priceRole": "bid1",
+    "auctionPriceVerified": false
+  },
+  "navs": [
+    {
+      "date": "2026-09-30",
+      "value": 1.5393,
+      "observedAt": "2026-10-04T03:17:44.714Z"
+    },
+    {
+      "date": "2026-09-29",
+      "value": 1.5154,
+      "observedAt": "2026-10-04T03:17:44.714Z"
+    },
+    {
+      "date": "2026-09-28",
+      "value": 1.496,
+      "observedAt": "2026-10-04T03:17:44.714Z"
+    },
+    {
+      "date": "2026-09-24",
+      "value": 1.5722,
+      "observedAt": "2026-10-04T03:17:44.714Z"
+    },
+    {
+      "date": "2026-09-23",
+      "value": 1.6384,
+      "observedAt": "2026-10-04T03:17:44.714Z"
+    },
+    {
+      "date": "2026-09-22",
+      "value": 1.6467,
+      "observedAt": "2026-10-04T03:17:44.714Z"
+    },
+    {
+      "date": "2026-09-21",
+      "value": 1.6692,
+      "observedAt": "2026-10-04T03:17:44.714Z"
+    },
+    {
+      "date": "2026-09-18",
+      "value": 1.7004,
+      "observedAt": "2026-10-04T03:17:44.714Z"
+    }
+  ],
+  "history": [],
+  "lastSuccessAt": "2026-10-04T03:17:44.960Z",
+  "navCheckedAt": "2026-10-04T03:17:44.714Z",
+  "navStatus": "ok",
+  "sessionDate": "2026-10-04",
+  "sessionStatus": "closed",
+  "checkedAt": "2026-10-04T03:17:44.715Z",
+  "sourceStatus": "ok"
+}

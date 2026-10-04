@@ -137,6 +137,11 @@ export const navBarConfig: NavBarConfig = {
 			url: "/markets/pig/",
 			icon: "material-symbols:monitoring",
 		},
+		{
+			name: "策略",
+			url: "/strategies/",
+			icon: "material-symbols:notifications-active-outline",
+		},
 
 		// 自定义一级下拉菜单示例：外部链接集合
 		{
