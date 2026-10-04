@@ -16,21 +16,20 @@ const seed = {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="工银黄金股 ETF 159315 折溢价提醒：09:16、09:21 关注参考折价达到 5% 的情况。" />
-    <title>策略 · {siteConfig.title}</title>
+    <title>指标检测 · {siteConfig.title}</title>
     <link rel="canonical" href={new URL("/strategies/", Astro.site)} />
     <script is:inline>try { if (localStorage.getItem("theme") === "dark") document.documentElement.classList.add("dark"); } catch {}</script>
   </head>
   <body class="market-app strategy-app" data-no-swup>
     <a class="skip-link" href="#strategy-main">跳到内容</a>
-    <header class="market-header"><div class="brand-row"><a class="brand" href="/" data-no-swup>{siteConfig.title}</a><span class="brand-divider">/</span><span>策略</span></div><div class="header-actions"><button type="button" id="strategy-theme" aria-label="切换明暗主题">明 / 暗</button></div></header>
+    <header class="market-header"><div class="brand-row"><a class="brand" href="/" data-no-swup>{siteConfig.title}</a><span class="brand-divider">/</span><span>指标检测</span></div><div class="header-actions"><button type="button" id="strategy-theme" aria-label="切换明暗主题">明 / 暗</button></div></header>
     <main class="market-shell strategy-shell" id="strategy-main">
-      <div class="page-heading"><div><h1>溢价提醒</h1><p>工银黄金股 ETF · 159315 <span class="etf-times">09:16 初看 · <strong>09:21 重点复核</strong></span></p></div></div>
-      <section class="etf-hero" id="etf-hero" data-level="0" aria-labelledby="etf-signal">
-        <div class="etf-eyebrow"><span class="etf-pill">折价 ≥5% · 排除跌停价</span><time id="etf-clock">北京时间</time></div>
-        <h2 id="etf-signal" role="status" aria-live="polite">正在读取行情…</h2>
-        <p class="etf-premium">当前参考折溢价 <strong id="etf-discount">—</strong></p>
-        <div class="etf-actions"><button type="button" id="etf-enable">开启声音与桌面提示</button><button type="button" id="etf-refresh">刷新</button></div>
-        <p class="etf-help" id="etf-notify-state">满足条件时，09:16、09:21 各提醒一次。请保持本页打开、设备联网。</p>
+      <section class="etf-hero" id="etf-hero" data-level="0" aria-labelledby="etf-name">
+        <h1 id="etf-name">黄金股ETF套利</h1>
+        <button type="button" class="etf-status" id="etf-enable" aria-label="开启黄金股ETF套利的声音与桌面提醒" title="点击开启提醒：09:16、09:21，参考折价达到5%，排除跌停价。请保持页面打开。">
+          <span class="etf-status-dot" aria-hidden="true"></span><span id="etf-signal" role="status" aria-live="polite">读取中</span>
+        </button>
+        <p class="sr-only" id="etf-notify-state" role="status">点击状态框开启声音与桌面提醒。</p>
       </section>
       <noscript><p class="notice">开启 JavaScript 以显示折溢价提醒。</p></noscript>
     </main>

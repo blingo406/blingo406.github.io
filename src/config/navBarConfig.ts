@@ -138,7 +138,7 @@ export const navBarConfig: NavBarConfig = {
 			icon: "material-symbols:monitoring",
 		},
 		{
-			name: "策略",
+			name: "指标检测",
 			url: "/strategies/",
 			icon: "material-symbols:notifications-active-outline",
 		},

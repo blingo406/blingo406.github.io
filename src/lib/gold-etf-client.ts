@@ -36,6 +36,19 @@ const set = (id: string, text: string) => {
 const percent = (n: number | null | undefined) =>
 	n == null ? "—" : `${n > 0 ? "+" : ""}${(n * 100).toFixed(2)}%`;
 const time = (iso: string) => beijing(Date.parse(iso)).slice(11, 19);
+const statusLabels: Record<string, string> = {
+	"calendar-unknown": "日历待更新",
+	closed: "休市",
+	outside: "待竞价",
+	unavailable: "暂无行情",
+	stale: "行情延迟",
+	"nav-missing": "净值待更新",
+	invalid: "报价待核",
+	"limit-down": "跌停已排除",
+	attention: "折价达5%",
+	watching: "监测中",
+	waiting: "读取中",
+};
 let quote = state.quote;
 let audio: AudioContext | null = null;
 let alertsEnabled = false;
@@ -107,12 +120,13 @@ function alert(point: Point) {
 function render() {
 	const now = Date.now();
 	const result = assess(quote, state.navs, calendar, now);
-	set("etf-clock", `北京时间 ${beijing(now).replace("T", " ")}`);
-	set("etf-signal", result.message);
+	set("etf-signal", statusLabels[result.state] || "报价待核");
 	const hero = document.getElementById("etf-hero");
-	if (hero) hero.dataset.level = String(result.level);
-	document.title = `${result.level ? "【5% 重点关注】" : ""}工银黄金股 ETF · 09:16 / 09:21`;
-	set("etf-discount", result.fresh ? percent(result.discount) : "—");
+	if (hero) {
+		hero.dataset.level = String(result.level);
+		hero.dataset.state = result.state;
+	}
+	document.title = `${result.level ? "【5% 重点关注】" : ""}指标检测 · 黄金股ETF套利`;
 	const point = capturePoint(quote, result, now) as Point | null;
 	if (point) {
 		alert(point);
@@ -161,10 +175,6 @@ async function refreshReference() {
 	}
 }
 
-document.getElementById("etf-refresh")?.addEventListener("click", () => {
-	void refreshQuote();
-	void refreshReference();
-});
 document.getElementById("etf-enable")?.addEventListener("click", async () => {
 	alertsEnabled = true;
 	try {
@@ -181,7 +191,13 @@ document.getElementById("etf-enable")?.addEventListener("click", async () => {
 	}
 	const desktop =
 		"Notification" in window && Notification.permission === "granted";
-	set("etf-enable", "重点提示已开启");
+	const button = document.getElementById("etf-enable");
+	if (button) {
+		button.dataset.enabled = "true";
+		button.title =
+			"提醒已开启：09:16、09:21，参考折价达到5%，排除跌停价。请保持页面打开。";
+		button.setAttribute("aria-label", "黄金股ETF套利提醒已开启");
+	}
 	set(
 		"etf-notify-state",
 		`声音${audio?.state === "running" ? "已开启" : "不可用"}；桌面通知${desktop ? "已开启" : "未获授权"}。请保持本页打开、设备联网。`,
