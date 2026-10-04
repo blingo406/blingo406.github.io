@@ -6,7 +6,6 @@ import {
 	isTradingDay,
 	pollingDelay,
 	previousSession,
-	thresholdPrice,
 } from "./gold-etf-core.mjs";
 
 type Quote = Awaited<ReturnType<typeof fetchQuote>>;
@@ -25,7 +24,6 @@ type Nav = { date: string; value: number; observedAt: string };
 type State = {
 	quote: Quote | null;
 	navs: Nav[];
-	lastSuccessAt: string | null;
 };
 const { seed, calendar } = JSON.parse(
 	document.getElementById("etf-seed")?.textContent || "{}",
@@ -35,8 +33,6 @@ const set = (id: string, text: string) => {
 	const element = document.getElementById(id);
 	if (element && element.textContent !== text) element.textContent = text;
 };
-const money = (n: number | null | undefined, digits = 3) =>
-	n == null ? "—" : n.toFixed(digits);
 const percent = (n: number | null | undefined) =>
 	n == null ? "—" : `${n > 0 ? "+" : ""}${(n * 100).toFixed(2)}%`;
 const time = (iso: string) => beijing(Date.parse(iso)).slice(11, 19);
@@ -70,7 +66,7 @@ function alert(point: Point) {
 	} catch {
 		/* In-memory deduplication remains active. */
 	}
-	const message = `${point.target} 工银黄金股ETF：买一参考折价 ${percent(point.discount)}，不在跌停价。请核对竞价参考价。`;
+	const message = `${point.target} 工银黄金股ETF：参考折价 ${percent(point.discount)}，满足 5% 提醒条件。请核对竞价报价。`;
 	if (audio?.state === "running") {
 		for (const delay of [0, 0.3, 0.6]) {
 			const tone = audio.createOscillator();
@@ -116,27 +112,7 @@ function render() {
 	const hero = document.getElementById("etf-hero");
 	if (hero) hero.dataset.level = String(result.level);
 	document.title = `${result.level ? "【5% 重点关注】" : ""}工银黄金股 ETF · 09:16 / 09:21`;
-	set("etf-bid", money(quote?.bid));
-	set(
-		"etf-quote-time",
-		quote
-			? `报价 ${beijing(Date.parse(quote.quoteAt)).replace("T", " ")}`
-			: "报价暂不可用",
-	);
 	set("etf-discount", result.fresh ? percent(result.discount) : "—");
-	set("etf-nav", money(result.nav?.value, 4));
-	set(
-		"etf-nav-date",
-		result.nav ? `${result.nav.date} 官方单位净值` : "前一交易日净值未就绪",
-	);
-	set(
-		"etf-threshold",
-		result.nav ? money(thresholdPrice(result.nav.value, 5)) : "—",
-	);
-	set(
-		"etf-limit",
-		`当日跌停价：${quote?.tradingDate === result.day ? money(result.lowerLimit) : "等待当日报价"}`,
-	);
 	const point = capturePoint(quote, result, now) as Point | null;
 	if (point) {
 		alert(point);
@@ -150,13 +126,8 @@ async function refreshQuote() {
 	try {
 		quote = await fetchQuote();
 		failures = 0;
-		set(
-			"etf-connection",
-			` 报价来源：${quote.source === "tencent" ? "腾讯证券" : "东方财富"}。`,
-		);
 	} catch {
 		failures++;
-		set("etf-connection", " 行情连接暂不可用，正在重试；旧报价不触发提示。");
 	} finally {
 		requestRunning = false;
 		nextPoll =

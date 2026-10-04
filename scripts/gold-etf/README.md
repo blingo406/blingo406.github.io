@@ -1,6 +1,6 @@
 # 工银黄金股 ETF 盘前观察
 
-`/strategies/` combines the 159315 monitor, concise results and an expandable full report. The article is archived under `策略分析`. The old `/markets/gold-etf/` URL redirects here. The page does not display or save observation history; browser storage contains only alert deduplication keys, without quotes or returns. The collector retains evidence separately for research. Alerts have **one threshold, 5%**, at Beijing 09:16 and 09:21. No 6% escalation, order routing, or shutdown task is configured.
+`/strategies/` displays only the 159315 reference premium/discount and alert status, with controls for sound and desktop notifications. Research results and raw quote/NAV cards are omitted. The research article is archived under `策略分析`. The old `/markets/gold-etf/` URL redirects here. The page does not display or save observation history; browser storage contains only alert deduplication keys, without quotes or returns. The collector retains evidence separately for research. Alerts have **one threshold, 5%**, at Beijing 09:16 and 09:21. No 6% escalation, order routing, or shutdown task is configured.
 
 ## Meaning of an alert
 
