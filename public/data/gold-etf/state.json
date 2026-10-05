@@ -11,7 +11,7 @@
     "previousClose": 1.517,
     "iopv": null,
     "quoteAt": "2026-09-30T08:14:45.000Z",
-    "receivedAt": "2026-10-05T06:58:17.372Z",
+    "receivedAt": "2026-10-05T06:58:21.538Z",
     "tradingDate": "2026-09-30",
     "source": "tencent",
     "priceRole": "bid1",
@@ -60,11 +60,11 @@
     }
   ],
   "history": [],
-  "lastSuccessAt": "2026-10-05T06:58:17.373Z",
+  "lastSuccessAt": "2026-10-05T06:58:21.539Z",
   "navCheckedAt": "2026-10-05T06:20:29.754Z",
   "navStatus": "unavailable",
   "sessionDate": "2026-10-05",
   "sessionStatus": "closed",
-  "checkedAt": "2026-10-05T06:58:16.193Z",
+  "checkedAt": "2026-10-05T06:58:20.685Z",
   "sourceStatus": "ok"
 }
