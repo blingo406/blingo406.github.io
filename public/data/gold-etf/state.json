@@ -9,11 +9,11 @@
     "last": 1.537,
     "open": 1.524,
     "previousClose": 1.517,
-    "iopv": 1.5362,
-    "quoteAt": "2026-09-30T07:34:45.000Z",
-    "receivedAt": "2026-10-07T07:35:37.210Z",
+    "iopv": null,
+    "quoteAt": "2026-09-30T08:14:45.000Z",
+    "receivedAt": "2026-10-07T07:40:33.990Z",
     "tradingDate": "2026-09-30",
-    "source": "eastmoney",
+    "source": "tencent",
     "priceRole": "bid1",
     "auctionPriceVerified": false
   },
@@ -21,53 +21,53 @@
     {
       "date": "2026-09-30",
       "value": 1.5393,
-      "observedAt": "2026-10-07T07:35:37.119Z"
+      "observedAt": "2026-10-07T07:40:33.006Z"
     },
     {
       "date": "2026-09-29",
       "value": 1.5154,
-      "observedAt": "2026-10-07T07:35:37.119Z"
+      "observedAt": "2026-10-07T07:40:33.006Z"
     },
     {
       "date": "2026-09-28",
       "value": 1.496,
-      "observedAt": "2026-10-07T07:35:37.119Z"
+      "observedAt": "2026-10-07T07:40:33.006Z"
     },
     {
       "date": "2026-09-24",
       "value": 1.5722,
-      "observedAt": "2026-10-07T07:35:37.119Z"
+      "observedAt": "2026-10-07T07:40:33.006Z"
     },
     {
       "date": "2026-09-23",
       "value": 1.6384,
-      "observedAt": "2026-10-07T07:35:37.119Z"
+      "observedAt": "2026-10-07T07:40:33.006Z"
     },
     {
       "date": "2026-09-22",
       "value": 1.6467,
-      "observedAt": "2026-10-07T07:35:37.119Z"
+      "observedAt": "2026-10-07T07:40:33.006Z"
     },
     {
       "date": "2026-09-21",
       "value": 1.6692,
-      "observedAt": "2026-10-07T07:35:37.119Z"
+      "observedAt": "2026-10-07T07:40:33.006Z"
     },
     {
       "date": "2026-09-18",
       "value": 1.7004,
-      "observedAt": "2026-10-07T07:35:37.119Z"
+      "observedAt": "2026-10-07T07:40:33.006Z"
     }
   ],
   "history": [],
-  "lastSuccessAt": "2026-10-07T07:35:37.211Z",
-  "navCheckedAt": "2026-10-07T07:35:36.963Z",
+  "lastSuccessAt": "2026-10-07T07:40:33.991Z",
+  "navCheckedAt": "2026-10-07T07:40:31.898Z",
   "navStatus": "ok",
   "sessionDate": "2026-10-07",
   "sessionStatus": "closed",
-  "checkedAt": "2026-10-07T07:35:37.119Z",
+  "checkedAt": "2026-10-07T07:40:33.006Z",
   "sourceStatus": "ok",
-  "navLastSuccessAt": "2026-10-07T07:35:37.119Z",
+  "navLastSuccessAt": "2026-10-07T07:40:33.006Z",
   "health": {
     "healthy": true,
     "status": "ok",
