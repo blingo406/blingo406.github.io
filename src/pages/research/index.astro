@@ -1,0 +1,16 @@
+---
+import HomeMarkets from "../../components/markets/HomeMarkets.astro";
+import ObservationLayout from "../../layouts/ObservationLayout.astro";
+---
+<ObservationLayout title="总览" description="查看产业与宏观公开数据，打开策略指标提醒。" active="overview">
+	<div class="page-heading"><div><h1>市场观察站</h1><p>数据观察与策略工具，从这里进入。</p></div></div>
+	<div class="two-column observation-entry-grid">
+		<a class="panel observation-entry" href="/research/markets/pig/"><span class="badge">数据观察</span><h2>产业、公司与宏观</h2><p class="muted">猪产业链价格、公司财报、FOMC 决议与点阵图。</p><span class="text-link">打开数据观察 →</span></a>
+		<a class="panel observation-entry" href="/research/strategies/"><span class="badge">策略</span><h2>黄金股 ETF 指标检测</h2><p class="muted">09:16、09:21 观察参考折价，点击状态框开启提醒。</p><span class="text-link">打开策略工具 →</span></a>
+	</div>
+	<HomeMarkets />
+</ObservationLayout>
+<style>
+	.observation-entry { display: grid; gap: 12px; transition: border-color .15s; }
+	.observation-entry:hover { border-color: var(--m-accent); }
+</style>

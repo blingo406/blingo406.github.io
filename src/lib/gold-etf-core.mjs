@@ -163,23 +163,46 @@ export async function fetchQuote() {
 	}
 }
 
-export async function fetchNAVs() {
+export async function fetchNAVs({
+	fetchImpl = fetch,
+	sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms)),
+	attempts = 3,
+} = {}) {
 	// Server-side only: the NAV host requires its own Referer and has no CORS.
-	const response = await fetch(
-		`https://api.fund.eastmoney.com/f10/lsjz?fundCode=159315&pageIndex=1&pageSize=8&_=${Date.now()}`,
-		{
-			headers: { Referer: "https://fundf10.eastmoney.com/" },
-			signal: AbortSignal.timeout(5000),
-			cache: "no-store",
-		},
-	);
-	if (!response.ok) throw new Error("NAV source unavailable");
-	const rows = (await response.json())?.Data?.LSJZList;
-	if (!Array.isArray(rows) || !rows.length) throw new Error("NAV source empty");
-	const observedAt = new Date().toISOString();
-	return rows
-		.filter((row) => /^\d{4}-\d{2}-\d{2}$/.test(row.FSRQ) && positive(row.DWJZ))
-		.map((row) => ({ date: row.FSRQ, value: Number(row.DWJZ), observedAt }));
+	for (let attempt = 1; attempt <= attempts; attempt++) {
+		try {
+			const response = await fetchImpl(
+				`https://api.fund.eastmoney.com/f10/lsjz?fundCode=159315&pageIndex=1&pageSize=8&_=${Date.now()}`,
+				{
+					headers: { Referer: "https://fundf10.eastmoney.com/" },
+					signal: AbortSignal.timeout(5000),
+					cache: "no-store",
+				},
+			);
+			if (!response.ok) throw new Error(`NAV source HTTP ${response.status}`);
+			const rows = (await response.json())?.Data?.LSJZList;
+			if (!Array.isArray(rows)) throw new Error("NAV source empty");
+			const observedAt = new Date().toISOString();
+			const navs = rows
+				.filter(
+					(row) => /^\d{4}-\d{2}-\d{2}$/.test(row.FSRQ) && positive(row.DWJZ),
+				)
+				.map((row) => ({
+					date: row.FSRQ,
+					value: Number(row.DWJZ),
+					observedAt,
+				}));
+			if (!navs.length) throw new Error("NAV source has no valid values");
+			return navs;
+		} catch (error) {
+			if (attempt === attempts)
+				throw new Error(
+					`NAV refresh failed after ${attempts} attempts: ${error.message}`,
+					{ cause: error },
+				);
+			await sleep(attempt * 1000);
+		}
+	}
 }
 
 export function assess(quote, navs, calendar, now = Date.now()) {

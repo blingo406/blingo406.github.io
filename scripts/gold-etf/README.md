@@ -1,6 +1,6 @@
 # 工银黄金股 ETF 盘前观察
 
-`/strategies/` is named `指标检测` and displays a compact `黄金股ETF套利` card with a status badge. Click the badge to enable sound and desktop notifications. Navigation uses a full page load because the monitor has its own layout. Research results and raw quote/NAV cards are omitted. The research article is archived under `策略分析`. The old `/markets/gold-etf/` URL redirects here. The page does not display or save observation history; browser storage contains only alert deduplication keys, without quotes or returns. The collector retains evidence separately for research. Alerts have **one threshold, 5%**, at Beijing 09:16 and 09:21. No 6% escalation, order routing, or shutdown task is configured.
+`/research/strategies/` is named `指标检测` and displays a compact `黄金股ETF套利` card with a status badge. Click the badge to enable sound and desktop notifications. Navigation uses a full page load because the monitor has its own layout. Research results and raw quote/NAV cards are omitted. The research article is archived under `策略分析`. The old `/strategies/` and `/markets/gold-etf/` URLs redirect here. The standalone observation site starts at `/research/`; the blog links to it through Links and contains no data/strategy section. The page does not display or save observation history; browser storage contains only alert deduplication keys, without quotes or returns. The collector retains evidence separately for research. Alerts have **one threshold, 5%**, at Beijing 09:16 and 09:21. No 6% escalation, order routing, or shutdown task is configured.
 
 ## Meaning of an alert
 
@@ -19,6 +19,12 @@ node scripts/gold-etf/collect.mjs --watch
 ```
 
 The collector writes only `public/data/gold-etf/state.json`. It preserves prior captures. Each target minute stores its first valid observation, deepest observed reference discount, and first eligible 5% trigger. A later limit-down quote does not erase the earlier trigger. A late or failed run records missed slots and never fills them with a different minute's quote. The public JSON contains no local paths, portfolio data, tokens, or account identifiers.
+
+## Data health
+
+NAV requests retry up to three times, each with a five-second timeout and one-/two-second backoff. HTTP status, parse failures and connection failures remain in the run log, job summary and public source status. A temporary NAV refresh failure retains the original dated values; it does not change `navStatus` to `ok`.
+
+Monitoring remains usable with a cached NAV only when its date is the exact previous exchange session, its value is positive and it was observed before the current check. This includes a holiday run with the last valid session's NAV. Such a run reports degraded health and a warning. Missing/old/future-observed references, quote outages, expired calendars and required missed capture slots still fail health. Auction alert conditions are unchanged.
 
 ## Timing
 

@@ -132,23 +132,18 @@ export const navBarConfig: NavBarConfig = {
 		LinkPreset.Home,
 		// 预设链接：归档
 		LinkPreset.Archive,
-		{
-			name: "数据观察",
-			url: "/markets/pig/",
-			icon: "material-symbols:monitoring",
-		},
-		{
-			name: "指标检测",
-			url: "/strategies/",
-			icon: "material-symbols:notifications-active-outline",
-		},
-
 		// 自定义一级下拉菜单示例：外部链接集合
 		{
 			name: "Links",
 			url: "/links/",
 			icon: "material-symbols:link",
 			children: [
+				{
+					name: "市场观察站",
+					url: "https://blingo406.github.io/research/",
+					external: true,
+					icon: "material-symbols:monitoring",
+				},
 				{
 					name: "GitHub",
 					url: "https://github.com/LyraVoid/Mizuki",

@@ -24,6 +24,7 @@ jobs:
     outputs:
       ref: ${{ steps.commit.outputs.ref }}
       healthy: ${{ steps.collect.outputs.healthy }}
+      health_reason: ${{ steps.collect.outputs.health_reason }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -96,4 +97,9 @@ jobs:
       - name: Check actual data connection
         env:
           HEALTHY: ${{ needs.observe.outputs.healthy }}
-        run: test "$HEALTHY" = true
+          HEALTH_REASON: ${{ needs.observe.outputs.health_reason }}
+        run: |
+          if [ "$HEALTHY" != true ]; then
+            echo "::error::$HEALTH_REASON"
+            exit 1
+          fi

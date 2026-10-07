@@ -1,0 +1,52 @@
+---
+import "../styles/markets.css";
+
+interface Props {
+	title: string;
+	description: string;
+	active: "overview" | "markets" | "strategies";
+	class?: string;
+}
+const { title, description, active, class: className } = Astro.props;
+const sections = [
+	{ id: "overview", name: "总览", href: "/research/" },
+	{ id: "markets", name: "数据观察", href: "/research/markets/pig/" },
+	{ id: "strategies", name: "策略", href: "/research/strategies/" },
+];
+---
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content={description} />
+		<meta name="theme-color" content="#f4f6f8" />
+		<title>{title} · 市场观察站</title>
+		<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+		<script is:inline>
+			try { if (localStorage.getItem("theme") === "dark") document.documentElement.classList.add("dark"); } catch {}
+		</script>
+	</head>
+	<body class:list={["market-app", className]} data-no-swup>
+		<a class="skip-link" href="#observation-content">跳到内容</a>
+		<header class="market-header">
+			<a href="/research/" class="brand"><img src="/assets/optimized/nav-icon.webp" width="32" height="32" alt="" />市场观察站</a>
+			<div class="header-actions"><a href="/" data-no-swup>返回博客 ↗</a><button type="button" id="market-theme" aria-label="切换明暗主题">明 / 暗</button></div>
+		</header>
+		<div class="market-shell">
+			<nav class="market-tabs observation-sections" aria-label="市场观察站导航">
+				{sections.map((section) => <a href={section.href} aria-current={active === section.id ? "page" : undefined}>{section.name}</a>)}
+			</nav>
+			<slot name="tabs" />
+			<main id="observation-content"><slot /></main>
+			<footer class="market-footer"><span>公开资料汇集 · 数据保留实际日期与来源</span><a href="/research/markets/sources/">查看来源与更新状态 →</a><a href="/" data-no-swup>返回博客 →</a></footer>
+		</div>
+		<script>
+			document.getElementById("market-theme")?.addEventListener("click", () => {
+				const dark = document.documentElement.classList.toggle("dark");
+				try { localStorage.setItem("theme", dark ? "dark" : "light"); } catch {}
+				window.dispatchEvent(new Event("market-theme-change"));
+			});
+		</script>
+	</body>
+</html>

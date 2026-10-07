@@ -28,7 +28,7 @@ export async function mountChart(root: HTMLElement) {
 			sourceUrl?: string;
 		}
 	> = JSON.parse(root.dataset.metrics || "{}");
-	observations ??= fetch("/markets/prices.json").then((response) => {
+	observations ??= fetch("/research/markets/prices.json").then((response) => {
 		if (!response.ok) throw new Error("Price data unavailable");
 		return response.json();
 	});
