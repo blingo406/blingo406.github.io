@@ -1,6 +1,6 @@
 # 工银黄金股 ETF 盘前观察
 
-`/research/strategies/` is named `指标检测` and displays a compact `黄金股ETF套利` card with a status badge. Click the badge to enable sound and desktop notifications. Navigation uses a full page load because the monitor has its own layout. Research results and raw quote/NAV cards are omitted. The research article is archived under `策略分析`. The old `/strategies/` and `/markets/gold-etf/` URLs redirect here. The standalone observation site starts at `/research/`; the blog links to it through Links and contains no data/strategy section. The page does not display or save observation history; browser storage contains only alert deduplication keys, without quotes or returns. The collector retains evidence separately for research. Alerts have **one threshold, 5%**, at Beijing 09:16 and 09:21. No 6% escalation, order routing, or shutdown task is configured.
+The active page is <https://market-observation.blingo406.workers.dev/strategies/> in the independent `D:\MarketObservation` project. It is named `指标检测` and displays a compact `黄金股ETF套利` card with a status badge. Click the badge to enable sound and desktop notifications. The blog retains one Links entry and redirects all former observation pages. The research article remains under `策略分析`; its rules and records are preserved. The page does not display or save observation history; browser storage contains only alert deduplication keys. Alerts have **one threshold, 5%**, at Beijing 09:16 and 09:21. No 6% escalation, order routing, or shutdown task is configured. This directory and its manual workflow are migration archives.
 
 ## Meaning of an alert
 
@@ -30,12 +30,12 @@ Monitoring remains usable with a cached NAV only when its date is the exact prev
 
 - Page: concurrent public-feed requests, no overlapping cycles, timeout 3.5 seconds. Target cadence is one second at 09:15:50–09:17:00 and 09:20:50–09:22:00; three seconds otherwise during the auction. Failed requests back off to 15 seconds. Timezone logic uses UTC+8 explicitly.
 - Browser sound and Notification permission require a click. Notifications deduplicate by date/target/5%; page must remain open. Screen wake lock is requested when supported. Browser sleep/background throttling and upstream delay remain possible.
-- GitHub workflow: Beijing 08:55 warmup, 09:10 retry, 22:10 NAV refresh on weekdays. Calendar filters exchange holidays, including weekend makeup workdays. Known calendar ends 2026-12-31; after that alerts fail closed until the next exchange calendar is added.
-- The warmup commits NAV before collecting target minutes. The page reads this public file directly from GitHub so it does not wait for a full Pages rebuild. Both reference source and quote source retain their actual dates. A missing previous-session NAV suppresses alerts.
-- GitHub cron is best effort. It can start late. Cloud observations are archival, not a guaranteed low-latency push channel. Immediate on-page warnings use the browser's direct quote feed.
+- Automatic collection now uses the independent Worker and D1. NAV checks run every five minutes, with minute sampling at 09:15–09:25. The GitHub workflow has no schedule and is retained for manual archive diagnostics. Calendar filters exchange holidays, including weekend makeup workdays. Known calendar ends 2026-12-31; after that alerts fail closed until the next exchange calendar is added.
+- The active page reads `/api/gold/state` on the independent site. Both reference and quote retain their actual dates. A missing previous-session NAV suppresses alerts. Data updates do not require Git commits or a blog rebuild.
+- Background minute sampling is best effort and may miss the target observation minute. Immediate on-page warnings use the browser's public quote feed, with a same-site API fallback. A missed slot is not reconstructed from another minute.
 
 ## Verify deployment
 
-Run the workflow manually, inspect its health job and actual published `state.json`, then open the page. Off-market connectivity verifies only access and parsing; the first real trading session must establish whether bid1 provides useful auction observations. Do not report a real-time auction feed as verified from a holiday test.
+For the active deployment, inspect the independent `/api/health`, `/api/gold/state`, Cron logs and page. The old workflow may be run manually to diagnose the archived Node collector. Off-market connectivity verifies only access and parsing; the first real trading session must establish whether bid1 provides useful auction observations. Do not report a real-time auction feed as verified from a holiday test.
 
 Research table/CSV provenance is the locally frozen 2026-10-04 entry-limit-down variant through 2026-09-30. Only whitelisted results were exported; minute-matched tables use 26 and 13 records, respectively.

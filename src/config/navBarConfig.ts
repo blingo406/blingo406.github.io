@@ -140,7 +140,7 @@ export const navBarConfig: NavBarConfig = {
 			children: [
 				{
 					name: "市场观察站",
-					url: "https://blingo406.github.io/research/",
+					url: "https://market-observation.blingo406.workers.dev/",
 					external: true,
 					icon: "material-symbols:monitoring",
 				},

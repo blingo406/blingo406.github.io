@@ -1,11 +1,7 @@
 name: Gold ETF auction observations
 
 on:
-  schedule:
-    # Beijing 08:55 warmup, plus 09:10 retry. GitHub cron is best effort.
-    - cron: '55 0 * * 1-5'
-    - cron: '10 1 * * 1-5'
-    - cron: '10 14 * * 1-5'
+  # Automatic collection now runs in the independent Cloudflare Worker.
   workflow_dispatch:
 
 permissions:
