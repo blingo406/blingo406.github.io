@@ -1,0 +1,37 @@
+---
+import { PageHeader } from "@components/features/page-header";
+import { Icon } from "astro-icon/components";
+import { readingSites } from "../data/reading";
+import MainGridLayout from "../layouts/MainGridLayout.astro";
+---
+
+<MainGridLayout title="阅读导航" description="收藏想看的网站，随时回来继续读。">
+	<div class="card-base px-6 sm:px-9 py-8 w-full">
+		<PageHeader title="阅读导航" subtitle="收藏想看的网站，随时回来继续读。" />
+		<div class="reading-sites">
+			{readingSites.map((site) => (
+				<a class="reading-site" href={site.url} target="_blank" rel="noopener noreferrer">
+					<div class="site-meta"><span>{site.site}</span><Icon name="material-symbols:arrow-outward-rounded" aria-label="在新标签页打开" /></div>
+					<h2>{site.name}</h2>
+					<p>{site.description}</p>
+				</a>
+			))}
+		</div>
+	</div>
+</MainGridLayout>
+
+<script>
+	import("../scripts/right-sidebar-layout.js");
+</script>
+
+<style>
+	.reading-sites { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+	.reading-site { display: block; padding: 1.5rem; border: 1px solid var(--btn-regular-bg); border-radius: 1rem; color: #454545; transition: background .15s; }
+	.reading-site:hover { background: var(--btn-regular-bg); }
+	.reading-site:focus-visible { outline: 2px solid var(--primary); outline-offset: 4px; }
+	.site-meta { display: flex; align-items: center; justify-content: space-between; font-size: .85rem; color: var(--primary); }
+	h2 { font-size: 1.25rem; font-weight: 700; margin: .8rem 0; }
+	p { line-height: 1.8; font-size: .95rem; }
+	:global(.dark) .reading-site { color: #d1d5db; }
+	@media (max-width: 640px) { .reading-sites { grid-template-columns: 1fr; } }
+</style>

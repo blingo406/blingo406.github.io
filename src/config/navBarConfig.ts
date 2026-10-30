@@ -151,10 +151,10 @@ export const navBarConfig: NavBarConfig = {
 					icon: "fa7-brands:github",
 				},
 				{
-					name: "Bilibili",
-					url: "https://space.bilibili.com/701864046",
-					external: true,
-					icon: "fa7-brands:bilibili",
+					name: "阅读导航",
+					url: "/reading/",
+					external: false,
+					icon: "material-symbols:bookmarks-outline",
 				},
 				{
 					name: "Gitee",
