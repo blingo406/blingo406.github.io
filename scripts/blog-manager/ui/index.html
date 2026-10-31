@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="manager-token" content="__SESSION_TOKEN__">
+  <title>Mizuki · 博客管理</title><link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header><a class="brand" href="/">M<span>✳</span></a><div><strong>Mizuki Studio</strong><span class="muted">你的文字，从这里出发。</span></div><span class="local"><i></i> 本地工作台</span><a class="site" href="https://blingo406.github.io/" target="_blank" rel="noreferrer">查看博客 ↗</a></header>
+  <main>
+    <section class="intro"><div><p class="eyebrow">BLOG / PUBLISH</p><h1>整理想法，发布文章。</h1><p>选择文档，为它们找到归档，然后送到你的博客。</p></div><div class="steps"><span class="step active">01 选择文档</span><span class="step">02 编辑与预览</span><span class="step">03 检查发布</span></div></section>
+    <div id="message" role="status" hidden></div>
+    <div class="workspace">
+      <aside class="panel library"><div class="panel-heading"><h2>文档库 <small id="count">0</small></h2><button id="refresh" class="quiet">↻ 重新扫描</button></div><p id="source" class="path"></p><label class="search"><span>⌕</span><input id="search" type="search" placeholder="搜索文档…" aria-label="搜索文档"></label><div class="list-tools"><label><input id="select-all" type="checkbox"> 全选文档</label><span id="selected-count">已选 0 篇</span></div><div id="file-list" class="file-list"></div><p id="unsupported" class="note"></p></aside>
+      <section class="panel editor"><div class="panel-heading"><h2 id="editor-title">选择一篇文档</h2><span id="file-status" class="badge"></span></div>
+        <div id="empty" class="empty"><div>✎</div><h3>写好的文章，随时可以出发。</h3><p>从左侧选择文档，设置归档和 frontmatter。</p></div>
+        <div id="editor-content" hidden>
+          <div class="section-label"><span>01</span><h3>放进哪个档？</h3><button id="apply-category" class="quiet">应用到所有已选文档</button></div>
+          <div class="form-grid"><label>归档方式<select id="archive-mode"><option value="directory">按源目录归档（推荐）</option><option value="manual">手动选择归档</option></select></label></div>
+          <p id="directory-archive" class="note"></p>
+          <div id="manual-archive">
+          <div class="form-grid"><label>已有归档<select id="category-choice"><option value="">选择已有归档</option><option value="new">＋ 创建新档</option></select></label><label>归档名称<input id="category" placeholder="例如：World Model" maxlength="100" list="category-suggestions"></label><label>父级归档 <small>选填</small><input id="parent-category" placeholder="例如：随笔" maxlength="100" list="parent-suggestions"></label></div>
+          <datalist id="category-suggestions"></datalist><datalist id="parent-suggestions"></datalist>
+          <p class="note">输入新名称即可创建归档；发布后显示在网站分类中。</p>
+          </div>
+          <div class="section-label"><span>02</span><h3>Frontmatter</h3><button id="apply-mode" class="quiet">应用模式到所有已选文档</button></div>
+          <div class="mode-options"><label><input type="radio" name="mode" value="auto" checked><span><strong>自动补全</strong><small>保留已有字段，补上标题、日期、摘要</small></span></label><label><input type="radio" name="mode" value="manual"><span><strong>自己填写</strong><small>在下方编辑 YAML，提交前检查格式</small></span></label></div>
+          <label class="yaml-label" for="frontmatter">YAML 字段 <span>无需输入首尾的 ---；归档以以上选择为准</span></label><textarea id="frontmatter" spellcheck="false" rows="11" aria-label="Frontmatter 编辑器"></textarea><p class="note">日期示例：published: 2026-10-03（不加引号）。draft: true 会保留为草稿。</p>
+          <div class="section-label"><span>03</span><h3>发布格式</h3></div>
+          <p class="note">仅当 frontmatter 的 tags 包含 Math 时，标题、摘要和正文中的 。 才转为 .。标签不区分大小写，例如 tags: [Math] 或 tags: [math, 学习]。原始文档保持原样。</p>
+          <p class="note">保留 Obsidian 空行分段：空一行即为一个新段落；公式、列表和引用块保留各自结构。</p>
+          <div class="section-label"><span>04</span><h3>原文</h3><span class="muted">转换效果见提交预览</span></div><pre id="body-preview" class="body-preview"></pre>
+        </div>
+      </section>
+    </div>
+    <section id="review" class="panel review" hidden><div class="panel-heading"><h2>提交预览</h2><span id="review-count" class="badge"></span></div><p class="note">这里展示转换后的内容与引用。网站最终效果由构建检查验证。</p><div id="review-posts"></div><details><summary>引用关系与附件</summary><pre id="references"></pre><pre id="review-files"></pre></details></section>
+    <section id="progress" class="panel progress" hidden><div class="panel-heading"><h2 id="progress-title">检查中…</h2><a href="https://github.com/blingo406/blingo406.github.io/actions/workflows/deploy.yml" target="_blank" rel="noreferrer">部署记录 ↗</a></div><pre id="log" aria-live="polite"></pre><div id="publish-confirm" hidden><label><input type="checkbox" id="confirm"> 我已核对本次内容，同意发布到公开博客。</label><button id="publish" class="primary" disabled>确认发布 ↗</button></div></section>
+  </main>
+  <footer><div><strong id="footer-count">尚未选择文档</strong><span>原文保留 · 引用检查 · 发布前预览</span></div><div class="actions"><button id="preview" disabled>预览所选文章</button><button id="prepare" class="primary" disabled>检查发布 <span>→</span></button></div></footer>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

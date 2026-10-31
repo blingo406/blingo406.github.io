@@ -18,6 +18,7 @@ interface Props {
 	updated?: Date;
 	category?: string;
 	parentCategory?: string;
+	categoryPath?: string[];
 	tags?: string[];
 	hideUpdateDate?: boolean;
 	hideTagsForMobile?: boolean;
@@ -37,6 +38,7 @@ const {
 	updated,
 	category,
 	parentCategory,
+	categoryPath,
 	tags,
 	hideUpdateDate,
 	hideTagsForMobile,
@@ -64,7 +66,7 @@ const {
         </div>
     )}
 
-    <Category category={category} parentCategory={parentCategory} />
+    <Category category={category} parentCategory={parentCategory} categoryPath={categoryPath} />
 
     {showWordCount && words && (
         <WordCount words={words} />

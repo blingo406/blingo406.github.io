@@ -22,6 +22,7 @@ const posts = sortedPostsList.map((post) => ({
 		category: post.data.category === null ? undefined : post.data.category,
 		parentCategory:
 			post.data.parentCategory === null ? undefined : post.data.parentCategory,
+		categoryPath: post.data.categoryPath,
 		published: post.data.published,
 		alias: post.data.alias,
 		permalink: post.data.permalink,

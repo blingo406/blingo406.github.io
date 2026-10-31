@@ -22,6 +22,7 @@ const {
 	tags,
 	category,
 	parentCategory,
+	categoryPath,
 	image,
 	description,
 	hideHomeContent,
@@ -100,6 +101,7 @@ const homeContent = getPostHomeContent(
 			tags={tags}
 			category={category || ""}
 			parentCategory={parentCategory || undefined}
+			categoryPath={categoryPath}
 			hideTagsForMobile={true}
 			hideUpdateDate={true}
 			className="mb-4"

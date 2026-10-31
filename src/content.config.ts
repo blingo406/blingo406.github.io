@@ -14,6 +14,16 @@ const postsCollection = defineCollection({
 		tags: z.array(z.string()).optional().default([]),
 		category: z.string().optional().nullable().default(""),
 		parentCategory: z.string().optional().nullable().default(""),
+		categoryPath: z
+			.array(
+				z
+					.string()
+					.trim()
+					.min(1)
+					.refine((part) => !/[\\/]/.test(part)),
+			)
+			.optional()
+			.default([]),
 		lang: z.string().optional().default(""),
 		pinned: z.boolean().optional().default(false),
 		comment: z.boolean().optional().default(true),

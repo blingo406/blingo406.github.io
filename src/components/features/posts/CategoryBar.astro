@@ -4,9 +4,11 @@ import { i18n } from "@i18n/translation";
 import { Icon } from "astro-icon/components";
 
 import { getCategoryList, getSortedPostsList } from "@/utils/content-utils";
-import { getCategoryUrl, url } from "@/utils/url-utils";
+import { url } from "@/utils/url-utils";
 
 const categories = await getCategoryList();
+const flatten = (nodes: typeof categories): typeof categories => nodes.flatMap((node) => [node, ...flatten(node.children)]);
+const flatCategories = flatten(categories);
 const totalPosts = (await getSortedPostsList()).length;
 const homeUrl = url("/");
 const archiveUrl = url("/archive/");
@@ -41,38 +43,14 @@ const archiveUrl = url("/archive/");
 		<div class="scroll-area relative">
 			<div class="scroll-fade scroll-fade-left" aria-hidden="true"></div>
 			<div class="category-scroll flex gap-2 overflow-x-auto">
-				{
-					categories.map((cat) => (
-						<>
-							<a
-								href={getCategoryUrl(cat.name)}
-								class="category-pill text-sm px-3 py-1 rounded-lg whitespace-nowrap
-									   transition-colors duration-200 flex items-center justify-center"
-								data-category-name={cat.name}
-							>
-								{cat.name}
-								<span class="text-xs opacity-60 ml-1">
-									{cat.totalCount}
-								</span>
-							</a>
-							{cat.children.map((child) => (
-								<a
-									href={getCategoryUrl(child.name)}
-									class="category-pill category-pill-child text-xs px-2.5 py-1 rounded-lg whitespace-nowrap
-										   transition-colors duration-200 flex items-center justify-center"
-									data-category-name={child.name}
-									data-parent-category={cat.name}
-								>
-									<span class="opacity-50 mr-1">·</span>
-									{child.name}
-									<span class="text-xs opacity-60 ml-1">
-										{child.count}
-									</span>
-								</a>
-							))}
-						</>
-					))
-				}
+				{flatCategories.map((cat) => (
+					<a href={cat.url}
+						class:list={["category-pill text-sm px-3 py-1 rounded-lg whitespace-nowrap shrink-0 transition-colors duration-200 flex items-center justify-center", { "category-pill-child": cat.path.length > 1 }]}
+						data-category-name={cat.path.join("/")} title={cat.path.join(" / ")}>
+						{cat.path.length > 1 && <span class="opacity-50 mr-1">·</span>}{cat.name}
+						<span class="text-xs opacity-60 ml-1">{cat.totalCount}</span>
+					</a>
+				))}
 			</div>
 			<div class="scroll-fade scroll-fade-right" aria-hidden="true"></div>
 		</div>
@@ -186,7 +164,8 @@ const archiveUrl = url("/archive/");
 		// 高亮当前分类
 		const pills = bar.querySelectorAll<HTMLAnchorElement>(".category-pill");
 		const params = new URLSearchParams(window.location.search);
-		const activeCategory = params.get("category") || "";
+		const activeCategory = params.get("categoryPath") || params.get("category") || "";
+		const hasPath = params.has("categoryPath");
 		const hasTag = params.has("tag");
 		const hasUncategorized = params.has("uncategorized");
 
@@ -199,7 +178,7 @@ const archiveUrl = url("/archive/");
 		} else if (activeCategory) {
 			pills.forEach((pill) => {
 				if (
-					pill.getAttribute("data-category-name") === activeCategory
+					(hasPath ? pill.getAttribute("data-category-name") : pill.getAttribute("data-category-name")?.split("/").at(-1)) === activeCategory
 				) {
 					pill.setAttribute("data-active", "");
 				}
@@ -232,7 +211,7 @@ const archiveUrl = url("/archive/");
 				".banner-page-title-text",
 			);
 			if (bannerTitle) {
-				bannerTitle.textContent = decodeURIComponent(activeCategory);
+				bannerTitle.textContent = activeCategory.split("/").join(" › ");
 			}
 		}
 	}

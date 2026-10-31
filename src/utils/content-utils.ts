@@ -2,7 +2,12 @@ import { type CollectionEntry, getCollection } from "astro:content";
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import { initPostIdMap } from "@utils/permalink-utils";
-import { getCategoryUrl, getPostUrl } from "@utils/url-utils";
+import {
+	getCategoryPathUrl,
+	getCategoryUrl,
+	getPostUrl,
+} from "@utils/url-utils";
+import { buildCategoryTree, type CategoryNode } from "./category-utils";
 
 // // Retrieve posts and sort them by publication date
 async function getRawSortedPosts() {
@@ -105,6 +110,7 @@ export async function getTagList(): Promise<Tag[]> {
 }
 
 export interface Category {
+	path: string[];
 	name: string;
 	count: number; // 直属文章数
 	totalCount: number; // 含子类的总文章数
@@ -117,63 +123,21 @@ export async function getCategoryList(): Promise<Category[]> {
 		return import.meta.env.PROD ? data.draft !== true : true;
 	});
 
-	// 记录每个分类的直属文章数，以及父子关系
-	const directCount: Record<string, number> = {};
-	const parentOf: Record<string, string> = {}; // child -> parent
-
-	allBlogPosts.forEach(
-		(post: {
-			data: { category: string | null; parentCategory?: string | null };
-		}) => {
-			const raw = post.data.category;
-			if (!raw) {
-				const ucKey = i18n(I18nKey.uncategorized);
-				directCount[ucKey] = (directCount[ucKey] ?? 0) + 1;
-				return;
-			}
-
-			const categoryName = String(raw).trim();
-			directCount[categoryName] = (directCount[categoryName] ?? 0) + 1;
-
-			const parent = post.data.parentCategory
-				? String(post.data.parentCategory).trim()
-				: null;
-			if (parent) {
-				parentOf[categoryName] = parent;
-				// 确保父类节点存在（即使没有直属文章）
-				if (!(parent in directCount)) {
-					directCount[parent] = 0;
-				}
-			}
-		},
+	const withUrls = (nodes: CategoryNode[]): Category[] =>
+		nodes.map((node) => ({
+			...node,
+			url:
+				node.path.length === 1 && node.name === i18n(I18nKey.uncategorized)
+					? getCategoryUrl("")
+					: getCategoryPathUrl(node.path),
+			children: withUrls(node.children),
+		}));
+	return withUrls(
+		buildCategoryTree(
+			allBlogPosts.map((post) => post.data),
+			i18n(I18nKey.uncategorized),
+		),
 	);
-
-	// 构建树形结构：找出所有顶层节点（没有 parent 的）
-	const childNames = new Set(Object.keys(parentOf));
-	const topLevelNames = Object.keys(directCount)
-		.filter((name) => !childNames.has(name))
-		.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
-
-	const buildNode = (name: string): Category => {
-		// 找出所有直接子类
-		const childList = Object.keys(parentOf)
-			.filter((child) => parentOf[child] === name)
-			.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()))
-			.map((child) => buildNode(child));
-
-		const childTotal = childList.reduce((sum, c) => sum + c.totalCount, 0);
-		const count = directCount[name] ?? 0;
-
-		return {
-			name,
-			count,
-			totalCount: count + childTotal,
-			url: getCategoryUrl(name),
-			children: childList,
-		};
-	};
-
-	return topLevelNames.map(buildNode);
 }
 
 /**

@@ -1,6 +1,7 @@
 <script lang="ts">
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
+import { getPostCategoryPath, matchesCategoryPath } from "@/utils/category-utils";
 import { onMount } from "svelte";
 import type { ArchivePanelProps, Group, Post } from "./types";
 
@@ -13,6 +14,7 @@ let {
 const params = new URLSearchParams(window.location.search);
 tags = params.has("tag") ? params.getAll("tag") : [];
 categories = params.has("category") ? params.getAll("category") : [];
+const categoryPaths = params.getAll("categoryPath");
 const uncategorized = params.get("uncategorized");
 
 let groups = $state<Group[]>([]);
@@ -39,16 +41,20 @@ onMount(async () => {
 	}
 
 	if (categories.length > 0) {
-		filteredPosts = filteredPosts.filter(
-			(post) =>
-				(post.data.category && categories.includes(post.data.category)) ||
-				(post.data.parentCategory &&
-					categories.includes(post.data.parentCategory)),
+		filteredPosts = filteredPosts.filter((post) =>
+			getPostCategoryPath(post.data).some((name) => categories.includes(name)),
 		);
 	}
 
+	if (categoryPaths.length > 0) {
+		filteredPosts = filteredPosts.filter((post) => categoryPaths.some((path) => matchesCategoryPath(post.data, path)));
+	}
+
 	if (uncategorized) {
-		filteredPosts = filteredPosts.filter((post) => !post.data.category);
+		filteredPosts = filteredPosts.filter((post) => {
+			const path = getPostCategoryPath(post.data);
+			return !path.length || (path.length === 1 && path[0] === i18n(I18nKey.uncategorized));
+		});
 	}
 
 	// 按发布时间倒序排序，确保不受置顶影响

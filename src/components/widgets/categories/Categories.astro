@@ -3,7 +3,7 @@ import I18nKey from "../../../i18n/i18nKey";
 import { i18n } from "../../../i18n/translation";
 import { getCategoryList } from "../../../utils/content-utils";
 import { widgetManager } from "../../../utils/widget-manager";
-import ButtonLink from "../../control/ButtonLink.astro";
+import CategoryTree from "./CategoryTree.astro";
 import WidgetLayout from "../common/WidgetLayout.astro";
 
 const categories = await getCategoryList();
@@ -34,30 +34,5 @@ const style = Astro.props.style;
 	class={className}
 	style={style}
 >
-	{
-		categories.map((c) => (
-			<div>
-				<ButtonLink
-					url={c.url}
-					badge={String(c.totalCount)}
-					label={`View all posts in the ${c.name.trim()} category`}
-				>
-					{c.name.trim()}
-				</ButtonLink>
-				{c.children.length > 0 && (
-					<div class="pl-4 flex flex-col">
-						{c.children.map((child) => (
-							<ButtonLink
-								url={child.url}
-								badge={String(child.count)}
-								label={`View all posts in the ${child.name.trim()} category`}
-							>
-								<span class="opacity-50 mr-1">└</span>{child.name.trim()}
-							</ButtonLink>
-						))}
-					</div>
-				)}
-			</div>
-		))
-	}
+	<CategoryTree nodes={categories} />
 </WidgetLayout>
