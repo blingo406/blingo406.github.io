@@ -5,10 +5,9 @@ import { Icon } from "astro-icon/components";
 
 import { getCategoryList, getSortedPostsList } from "@/utils/content-utils";
 import { url } from "@/utils/url-utils";
+import CategoryNavTree from "./CategoryNavTree.astro";
 
 const categories = await getCategoryList();
-const flatten = (nodes: typeof categories): typeof categories => nodes.flatMap((node) => [node, ...flatten(node.children)]);
-const flatCategories = flatten(categories);
 const totalPosts = (await getSortedPostsList()).length;
 const homeUrl = url("/");
 const archiveUrl = url("/archive/");
@@ -43,21 +42,37 @@ const archiveUrl = url("/archive/");
 		<div class="scroll-area relative">
 			<div class="scroll-fade scroll-fade-left" aria-hidden="true"></div>
 			<div class="category-scroll flex gap-2 overflow-x-auto">
-				{flatCategories.map((cat) => (
-					<a href={cat.url}
-						class:list={["category-pill text-sm px-3 py-1 rounded-lg whitespace-nowrap shrink-0 transition-colors duration-200 flex items-center justify-center", { "category-pill-child": cat.path.length > 1 }]}
-						data-category-name={cat.path.join("/")} title={cat.path.join(" / ")}>
-						{cat.path.length > 1 && <span class="opacity-50 mr-1">·</span>}{cat.name}
-						<span class="text-xs opacity-60 ml-1">{cat.totalCount}</span>
-					</a>
+				{categories.map((cat, index) => (
+					<div class="flex items-center gap-1 shrink-0">
+						<a href={cat.url}
+							class="category-pill text-sm px-3 py-1 rounded-lg whitespace-nowrap transition-colors duration-200 flex items-center justify-center"
+							data-category-name={cat.path.join("/")} data-category-root={cat.name}>
+							{cat.name}<span class="text-xs opacity-60 ml-1">{cat.totalCount}</span>
+						</a>
+						{cat.children.length > 0 && <button type="button" class="category-expand rounded-lg p-1"
+							data-category-toggle={cat.name} aria-label={`展开${cat.name}的子分类`}
+							aria-expanded="false" aria-controls={`category-panel-${index}`}>
+							<Icon name="material-symbols:expand-more-rounded" class="text-lg" />
+						</button>}
+					</div>
 				))}
 			</div>
 			<div class="scroll-fade scroll-fade-right" aria-hidden="true"></div>
 		</div>
 	</div>
+	{categories.filter((cat) => cat.children.length > 0).map((cat) => (
+		<section id={`category-panel-${categories.indexOf(cat)}`} data-category-panel={cat.name}
+			class="category-subtree mt-3 border-t border-(--line-divider) pt-3" aria-label={`${cat.name}的子分类`} hidden>
+			<CategoryNavTree nodes={cat.children} root={cat.name} />
+		</section>
+	))}
 </div>
 
 <style>
+	.category-expand { color: var(--btn-content); }
+	.category-expand:hover { background: var(--btn-plain-bg-hover); }
+	.category-expand[aria-expanded="true"] { transform: rotate(180deg); }
+	.category-subtree[hidden] { display: none; }
 	.category-bar {
 		margin-bottom: 1rem;
 	}
@@ -103,22 +118,22 @@ const archiveUrl = url("/archive/");
 	.category-scroll::-webkit-scrollbar {
 		display: none;
 	}
-	.category-pill {
+	:global(.category-bar .category-pill) {
 		border: 1.5px solid var(--line-divider);
 		color: var(--btn-content);
 		background: transparent;
 	}
-	.category-pill:hover {
+	:global(.category-bar .category-pill:hover) {
 		border-color: var(--primary);
 		color: var(--primary);
 		background: transparent;
 	}
-	.category-pill[data-active] {
+	:global(.category-bar .category-pill[data-active]) {
 		background: var(--primary);
 		border-color: var(--primary);
 		color: white;
 	}
-	.category-pill[data-active]:hover {
+	:global(.category-bar .category-pill[data-active]:hover) {
 		background: var(--primary);
 		border-color: var(--primary);
 		opacity: 0.9;
@@ -189,9 +204,25 @@ const archiveUrl = url("/archive/");
 			)?.setAttribute("data-active", "");
 		}
 
+		const panels = bar.querySelectorAll<HTMLElement>("[data-category-panel]");
+		const toggles = bar.querySelectorAll<HTMLButtonElement>("[data-category-toggle]");
+		const showGroup = (name: string | null) => {
+			panels.forEach((panel) => { panel.hidden = panel.dataset.categoryPanel !== name; });
+			toggles.forEach((toggle) => {
+				const open = toggle.dataset.categoryToggle === name;
+				toggle.setAttribute("aria-expanded", String(open));
+				toggle.setAttribute("aria-label", `${open ? "收起" : "展开"}${toggle.dataset.categoryToggle}的子分类`);
+			});
+		};
+		const selectedPill = bar.querySelector<HTMLAnchorElement>(".category-pill[data-active]");
+		showGroup(selectedPill?.dataset.categoryRoot || null);
+		toggles.forEach((toggle) => {
+			toggle.onclick = () => showGroup(toggle.getAttribute("aria-expanded") === "true" ? null : toggle.dataset.categoryToggle || null);
+		});
+
 		// 自动滚动到当前高亮的分类
 		const activePill = bar.querySelector<HTMLAnchorElement>(
-			".category-pill[data-active]",
+			".category-scroll .category-pill[data-active]",
 		);
 		const scroll = bar.querySelector<HTMLElement>(".category-scroll");
 		if (activePill && scroll) {

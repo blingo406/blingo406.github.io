@@ -81,7 +81,7 @@ const server = http.createServer(async (req, res) => {
 			}
 			return json({ error: "接口不存在" }, 404);
 		}
-		const staticFiles = { "/": ["index.html", "text/html"], "/app.js": ["app.js", "text/javascript"], "/style.css": ["style.css", "text/css"] };
+		const staticFiles = { "/": ["index.html", "text/html"], "/app.js": ["app.js", "text/javascript"], "/archive.mjs": ["archive.mjs", "text/javascript"], "/style.css": ["style.css", "text/css"] };
 		const file = staticFiles[url.pathname];
 		if (req.method !== "GET" || !file) return json({ error: "页面不存在" }, 404);
 		let content = await fs.readFile(path.join(here, "ui", file[0]), "utf8");

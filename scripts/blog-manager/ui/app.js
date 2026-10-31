@@ -1,3 +1,4 @@
+import { manualArchive } from "./archive.mjs";
 const $ = selector => document.querySelector(selector);
 const token = $('meta[name="manager-token"]').content;
 let items = [];
@@ -44,7 +45,8 @@ function openEditor(id) {
   $("#manual-archive").hidden = config.archiveMode === "directory";
   $("#directory-archive").textContent = `源目录归档：${item.directoryArchive.categoryPath.join(" → ")}。以文档库为根目录，保留全部文件夹层级；文章地址保持稳定。`;
   $("#category").value = config.category;
-  $("#parent-category").value = config.parentCategory;
+  $("#parent-category").value = config.parentPath;
+  updateManualArchive();
   const match = categories.findIndex(c => c.category === config.category && c.parentCategory === config.parentCategory && JSON.stringify(c.categoryPath || []) === JSON.stringify(config.categoryPath || []));
   $("#category-choice").value = match < 0 ? (config.category ? "new" : "") : String(match);
   $(`input[name="mode"][value="${config.mode}"]`).checked = true;
@@ -53,12 +55,24 @@ function openEditor(id) {
   $("#body-preview").textContent = item.body;
   renderList();
 }
+function updateManualArchive() {
+  try {
+    const archive = manualArchive({ category: $("#category").value, parentPath: $("#parent-category").value });
+    $("#manual-archive-preview").textContent = `完整归档：${archive.categoryPath.join(" → ")}`;
+    return archive;
+  } catch (error) {
+    $("#manual-archive-preview").textContent = error.message;
+    return null;
+  }
+}
 function saveEditor() {
   if (!activeId || !settings.has(activeId)) return;
   const config = settings.get(activeId);
-  if (config.category !== $("#category").value || config.parentCategory !== $("#parent-category").value) config.categoryPath = [];
   config.category = $("#category").value;
-  config.parentCategory = $("#parent-category").value;
+  config.parentPath = $("#parent-category").value;
+  const archive = updateManualArchive();
+  config.categoryPath = archive?.categoryPath || [];
+  config.parentCategory = archive?.parentCategory || "";
   if (config.mode === "manual") config.frontmatter = $("#frontmatter").value;
   invalidate();
 }
@@ -68,13 +82,13 @@ async function load() {
   const data = await api("scan");
   items = data.items;
   categories = data.categories;
-  for (const item of items) if (!item.error && !settings.has(item.id)) settings.set(item.id, { archiveMode: item.archiveMode, categoryPath: item.categoryPath, category: item.category || item.suggestedCategory, parentCategory: item.parentCategory, mode: item.savedMode || "auto", frontmatter: item.savedFrontmatter || item.original || item.suggestion });
+  for (const item of items) if (!item.error && !settings.has(item.id)) settings.set(item.id, { archiveMode: item.archiveMode, categoryPath: item.categoryPath, category: item.category || item.suggestedCategory, parentCategory: item.parentCategory, parentPath: (item.categoryPath?.length ? item.categoryPath.slice(0, -1) : [item.parentCategory].filter(Boolean)).join(" / "), mode: item.savedMode || "auto", frontmatter: item.savedFrontmatter || item.original || item.suggestion });
   for (const id of selected) if (!items.some(i => i.id === id && !i.error)) selected.delete(id);
   $("#count").textContent = items.length;
   $("#source").textContent = data.source;
   $("#category-choice").innerHTML = '<option value="">选择已有归档</option>' + categories.map((c, i) => `<option value="${i}">${escape((c.categoryPath?.length ? c.categoryPath : [c.parentCategory, c.category].filter(Boolean)).join(" / "))}</option>`).join("") + '<option value="new">＋ 创建新档</option>';
   $("#category-suggestions").innerHTML = [...new Set([...categories.map(c => c.category), ...items.map(i => i.suggestedCategory).filter(Boolean)])].map(c => `<option value="${escape(c)}">`).join("");
-  $("#parent-suggestions").innerHTML = [...new Set(categories.map(c => c.parentCategory).filter(Boolean))].map(c => `<option value="${escape(c)}">`).join("");
+  $("#parent-suggestions").innerHTML = [...new Set(categories.flatMap(c => { const path = c.categoryPath?.length ? c.categoryPath : [c.parentCategory, c.category].filter(Boolean); return path.map((_, i) => path.slice(0, i + 1).join(" / ")); }))].map(c => `<option value="${escape(c)}">`).join("");
   $("#unsupported").textContent = data.unsupported.length ? `暂不支持以下文件格式：${data.unsupported.join("、")}。可先转换为 Markdown 或 TXT。` : "支持 Markdown、MDX、TXT。自动跳过隐藏配置；随文导入引用的图片与附件。";
   if (data.warnings.length) message(data.warnings.join("\n"));
   invalidate();
@@ -133,10 +147,21 @@ $("#file-list").onclick = event => { const open = event.target.closest("[data-op
 $("#file-list").onchange = event => { const id = event.target.dataset.select; if (!id) return; event.target.checked ? selected.add(id) : selected.delete(id); invalidate(); openEditor(id); };
 $("#select-all").onchange = event => { for (const item of items.filter(i => !i.error)) event.target.checked ? selected.add(item.id) : selected.delete(item.id); invalidate(); renderList(); };
 $("#archive-mode").onchange = () => { saveEditor(); settings.get(activeId).archiveMode = $("#archive-mode").value; openEditor(activeId); };
-$("#category-choice").onchange = () => { const value = $("#category-choice").value; if (value !== "" && value !== "new") { $("#category").value = categories[Number(value)].category; $("#parent-category").value = categories[Number(value)].parentCategory; } else if (value === "new") { $("#category").value = ""; $("#category").focus(); } saveEditor(); settings.get(activeId).categoryPath = categories[Number(value)]?.categoryPath || []; };
+$("#category-choice").onchange = () => {
+  const value = $("#category-choice").value;
+  if (value !== "" && value !== "new") {
+    const archive = manualArchive(categories[Number(value)]);
+    $("#category").value = archive.category;
+    $("#parent-category").value = archive.categoryPath.slice(0, -1).join(" / ");
+  } else if (value === "new") {
+    $("#category").value = "";
+    $("#category").focus();
+  }
+  saveEditor();
+};
 for (const selector of ["#category", "#parent-category", "#frontmatter"]) $(selector).oninput = saveEditor;
 for (const radio of document.querySelectorAll('input[name="mode"]')) radio.onchange = () => { saveEditor(); settings.get(activeId).mode = radio.value; openEditor(activeId); };
-$("#apply-category").onclick = () => { saveEditor(); const config = settings.get(activeId); for (const id of selected) Object.assign(settings.get(id), { archiveMode: config.archiveMode, categoryPath: config.categoryPath, category: config.category, parentCategory: config.parentCategory }); invalidate(); message(config.archiveMode === "directory" ? `已将 ${selected.size} 篇已选文档设为各自按源目录归档。` : `已将归档应用到 ${selected.size} 篇已选文档。`); };
+$("#apply-category").onclick = () => { saveEditor(); const config = settings.get(activeId); for (const id of selected) Object.assign(settings.get(id), { archiveMode: config.archiveMode, categoryPath: [...config.categoryPath], category: config.category, parentCategory: config.parentCategory, parentPath: config.parentPath }); invalidate(); message(config.archiveMode === "directory" ? `已将 ${selected.size} 篇已选文档设为各自按源目录归档。` : `已将归档应用到 ${selected.size} 篇已选文档。`); };
 $("#apply-mode").onclick = () => { saveEditor(); const mode = settings.get(activeId).mode; for (const id of selected) settings.get(id).mode = mode; message(`已将 ${selected.size} 篇文档切换为${mode === "auto" ? "自动补全" : "自己填写"}。每篇文档分别保留自己的字段。`); };
 $("#preview").onclick = safely(async () => { setBusy(true); await preview(); $("#review").scrollIntoView({ behavior: "smooth", block: "start" }); setBusy(false); });
 $("#prepare").onclick = safely(async () => {

@@ -19,9 +19,10 @@
           <div class="form-grid"><label>归档方式<select id="archive-mode"><option value="directory">按源目录归档（推荐）</option><option value="manual">手动选择归档</option></select></label></div>
           <p id="directory-archive" class="note"></p>
           <div id="manual-archive">
-          <div class="form-grid"><label>已有归档<select id="category-choice"><option value="">选择已有归档</option><option value="new">＋ 创建新档</option></select></label><label>归档名称<input id="category" placeholder="例如：World Model" maxlength="100" list="category-suggestions"></label><label>父级归档 <small>选填</small><input id="parent-category" placeholder="例如：随笔" maxlength="100" list="parent-suggestions"></label></div>
+          <div class="form-grid"><label>已有归档<select id="category-choice"><option value="">选择已有归档</option><option value="new">＋ 创建新档</option></select></label><label>归档名称<input id="category" placeholder="例如：抽象代数" maxlength="100" list="category-suggestions"></label><label class="parent-path-field">父级路径 <small>选填，从顶层开始</small><input id="parent-category" placeholder="例如：数学 / 代数 / 教材笔记" list="parent-suggestions"></label></div>
           <datalist id="category-suggestions"></datalist><datalist id="parent-suggestions"></datalist>
-          <p class="note">输入新名称即可创建归档；发布后显示在网站分类中。</p>
+          <p class="note">父级之间用 / 分隔，支持多层；留空则创建顶层归档。新父级会随文章发布一起创建。</p>
+          <p id="manual-archive-preview" class="note" aria-live="polite"></p>
           </div>
           <div class="section-label"><span>02</span><h3>Frontmatter</h3><button id="apply-mode" class="quiet">应用模式到所有已选文档</button></div>
           <div class="mode-options"><label><input type="radio" name="mode" value="auto" checked><span><strong>自动补全</strong><small>保留已有字段，补上标题、日期、摘要</small></span></label><label><input type="radio" name="mode" value="manual"><span><strong>自己填写</strong><small>在下方编辑 YAML，提交前检查格式</small></span></label></div>

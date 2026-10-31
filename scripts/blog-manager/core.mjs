@@ -4,6 +4,7 @@ import { createHash } from "node:crypto";
 import { parseDocument, isMap } from "yaml";
 import { resolveReferences, transformProse } from "./references.mjs";
 import { formatBody, isMathText, mathPeriods } from "./formatting.mjs";
+import { archiveFromPath, manualArchive } from "./ui/archive.mjs";
 
 export const hash = (value) => createHash("sha256").update(value).digest("hex");
 export const textHash = (value) => hash(String(value).replace(/\r\n/g, "\n"));
@@ -91,7 +92,7 @@ export function directoryArchive(id) {
 	if (parts.some(part => !part || part === "." || part === ".." || part.includes(":"))) throw new Error("无效的源目录路径");
 	const categoryPath = parts.slice(0, -1);
 	if (!categoryPath.length) categoryPath.push("未分类");
-	return { categoryPath, category: categoryPath.at(-1), parentCategory: categoryPath.at(-2) || "" };
+	return archiveFromPath(categoryPath);
 }
 
 export async function readState(root) {
@@ -217,7 +218,7 @@ export async function makePlan(root, source, selections) {
 		const { id, mode } = selected;
 		const archiveMode = selected.archiveMode || "manual";
 		if (!["directory", "manual"].includes(archiveMode)) throw new Error("无效的归档方式");
-		const { category, parentCategory = "", categoryPath } = archiveMode === "directory" ? directoryArchive(id) : selected;
+		const { category, parentCategory, categoryPath } = archiveMode === "directory" ? directoryArchive(id) : manualArchive(selected);
 		if (used.has(id)) throw new Error(`重复选择：${id}`);
 		used.add(id);
 		if (!documents.has(path.extname(id).toLowerCase())) throw new Error("仅支持 Markdown、MDX 和 TXT 文档");
@@ -230,10 +231,7 @@ export async function makePlan(root, source, selections) {
 		const doc = mode === "auto" ? completeMetadata(parts.frontmatter, parts.body, id, identity.saved?.frontmatter) : yamlDocument(selected.frontmatter);
 		doc.set("category", category.trim());
 		doc.set("parentCategory", parentCategory.trim());
-		if (categoryPath?.length) {
-			if (!Array.isArray(categoryPath) || categoryPath.some(part => typeof part !== "string" || !part.trim() || /[\\/]/.test(part))) throw new Error("归档路径格式无效");
-			doc.set("categoryPath", categoryPath.map(part => part.trim()));
-		} else doc.delete("categoryPath");
+		doc.set("categoryPath", categoryPath);
 		const sourceTitle = doc.get("title");
 		const mathText = isMathText(doc.toJS());
 		if (mathText) for (const field of ["title", "description"]) {

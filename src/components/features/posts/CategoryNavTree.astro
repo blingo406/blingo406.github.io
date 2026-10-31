@@ -1,0 +1,18 @@
+---
+import type { Category } from "../../../utils/content-utils";
+
+interface Props { nodes: Category[]; root: string; }
+const { nodes, root } = Astro.props;
+---
+
+<ul class="category-branch flex flex-col items-start gap-1">
+	{nodes.map((node) => (
+		<li>
+			<a href={node.url} data-category-name={node.path.join("/")} data-category-root={root}
+				class="category-pill inline-flex items-center rounded-lg px-3 py-1 text-sm" title={node.path.join(" / ")}>
+				{node.name}<span class="ml-1 text-xs opacity-60">{node.totalCount}</span>
+			</a>
+			{node.children.length > 0 && <div class="ml-4 mt-1 border-l border-(--line-divider) pl-3"><Astro.self nodes={node.children} root={root} /></div>}
+		</li>
+	))}
+</ul>

@@ -13,6 +13,7 @@ import remarkMath from "remark-math";
 import rehypeMathjax from "rehype-mathjax";
 import { parse as parseHtml } from "node-html-parser";
 import { buildCategoryTree, getPostCategoryPath, matchesCategoryPath } from "../../src/utils/category-utils.ts";
+import { manualArchive } from "./ui/archive.mjs";
 
 async function fixture(t, docs = {}) {
 	const base = await fs.mkdtemp(path.join(os.tmpdir(), "mizuki-manager-test-"));
@@ -94,6 +95,40 @@ test("full paths separate same-name categories, count descendants, and support l
 	assert.equal(matchesCategoryPath(legacy, "数学"), true);
 	assert.deepEqual(getPostCategoryPath(legacy), ["数学", "数学分析"]);
 	assert.equal(buildCategoryTree([{}], "未分类")[0].count, 1);
+});
+
+test("manual archives accept multiple parents, normalize both separators and reject empty levels", () => {
+	const expected = { categoryPath: ["数学", "代数", "教材笔记", "抽象代数"], category: "抽象代数", parentCategory: "教材笔记" };
+	assert.deepEqual(manualArchive({ category: " 抽象代数 ", parentPath: " 数学 / 代数 / 教材笔记 " }), expected);
+	assert.deepEqual(manualArchive({ category: "抽象代数", parentPath: "数学\\代数\\教材笔记" }), expected);
+	assert.deepEqual(manualArchive({ categoryPath: expected.categoryPath, category: "旧分类", parentCategory: "旧父级" }), expected);
+	assert.deepEqual(manualArchive({ category: "世界模型", parentPath: "" }).categoryPath, ["世界模型"]);
+	for (const parentPath of ["数学//代数", "/数学", "数学/", "数学/../代数"]) {
+		assert.throws(() => manualArchive({ category: "抽象代数", parentPath }), /归档路径格式无效/);
+	}
+	assert.throws(() => manualArchive({ category: "代数/抽象代数", parentPath: "数学" }), /归档路径格式无效/);
+	assert.throws(() => manualArchive({ categoryPath: "数学/代数" }), /必须是列表/);
+});
+
+test("manual parent paths persist through planning, saved settings and repeated import", async t => {
+	const f = await fixture(t, { "A.md": "原始正文", "B.md": "另一篇正文" });
+	const selections = await f.choose(null, { archiveMode: "manual", category: "抽象代数", parentPath: "数学 / 代数 / 教材笔记" });
+	const plan = await makePlan(f.root, f.source, selections);
+	for (const post of plan.posts) {
+		assert.deepEqual(post.categoryPath, ["数学", "代数", "教材笔记", "抽象代数"]);
+		const data = yamlDocument(post.frontmatter).toJS();
+		assert.deepEqual(data.categoryPath, post.categoryPath);
+		assert.equal(data.parentCategory, "教材笔记");
+	}
+	await saveState(f.root, { entries: Object.fromEntries(plan.posts.map(post => [post.id, post])) });
+	const scanResult = await scan(f.root, f.source);
+	assert.equal(scanResult.items[0].archiveMode, "manual");
+	assert.deepEqual(scanResult.items[0].categoryPath, plan.posts[0].categoryPath);
+	const again = await makePlan(f.root, f.source, await f.choose(null, {
+		archiveMode: "manual", categoryPath: scanResult.items[0].categoryPath,
+	}));
+	assert.deepEqual(again.posts.map(post => post.outputHash), plan.posts.map(post => post.outputHash));
+	assert.equal(await fs.readFile(path.join(f.source, "A.md"), "utf8"), "原始正文");
 });
 
 test("manual metadata is validated, false flags and custom fields preserved", async t => {

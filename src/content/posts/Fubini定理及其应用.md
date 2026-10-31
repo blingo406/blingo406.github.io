@@ -3,6 +3,7 @@ title: "Fubini定理及其应用"
 published: 2026-07-13
 category: "数学分析"
 parentCategory: "数学"
+categoryPath: ["数学", "数学分析"]
 tags: ["math", "数学分析", "comprehension"]
 description: "从区间到Jordan可测集证明Fubini定理，并用积分换序求解累次积分。"
 draft: false
