@@ -86,6 +86,13 @@ export default defineConfig({
 
 	output: "static",
 
+	// Keep links to the duplicate imports working after consolidating articles.
+	redirects: {
+		"/posts/260922-数学教材的阅读-ada8c9bf/": "/posts/260922-数学教材的阅读-1038f9b3/",
+		"/posts/260922-一些说明-d7fe5280/": "/posts/260922-一些说明-e9c2737a/",
+		"/posts/260928-任务的精简-0f076737/": "/posts/260928-任务的精简-0c5b25b3/",
+	},
+
 	image: {
 		layout: "constrained",
 	},
