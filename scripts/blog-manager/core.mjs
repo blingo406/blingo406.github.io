@@ -3,7 +3,7 @@ import path from "node:path";
 import { createHash } from "node:crypto";
 import { parseDocument, isMap } from "yaml";
 import { resolveReferences, transformProse } from "./references.mjs";
-import { formatBody, isMathText, mathPeriods } from "./formatting.mjs";
+import { formatBody, isMathText, mathPeriods, splitLeadingTags } from "./formatting.mjs";
 import { archiveFromPath, manualArchive } from "./ui/archive.mjs";
 
 export const hash = (value) => createHash("sha256").update(value).digest("hex");
@@ -80,9 +80,9 @@ export function completeMetadata(frontmatter, body, id, savedFrontmatter) {
 	fill("title", body.match(/^#\s+(.+)$/m)?.[1]?.trim() || path.basename(id, path.extname(id)));
 	const saved = savedFrontmatter ? yamlDocument(savedFrontmatter).toJS() : null;
 	fill("published", saved?.published || new Date(`${today()}T00:00:00Z`));
-	fill("description", body.replace(/```[\s\S]*?```/g, "").replace(/[#>*`\[\]]/g, "").replace(/\s+/g, " ").trim().slice(0, 140));
-	const tagLine = body.match(/^\s*((?:#[\p{L}\p{N}_/-]+[ \t]*)+)\r?\n/u)?.[1];
-	fill("tags", tagLine ? [...tagLine.matchAll(/#([^\s#]+)/g)].map(match => match[1]) : []);
+	const leading = splitLeadingTags(body);
+	fill("description", leading.body.replace(/```[\s\S]*?```/g, "").replace(/[#>*`\[\]]/g, "").replace(/\s+/g, " ").trim().slice(0, 140));
+	fill("tags", leading.tags);
 	fill("draft", false);
 	return doc;
 }
@@ -229,6 +229,8 @@ export async function makePlan(root, source, selections) {
 		const parts = splitDocument(raw);
 		const identity = publishedRecord(state, id, allFiles, yamlDocument(parts.frontmatter).toJS()?.title || parts.body.match(/^#\s+(.+)$/m)?.[1]);
 		const doc = mode === "auto" ? completeMetadata(parts.frontmatter, parts.body, id, identity.saved?.frontmatter) : yamlDocument(selected.frontmatter);
+		const leading = splitLeadingTags(parts.body);
+		if (!doc.has("tags")) doc.set("tags", leading.tags);
 		doc.set("category", category.trim());
 		doc.set("parentCategory", parentCategory.trim());
 		doc.set("categoryPath", categoryPath);
@@ -249,7 +251,7 @@ export async function makePlan(root, source, selections) {
 		posts.push({ id, target, mode, archiveMode, categoryPath: data.categoryPath || [], mathText, sourceTitle, title: data.title, category: data.category, parentCategory: data.parentCategory, draft: !!data.draft,
 			sourceHash: hash(raw), previousHash: identity.saved?.outputHash,
 			supersededIds: identity.previousId && identity.previousId !== id ? [identity.previousId] : [],
-			frontmatter, body: parts.body });
+			frontmatter, body: leading.body });
 	}
 	const references = await resolveReferences(root, source, posts, state);
 	for (const post of posts) {

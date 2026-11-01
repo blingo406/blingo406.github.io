@@ -2,6 +2,19 @@ import MarkdownIt from "markdown-it";
 import { slugify } from "../../src/utils/link-graph.mjs";
 
 const parser = new MarkdownIt();
+// Move Obsidian's leading tag-only lines to metadata in the publishing copy.
+export function splitLeadingTags(body) {
+	const tags = [];
+	let rest = body;
+	const line = /^(?:[ \t]*\r?\n)*[ \t]*((?:#[\p{L}\p{N}_/-]+[ \t]*)+)(?:\r?\n|$)/u;
+	let match;
+	while ((match = rest.match(line))) {
+		tags.push(...[...match[1].matchAll(/#([^\s#]+)/g)].map(item => item[1]));
+		rest = rest.slice(match[0].length);
+	}
+	return { tags: [...new Set(tags)], body: rest };
+}
+
 export function isMathText(metadata) {
 	return Array.isArray(metadata.tags) && metadata.tags.some(tag => typeof tag === "string" && tag.trim().toLowerCase() === "math");
 }

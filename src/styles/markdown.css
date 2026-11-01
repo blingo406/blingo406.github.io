@@ -14,13 +14,6 @@
     background: #66531e;
   }
 
-  a.obsidian-tag {
-    border-radius: 0.35em;
-    padding: 0.08em 0.3em;
-    background: var(--btn-plain-bg-hover);
-    text-decoration: none;
-  }
-
   h1 {
     @apply text-3xl;
   }

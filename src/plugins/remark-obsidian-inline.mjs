@@ -2,11 +2,9 @@
 export function remarkObsidianInline() {
 	return (tree, file) => {
 		const source = String(file);
-		function transform(node, insideLink = false) {
+		function transform(node) {
 			if (!node.children || node.type === "html") return;
-			const linked =
-				insideLink || node.type === "link" || node.type === "linkReference";
-			for (const child of node.children) transform(child, linked);
+			for (const child of node.children) transform(child);
 			if (
 				![
 					"paragraph",
@@ -75,44 +73,7 @@ export function remarkObsidianInline() {
 				});
 				i = end;
 			}
-			// Links in source remain links; code/math nodes are never searched for hashtags.
-			function tags(child) {
-				if (child.type === "obsidianHighlight") {
-					child.children = child.children.flatMap(tags);
-					return [child];
-				}
-				if (linked || child.type !== "text") return [child];
-				const result = [];
-				let start = 0;
-				for (const match of child.value.matchAll(
-					/(?<![\p{L}\p{N}_/#&\\])#([\p{L}\p{N}_-]+(?:\/[\p{L}\p{N}_-]+)*)(?![\p{L}\p{N}_/-])/gu,
-				)) {
-					if (!/[\p{L}_-]/u.test(match[1])) continue;
-					if (
-						child.position &&
-						source
-							.slice(child.position.start.offset, child.position.end.offset)
-							.includes(`\\${match[0]}`)
-					)
-						continue;
-					if (match.index > start)
-						result.push({
-							type: "text",
-							value: child.value.slice(start, match.index),
-						});
-					result.push({
-						type: "link",
-						url: `/archive/?tag=${encodeURIComponent(match[1])}`,
-						data: { hProperties: { className: ["obsidian-tag"] } },
-						children: [{ type: "text", value: match[0] }],
-					});
-					start = match.index + match[0].length;
-				}
-				if (start < child.value.length)
-					result.push({ type: "text", value: child.value.slice(start) });
-				return result;
-			}
-			node.children = children.flatMap(tags);
+			node.children = children;
 		}
 		transform(tree);
 	};

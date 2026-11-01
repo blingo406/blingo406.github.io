@@ -7,7 +7,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 import { scan, makePlan, hash, splitDocument, yamlDocument, saveState, readState, inside } from "./core.mjs";
 import { git, run, prepare, publish, discard, verifyBuiltLinks } from "./publisher.mjs";
 import { transformProse, postSlug } from "./references.mjs";
-import { formatBody, isMathText } from "./formatting.mjs";
+import { formatBody, isMathText, splitLeadingTags } from "./formatting.mjs";
 import { createMarkdownProcessor } from "@astrojs/markdown-remark";
 import remarkMath from "remark-math";
 import rehypeMathjax from "rehype-mathjax";
@@ -62,10 +62,28 @@ test("directory archives keep every folder, derive each selection independently 
 	assert.equal(metadata.parentCategory, "教材笔记");
 	assert.deepEqual(metadata.tags, ["math", "抽象代数", "comprehension"]);
 	assert.equal(post.mathText, true);
+	assert.doesNotMatch(post.body, /#math|#抽象代数|#comprehension/);
 	assert.deepEqual(plan.posts.find(post => post.id === "根目录.md").categoryPath, ["未分类"]);
 	assert.deepEqual(plan.posts.find(post => post.id.startsWith("计算机/")).categoryPath, ["计算机", "教材笔记", "抽象代数"]);
 	assert.equal(await fs.readFile(path.join(f.source, id), "utf8"), raw);
 	assert.doesNotMatch(post.frontmatter, /[A-Z]:\\/);
+});
+
+test("publishing removes only leading tag lines and respects manual metadata", async t => {
+	const raw = "\r\n#math #数学/分析\r\n#math #学习\r\n\r\n## 标题\r\n正文 #保留\r\n\r\n```md\r\n#代码\r\n```\r\n";
+	const leading = splitLeadingTags(raw);
+	assert.deepEqual(leading.tags, ["math", "数学/分析", "学习"]);
+	assert.match(leading.body, /^\r\n## 标题/);
+	assert.equal(splitLeadingTags("```md\n#math\n```\n").body, "```md\n#math\n```\n");
+	const f = await fixture(t, { "A.md": raw });
+	const selections = await f.choose(null, { mode: "manual", frontmatter: "title: A\npublished: 2026-10-31\ntags: [自选]\n" });
+	const post = (await makePlan(f.root, f.source, selections)).posts[0];
+	assert.deepEqual(yamlDocument(post.frontmatter).toJS().tags, ["自选"]);
+	assert.equal(yamlDocument(post.frontmatter).toJS().published.toISOString().slice(0, 10), "2026-10-31");
+	assert.doesNotMatch(post.body, /#math|#数学\/分析|#学习/);
+	assert.match(post.body, /正文 #保留/);
+	assert.match(post.body, /```md\n#代码\n```/);
+	assert.equal(await fs.readFile(path.join(f.source, "A.md"), "utf8"), raw);
 });
 
 test("moving a directory archive updates its path while retaining the published URL and date", async t => {

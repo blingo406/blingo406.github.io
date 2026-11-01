@@ -20,13 +20,10 @@ test("highlight wraps math and emphasis while accepting inner whitespace", async
 	assert.ok(!html.includes("=="));
 });
 
-test("Chinese and nested tags point to the existing archive filter", async () => {
+test("body hashtags are no longer rendered as tag links", async () => {
 	const html = await render("#math #数学分析 #comprehension #数学/积分");
-	assert.equal((html.match(/class="obsidian-tag"/g) || []).length, 4);
-	assert.match(
-		html,
-		/href="\/archive\/\?tag=%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90"/,
-	);
+	assert.ok(!html.includes('class="obsidian-tag"'));
+	assert.match(html, /#math #数学分析 #comprehension #数学\/积分/);
 });
 
 test("code, math, links, wiki fragments, headings and numeric hashes stay intact", async () => {
