@@ -1,6 +1,26 @@
 @reference "tailwindcss";
 
 .custom-md {
+  mark {
+    color: inherit;
+    background: #fff0a3;
+    padding: 0.08em 0.15em;
+    border-radius: 0.2em;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  :root.dark & mark {
+    background: #66531e;
+  }
+
+  a.obsidian-tag {
+    border-radius: 0.35em;
+    padding: 0.08em 0.3em;
+    background: var(--btn-plain-bg-hover);
+    text-decoration: none;
+  }
+
   h1 {
     @apply text-3xl;
   }
@@ -203,7 +223,7 @@
   }
    
   /* --- MathJax 行内公式：强制行内显示，不换行 --- */
-  :is(p, li, span, strong, em, a, blockquote p) > mjx-container.MathJax {
+  :is(p, li, span, strong, em, a, mark, blockquote p) > mjx-container.MathJax {
     display: inline-block !important;
     width: auto !important;
     margin: 0 0.25ch !important;

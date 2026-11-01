@@ -29,6 +29,7 @@ import { rehypeMermaid } from "./src/plugins/rehype-mermaid.mjs";
 import { rehypeWrapMath } from "./src/plugins/rehype-wrap-math.mjs";
 import { rehypeWrapTable } from "./src/plugins/rehype-wrap-table.mjs";
 import { remarkContent } from "./src/plugins/remark-content.mjs";
+import { remarkObsidianInline } from "./src/plugins/remark-obsidian-inline.mjs";
 import { parseDirectiveNode } from "./src/plugins/remark-directive-rehype.js";
 import { remarkFixGithubAdmonitions } from "./src/plugins/remark-fix-github-admonitions.js";
 import { remarkMermaid } from "./src/plugins/remark-mermaid.js";
@@ -195,6 +196,7 @@ export default defineConfig({
 				parseDirectiveNode,
 				remarkMermaid,
 				remarkWikiLink,
+				remarkObsidianInline,
 			],
 			rehypePlugins: [
 				rehypeMathjax,
